@@ -1,4 +1,211 @@
-{%load static%}
+{% load static %}
 
-<h1>Logo</h1>
-<hr>
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>COOPEUD</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{%  static  'css/styles.css'  %}">
+
+</head>
+
+<body>
+
+    <div>
+        <section>
+            <div class="row ms-auto d-flex justify-content-center" style="height: 75px; padding:20px;">
+                <div class="col-md-1 col-sm-12 text-center order-md-first">
+                    <!-- <div class="class-sm-6 ">Logo</div>
+                    <div class="class-sm-6 ">COOPEUD</div> -->
+                    <h3>COOPEUD</h3>
+                </div>
+                <div class="col"></div>
+                <div class="col-sm-12 col-xl-1 col-md-2 text-center">info@coopeup.com</div>
+                <div class="col-sm-12 col-xl-1 col-md-2 text-center">809-123-123456</div>
+                <div class="col-sm-12 col-xl-1 col-md-2 text-center">Facebook</div>
+                <div class="col-sm-12 col-xl-1 col-md-2 text-center">Instagram</div>
+            </div>
+        </section>
+    </div>
+
+    <nav class="navbar navbar-expand-md bg-success">
+        <div>
+            <a href="#" class="navbar-brand text-light">Inicio</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-light">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-light">Historia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-light">Ubicacion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-light">Solicita tu Prestamo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-light">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <!-- <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" style="max-height: 300px"></div> -->
+        <div class="carousel-indicators bg-warning align-items-center h-auto"
+            style="width: 100%;margin: 0px; opacity: 0.78;height: 50px;vertical-align: middle;">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+                aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active ">
+                <img src="https://placekitten.com/1680/400" alt="Primera Imagen">
+                <!-- <img src="{% static 'img/slide2.jpg' %}" class="d-block w-100" alt="Primera Imagen"> -->
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'img/carousel-slide2.jpg' %}" class="d-block w-100" alt="Segunda Imagen">
+            </div>
+            <div class="carousel-item" style="width: 100%; object-fit: cover; object-position: 50% 50%">
+                <img src="{% static 'img/carousel-slide3.jpg' %}" class="d-block w-100" alt="Tercera Imagen">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+    </div>
+
+    <div class="container text-center">
+        <div class="row content" style="padding-top:45px; padding-bottom: 20px;">
+            <div class="">
+                <h4 class="col" style="text-align: center">Realiza tu solicitud de Prestamo ya !</h4>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <p class="col" style="padding:top 25px;">
+                If you use this site regularly and would like to help keep the
+                site on the Internet,
+                please consider donating a small sum to help pay for the hosting and bandwidth bill.
+                There is no minimum donation, any sum is appreciated</p>
+        </div>
+
+        <div class="col" style="padding-bottom: 90px;">
+            <button type="button" class="btn col btn-success border rounded-pill" style="align-items: center">Solicitar
+                Prestamo
+                <a href="#"></a>
+            </button>
+        </div>
+
+    </div>
+
+    <div class="container text-center" style="padding-bottom: 80px;">
+        <div class="row d-flex align-items-center">
+            <div class="col-12 col-sm-5 order-sm-first" style="padding-right:10px ;text-align:left">
+                <h5> ¿Quiénes Somos? </h5>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book. </p>
+
+                <a href="#">
+                    <p>Leer mas</p>
+                </a>
+
+            </div>
+            <div class="col-12 col-sm-6 order-sm-last">
+                <img src="{% static 'img/quienes-somos.jpg'%}" alt="¿Quiénes Somos?"
+                    style="height: auto;  width: auto; max-width: 400px; max-height: 400px">
+            </div>
+        </div>
+    </div>
+
+    <div class="container text-center" style="padding-bottom: 50px;">
+        <div class="row d-flex align-items-center">
+            <div class="col-12 col-sm-5 order-sm-last" style="padding-left:10px;text-align:left">
+                <h5 style=> ¿Por que Nosotros? </h5>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book. </p>
+
+                <a href="#">
+                    <p>Leer mas</p>
+                </a>
+            </div>
+            <div class="col-12 col-sm-6 order-sm-first">
+                <img src="{% static 'img/por-que-nosotros.jpg'%}" alt="¿Quiénes Somos?"
+                    style="height: auto;  width: auto; max-width: 400px; max-height: 400px">
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="padding-top:45px; padding-bottom: 20px;">
+        <div class="row content">
+            <div class="">
+                <h3 class="col" style="text-align: center">Afiliaciones y Reconocimientos</h3>
+            </div>
+
+            <div class="row text-center" style="align-items: center">
+                <div>
+                    <img src="{% static 'img/conacoop.jpg' %}" alt="Coonacop" class=" col-6 col-md-3 afiliados-img"
+                        style="    height: auto;
+                    width: auto;
+                    max-width: 80px;
+                    max-height: 80px;">
+                    <img src="{% static 'img/cooperativa-americas.png' %}" alt="Cooperativa de las Americas"
+                        class=" col-6 col-md-3 afiliados-img" style="    height: auto;
+                    width: auto;
+                    max-width: 80px;
+                    max-height: 80px">
+                    <img src="{% static 'img/ccc-ca.png' %}" alt="" class=" col-6 col-md-3 afiliados-img" style="    height: auto;
+                    width: auto;
+                    max-width: 80px;
+                    max-height: 80px">
+                    <img src="{% static 'img/uaf.png' %}" alt="" class=" col-6 col-md-3 afiliados-img" style="    height: auto;
+                    width: auto;
+                    max-width: 100px;
+                    max-height: 100px">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src=" https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
+
+
+
+</body>
+
+</html>
