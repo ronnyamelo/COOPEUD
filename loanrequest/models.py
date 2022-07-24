@@ -26,7 +26,7 @@ class Applicant(models.Model):
     
 
 class Address(models.Model):
-    applicant_id = models.ForeignKey(Applicant, on_delete=models.CASCADE, db_column='solicitante_id')
+    applicant = models.OneToOneField(Applicant, on_delete=models.CASCADE, related_name='address', db_column='solicitante_id')
     street = models.CharField(max_length=260, db_column='calle')
     number = models.IntegerField(db_column='numero')
     building = models.CharField(max_length=100, null=True, db_column='edificio')
@@ -46,7 +46,7 @@ class EmploymentData(models.Model):
         PUBLIC = 'PU', _('publico')
         SELF_EMPLOYED = "SE", _('auto empleado')
 
-    applicant_id = models.ForeignKey(Applicant, on_delete=models.CASCADE, db_column='solicitante_id')
+    applicant = models.OneToOneField(Applicant, on_delete=models.CASCADE, related_name='employment_data', db_column='solicitante_id')
     employment_type = models.CharField(max_length=2,choices=EmploymentType.choices, default=EmploymentType.PRIVATE, db_column='estado_laboral')
     company_name = models.CharField(max_length=100, db_column='nombre_empresa')
     tel = models.CharField(max_length=10, db_column='telefono')
@@ -78,7 +78,7 @@ class LoanRequest(models.Model):
         DENIED = 'CANCELADO', _('cancelado')
         APPROVED = 'APROVADO', _('aprovado')
 
-    applicant_id = models.ForeignKey(Applicant, on_delete=models.CASCADE, db_column='solicitante_id')
+    applicant = models.OneToOneField(Applicant, on_delete=models.CASCADE, related_name='loan_requests' , db_column='solicitante_id')
     loan_type = models.CharField(max_length=2, choices=LoanType.choices, default=LoanType.PERSONAL, db_column='tipo_prestamo')
     amount_requested = models.DecimalField(max_digits=14, decimal_places=2, db_column='monto_solicitado')
     amount_approved = models.DecimalField(max_digits=14, decimal_places=2, db_column='monto_aprovado')
