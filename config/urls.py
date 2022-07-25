@@ -19,10 +19,7 @@ from rest_framework import routers
 from loanrequest import views
 
 router = routers.DefaultRouter()
-router.register(r'solicitantes', views.ApplicantViewSet)
-router.register(r'direcciones', views.AddressViewSet)
 router.register(r'solicitudes', views.LoanRequestViewSet)
-router.register(r'datoslaborales', views.EmploymentDataViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
