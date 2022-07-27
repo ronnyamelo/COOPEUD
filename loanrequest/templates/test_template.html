@@ -1,0 +1,18 @@
+<h1>Hello! -- A</h1>
+
+<html><body>
+    <h1>Profiles</h1>
+    <h3>count: {{ loan_requests.count }} </h3>
+    <h3>next: {{ loan_requests.next }} </h3>
+    <h3>previous: {{ loan_requests.previous }}
+    <ul>
+       {% for loan_request in loan_requests.results %}
+        <li>{{ loan_request.applicant.first_name }}</li>
+        <li>{{ loan_request.url }}</li>
+        {% endfor %} 
+
+        
+    </ul>
+
+    {{ rersults }}
+    </body></html>
