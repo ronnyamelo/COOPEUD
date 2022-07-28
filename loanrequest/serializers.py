@@ -74,6 +74,7 @@ class LoanRequestSerializer(serializers.HyperlinkedModelSerializer):
             'term',
             'referer',
             'status',
+            'date',
             'applicant'
         ]
 

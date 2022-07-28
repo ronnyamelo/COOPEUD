@@ -20,11 +20,10 @@ from loanrequest import views
 
 router = routers.DefaultRouter()
 router.register(r'solicitudes', views.LoanRequestViewSet)
-router.register(r'back/test', views.TestViewSet)
+# router.register(r'test', views.TestViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
-    path('back/', views.adminViewSet, name='index'),
-    # path('back/test', views.TestViewSet.as_view(), name='test')
+    path('back/', views.TestViewSet.as_view({'get': 'list'}), name='test')
 ]

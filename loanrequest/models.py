@@ -85,6 +85,7 @@ class LoanRequest(models.Model):
     term = models.IntegerField(db_column='plazo')
     referer = models.CharField(max_length=260)
     status = models.CharField(max_length=10, choices=RequestStatus.choices, default=RequestStatus.VALIDATING, db_column='estatus_solicitud')
+    date = models.DateTimeField(auto_now_add=True, null=False, db_column='fecha_solicitud')
 
     class Meta:
         db_table = 'solicitud_prestamo'
