@@ -1,9 +1,9 @@
 from rest_framework import viewsets, permissions
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
-from loanrequest.serializers import LoanRequestSerializer
 from loanrequest.models import LoanRequest
-from rest_framework.pagination import PageNumberPagination
+from loanrequest.serializers import LoanRequestSerializer
 
 
 class LoanRequestViewSet(viewsets.ModelViewSet):
@@ -13,16 +13,17 @@ class LoanRequestViewSet(viewsets.ModelViewSet):
 
 
 
-class CustomResultsSetPagination(PageNumberPagination):
+class HtmlTemplateResultsSetPagination(PageNumberPagination):
     page_size = 10
     page_size_query_param = 'page_size'
     max_page_size = 100
 
     def get_paginated_response(self, data):
         return Response({'loan_requests': {
-            'next': self.get_next_link(),
-            'previous': self.get_previous_link(),
-            'count': self.page.paginator.count,
+            'current': self.page.number,
+            'pages': self.page.paginator.get_elided_page_range(
+                number=self.page.number, on_each_side=2, on_ends=3),
+
             'results': data
         }})
 
@@ -32,9 +33,8 @@ class TestViewSet(viewsets.ModelViewSet):
     serializer_class = LoanRequestSerializer
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'loan_request_list.html'
-    pagination_class = CustomResultsSetPagination
+    pagination_class = HtmlTemplateResultsSetPagination
     
-
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
         serializer = self.get_serializer(instance)

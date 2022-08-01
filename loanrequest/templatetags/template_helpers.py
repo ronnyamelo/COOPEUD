@@ -22,3 +22,8 @@ def parse_date(value):
     # https://github.com/encode/django-rest-framework/discussions/8129
     # data needs to be parsed to datetime for the filter to work
     return parser.parse(value)
+
+
+@register.simple_tag
+def define(val=None):
+  return val
