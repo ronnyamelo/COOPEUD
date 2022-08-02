@@ -25,7 +25,8 @@ router.register(r'solicitudes', views.LoanRequestViewSet)
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path('', include(router.urls)),
-    path('web', web_views.index, name='index'),
+    path('api/', include(router.urls)),
+    path('', web_views.index, name='index'),
+    path('contacto/', web_views.contact, name='contact'),
     path('admin/', views.TestViewSet.as_view({'get': 'list'}), name='test')
 ]
