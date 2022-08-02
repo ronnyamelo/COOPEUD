@@ -17,13 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from loanrequest import views
+from coopeud import views as web_views
 
 router = routers.DefaultRouter()
 router.register(r'solicitudes', views.LoanRequestViewSet)
 # router.register(r'test', views.TestViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     path('', include(router.urls)),
-    path('back/', views.TestViewSet.as_view({'get': 'list'}), name='test')
+    path('web', web_views.index, name='index'),
+    path('admin/', views.TestViewSet.as_view({'get': 'list'}), name='test')
 ]
