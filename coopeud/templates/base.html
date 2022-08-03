@@ -198,6 +198,11 @@
         #navmenu .navbar-nav .nav-item {
             padding: 8px 1rem 8px 1rem;
         }
+
+        footer h5 {
+            color: #D0D0D0;
+        }
+
     </style>
 </head>
 
@@ -208,7 +213,7 @@
             <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-1 pt-4">
                 <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
                     <img src="{%  static 'img/logo.jpg' %}" alt="COOPEUD" width="80">
-                    <span class="fs-4">COOPEUD</span>
+                    <span class="fs-4">&nbsp;&nbsp;COOPEUD</span>
                 </a>
 
                 <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
@@ -261,14 +266,14 @@
                         <li class="nav-item">
                             <a href="#" class="nav-link text-light">Nosotros</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="#" class="nav-link text-light">Historia</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a href="/contacto" class="nav-link text-light">Contactos</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link text-light">Ubicación</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/contacto" class="nav-link text-light">Contactos</a>
                         </li>
                     </ul>
                 </div>
@@ -311,48 +316,47 @@
 
 
 
-    <footer class="footer mt-auto bg-dark pt-4 pt-md-5 " style="color: white; background-color: #2E2E2E;">
-        <div class="container">
+    <footer class="footer mt-auto bg-dark pt-5 pt-md-5 " style="color: white; background-color: #2E2E2E;">
+           
+        <div class="container mt-4">
             <div class="row">
-                <div class="col-sm-6 ">
-                    <h5>COOPEUP</h5>
-                    <p class="d-none d-md-block col-8">It is a long established fact that a reader will be distracted by the
-                        readable content of a page
-                        when looking at its layout. </p>
-
+                <div class="col-12 col-md">
+                    <h5>COOPEUD</h5>
+                    <p class="link-secondary col-sm-11">Cooperativa de Ahorro, Crédito y Servicios Múltiples Estilistas Unidos por el Progrerso y Desarrollo</p>
+                    <!-- <img src="{%  static 'img/logo-3.png' %}" alt="COOPEUD" width="100"> -->
                 </div>
-
-                <div class="col col-md-3">
-                    <h6>Contactos</h6>
-                    <div>
-                        <a href="mailto:" class="bi bi-envelope" target="_blank"
-                            style="text-decoration: none; color:white"> info@coopeud.com</a>
-                        <div class="bi bi-whatsapp" target="_blank"> 809-591-1111</div>
-                        <a href="http://www.facebook.com/profile.php?id=" class="bi bi-facebook" target="_blank"
-                            style="text-decoration: none; color:white">
-                            Facebook</a><br>
-                        <a href="http://www.linkedin.com/in/" class="bi bi-instagram" target="_blank"
-                            style="text-decoration: none; color:white"> Instagram</a><br>
-                        <a href="http://twitter.com/" class="bi bi-twitter" target="_blank"
-                            style="text-decoration: none; color:white">Twitter</a>
-                    </div>
+                <div class="col-6 col-md">
+                    <h5>Menu</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="list-group-item link-secondary" href="/">Inicio</a></li>
+                        <li><a class="list-group-item link-secondary" href="#">Nosotros</a></li>
+                        <li><a class="list-group-item link-secondary" href="#">Prestamos</a></li>
+                    </ul>
                 </div>
-
-                <div class="col col-md-3">
-                    <h6>Direccion</h6>
-                    <address>
+                <div class="col-6 col-md">
+                    <h5>Contactos</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="link-secondary list-group-item bi bi-instagram" href="#">&nbsp;&nbsp;instagram</a></li>
+                        <li><a class="link-secondary list-group-item bi bi-facebook" href="#">&nbsp;&nbsp;facebook</a></li>
+                        <li><a class="link-secondary list-group-item bi bi-twitter" href="#">&nbsp;&nbsp;twitter</a></li>
+                        <li><a class="link-secondary list-group-item disabled bi bi-whatsapp" href="#">&nbsp;&nbsp;809-457-1111</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Dirección</h5>
+                    <address class="text-secondary disabled  list-group-item">
                         121, Clear Water Bay Road<br>
                         Clearh6 Water Bay, Kowloon<br>
                         HONG KONG<br>
                         Tel.: +852 1234 5678<br>
-                        Fax: +852 8765 4321<br>
-                        Email: <a href="mailto:confusion@food.net">info@coopeud.net</a>
+                        Email: <a href="#">info@coopeud.net</a>
                     </address>
                 </div>
+                
             </div>
-            
         </div>
-        <div class="justify-content-center">
+            
+        <div class="justify-content-center mt-3">
             <div class="col-auto text-center" style="background-color: black; color: #717171;">
                 <p class="small py-2 my-0">© Copyright 2022 COOPEUD</p>
             </div>
