@@ -4,7 +4,10 @@ from django.shortcuts import render
 
 
 def index(request):
-    return  render(request, 'inicio.html', {'page_title': 'Inicio'})
+    return  render(request, 'inicio.html', {'title': 'Inicio'})
 
 def contact(request):
-    return  render(request, 'contacto.html', {'page_title': 'Contacto'})
+    return  render(request, 'contacto.html', {'title': 'Contacto'})
+
+def location(request):
+    return  render(request, 'ubicacion.html', {'title': 'Contacto'})
