@@ -1,210 +1,41 @@
-{% load static %}
+{% extends 'base.html' %}
+{%load static %}
 
+{% block content %}
 
-<!doctype html>
-<html lang="en">
+<div class="container">
+  <div class="row text-center mt-5 mb-5">
+    <h3>¿Donde Estamos Localizados ?</h3>
+  </div>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>COOPEUD</title>
+  <div class="text-center">
+    <h4>Encuentranos en :</h4>
+    <p class="">Carretera Camino Viejo a Cancino #16
+      Santo Domingo Este, Santo Domingo, Republica Dominicana
+    </p>
+  </div>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{%  static  'css/styles.css'  %}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-
-</head>
-
-<body>
-
-    <div>
-        <section>
-            <div div class="row ms-auto d-flex justify-content-center"
-                style="align-items: center; padding-bottom: 20px; padding-top: 10px;" id="topSection">
-                <!-- style="height: 80px; padding:20px; align-items: center;padding-top: 10px;"> -->
-                <div class="col-md-1 col-sm-12  order-md-first" style="align-items: center; text-align: center">
-                    <!-- <div class="class-sm-6 ">Logo</div>
-                    <div class="class-sm-6 ">COOPEUD</div> -->
-                    <h3>COOPEUD</h3>
-                </div>
-                <div class="col"></div>
-                <div class="col-sm-12  col-md-2 text-center bi-envelope"> <a href="mailto:confusion@food.net"
-                        target="_blank" style="text-decoration: none; color:black">info@coopeud.net</a></div>
-                <div class="col-sm-12  col-md-2 text-center bi bi-whatsapp" style="text-decoration: none; color:black">
-                    809-123-123456</div>
-                <div class="col-sm-12 col-lg-1 col-md-2 text-center bi bi-facebook" target="_blank"> <a
-                        href="http://www.facebook.com/profile.php?id=" target="_blank"
-                        style="text-decoration: none; color:black">Facebook</a> </div>
-                <div class="col-sm-12 col-lg-1 col-md-2 text-center bi bi-instagram" target="_blank"> <a
-                        href="http://www.linkedin.com/in/" target="_blank"
-                        style="text-decoration: none; color:black">Instagram</a></div>
-                <div class="col-sm-12 col-lg-1 col-md-2 text-center bi bi-twitter" target="_blank"> <a
-                        href="http://twitter.com/" style="text-decoration: none; color:black ;">Twitter</a></div>
-
-            </div>
-        </section>
+  <!-- <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <img src="{% static 'img/ubicacion2.png' %}" class="rounded mx-auto d-block img-fluid pt-5" alt="Ubicacion">
     </div>
-
-    <nav class="navbar navbar-expand-lg bg-success static-top" style="padding: 10px;">
-        <div>
-            <a href="inicio" class="navbar-brand text-light ">Inicio</a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-
-        <div class="collapse navbar-collapse" id="navmenu">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-light">Nosotros</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-light">Historia</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-light">Ubicacion</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-light">Solicita tu Prestamo</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-light">Contacto</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+  </div> -->
 
 
-    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-        <!-- <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" style="max-height: 300px"></div> -->
-        <div>
-            <div class="carousel-indicators bg-warning align-items-center h-25"
-                style="width: 100%;margin: 0px; opacity: 0.78;vertical-align: middle; height: 30px;">
-                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active ">
-                <img src="https://placekitten.com/1680/400" alt="Primera Imagen">
-                <!-- <img src="{% static 'img/slide2.jpg' %}" class="d-block w-100" alt="Primera Imagen"> -->
-            </div>
-            <div class="carousel-item">
-                <img src="{% static 'img/carousel-slide2.jpg' %}" class="d-block w-100" alt="Segunda Imagen">
-            </div>
-            <div class="carousel-item" style="width: 100%; object-fit: cover; object-position: 50% 50%">
-                <img src="{% static 'img/carousel-slide3.jpg' %}" class="d-block w-100" alt="Tercera Imagen">
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Siguiente</span>
-        </button>
-    </div>
+  <div id="ubicacion" style="width:100%;height:400px;"></div>
 
-    <div class="container">
-        <div class="row content  text-center" style="padding-top:45px; padding-bottom: 65px;">
-            <div class="">
-                <h4 class="col" style="text-align: center">Contactate con Nosotros</h4>
-            </div>
+  <script>
+    function myMap() {
+      var mapProp = {
+        center: new google.maps.LatLng(51.508742, -0.120850),
+        zoom: 5,
+      };
+      var map = new google.maps.Map(document.getElementById("ubicacion"), mapProp);
+    }
+  </script>
 
-        </div>
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
 
-        <div class="col" style="padding-bottom: 130px; padding-top: 20px;">
-            <form action="mailto:contacto@coopeud.com" method="GET">
-                <div class="form-group" style="padding-bottom: 30px">
-                    <label for="nombreClienteText">Introduzca Su Nombre</label>
-                    <input type="text" id="nombreClienteText" class="form-control" placeholder="Su Nombre">
-                </div>
-                <div class="form-group" style=" padding-bottom: 30px">
-                    <label for="emailClienteText">Introduzca Su Correo</label>
-                    <input type="email" id="emailClienteText" class="form-control" placeholder="xxxxxx@xxxx.com"
-                        aria-describedby="emailHelp">
-                </div>
-                <div class="form-group" style=" padding-bottom: 30px">
-                    <label for="mensajeTextArea" style="padding-bottom: 5px;">Mensaje</label>
-                    <textarea id="mensajeTextArea" class="form-control" placeholder="Escriba su Mensaje"
-                        rows="5"></textarea>
+</div>
 
-                </div>
-
-                <div>
-                    <input class="btn btn-primary" type="submit" value="Enviar Mensaje">
-                </div>
-            </form>
-
-            <!-- <p><a id="mail-link" class="btn btn-primary">Enviar Mensaje</a></p> -->
-        </div>
-
-    </div>
-
-
-    <footer class="footer">
-        <div class="bg-dark text-white  ms-auto">
-            <div class="row" style="padding-top:30px">
-                <div class="col-11 offset-1 col-sm-5 ">
-                    <h5>COOPEUP</h5>
-                    <p class="d-none d-md-block">It is a long established fact that a reader will be distracted by the
-                        readable content of a page
-                        when looking at its layout. </p>
-
-                    <p class="d-none d-md-block">The point of using Lorem Ipsum is that it has a more-or-less normal
-                        distribution of letters</p>
-
-                </div>
-
-                <div class="col col-md-3">
-                    <h6>Contactos</h6>
-                    <div>
-                        <a href="mailto:" class="bi bi-envelope" target="_blank"
-                            style="text-decoration: none; color:white"> info@coopeud.com</a>
-                        <div class="bi bi-whatsapp" target="_blank"> 809-591-1111</div>
-                        <a href="http://www.facebook.com/profile.php?id=" class="bi bi-facebook" target="_blank"
-                            style="text-decoration: none; color:white">
-                            Facebook</a><br>
-                        <a href="http://www.linkedin.com/in/" class="bi bi-instagram" target="_blank"
-                            style="text-decoration: none; color:white"> Instagram</a><br>
-                        <a href="http://twitter.com/" class="bi bi-twitter" target="_blank"
-                            style="text-decoration: none; color:white">Twitter</a>
-                    </div>
-                </div>
-
-                <div class="col col-md-3">
-                    <h6>Direccion</h6>
-                    <address>
-                        121, Clear Water Bay Road<br>
-                        Clearh6 Water Bay, Kowloon<br>
-                        HONG KONG<br>
-                        Tel.: +852 1234 5678<br>
-                        Fax: +852 8765 4321<br>
-                        Email: <a href="mailto:confusion@food.net">info@coopeud.net</a>
-                    </address>
-                </div>
-            </div>
-            <div class="row justify-content-center bg-secondary" style="padding-top:10px">
-                <div class="col-auto">
-                    <p>© Copyright 2022 COOPEUD</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src=" https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
-        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">
-        </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
-        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
-        crossorigin="anonymous"></script>
-
-
-</body>
-
-</html>
+{% endblock %}
