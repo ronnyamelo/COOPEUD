@@ -11,3 +11,6 @@ def contact(request):
 
 def location(request):
     return  render(request, 'ubicacion.html', {'title': 'Contacto'})
+
+def formulario(request):
+    return render(request, 'datosFormulario.html')
