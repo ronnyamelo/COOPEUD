@@ -16,3 +16,17 @@
 | ⚠️ | Cuando se haga clic en un row de la tabla, debe permitir ver los detalles de la solicitud |
 | ⚠️ | En la pantalla de Solicitud de Prestamo, cuando se completen las 3 pantallas, se debe mostrar toda la informacion, para ver que sea correcta antes de enviar el formulario completo. <br><br> _(seria mejor mostrar un pop up, preguntando al usuario si esta seguro de enviar el formulario, el usuario ya tiene las opciones de navegar hacia cada parte del formulario para verificar sus datos.)_| 
 | ❌ | Implementacion de Popup al enviar formulario de Solicitud de Prestamos |
+
+<br>
+
+## Requests de ejemplo
+
+|Type| Request |
+|----|---------|
+|Ordering (ascending)| `http://example.com/api/users?ordering=account,username`|
+|Ordering (descending)| `http://example.com/api/users?ordering=-account,-username`|
+|Filtering (main Entity)| `http://example.com/api/solicitudes?status=CANCELADO` |
+|Filtering (Nested Entity - exact match) |` http://example.com/api/solicitudes?applicant__id_number=22300846662` |
+|Filtering (Nested Entity - contains) |  `http://example.com/api/solicitudes?applicant__last_name__icontains=maldonado`
+
+    At the moment filters are configured to work with only too levels of hirarchy (loan requests and applicants)
