@@ -47,3 +47,12 @@ class TestViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(instance)
         return Response(data={'loan_request': serializer.data}, 
                         template_name='single_request.html')
+
+
+class LoanRequestViewSet(viewsets.ModelViewSet):
+    queryset = LoanRequest.objects.all()
+    serializer_class = LoanRequestSerializer
+    permission_classes = [permissions.AllowAny]
+    filterset_class = LoanRequestFilter
+    ordering_fields = ['status', 'date', 'amount_requested', 'amount_approved', 'term', 'loan_type']
+

@@ -1,51 +1,7 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" 
-    rel="stylesheet" 
-    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" 
-    crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/form_style.css' %}">
-</head>
-<body>
-     <!--Encabezado-->
-     <header>
-        <a class="logo" href="#"> 
-         <img src="img/logocoopeud.jpg" alt="logo" class="img1">
-         <h4 class="nom">COOPEUD</h4>
-        </a>
-         <nav class="encabezado navbar navbar-expand-lg navbar-expand-sm navbar-expand-md navbar-expand-xl  navbar-light">
-              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav ms-auto col-sm-12 col-md-12">
-                    <a class="name nav-link" href="#">
-                       <img src="img/info3.png" alt="info" class="info3">
-                    </a>
-                    <a class="name nav-link" href="#">
-                       <img src="img/whatsapp1.jpg" alt="info" class="whatsapp1">
-                    </a>
-                    <a class="name nav-link" href="#">
-                       <img src="img/facebook.png" alt="info" class="facebook">
-                    </a>
-                    <a class="name nav-link" href="#">
-                       <img src="img/instagram.png" alt="info" class="Instagram">
-                    </a>
-                    <a class="name nav-link" href="#">
-                       <img src="img/twitter.jpg" alt="info" class="Twitter">
-                    </a>
-                  
-                </div>
-              </div>
-            </div>
-          </nav>
-    </header>
-    <!--Navbar-->
-    
-        <nav class="navbar1 navbar navbar-expand-md bg-success">
+{% extends 'base.html' %}
+{%load static %}
+
+{% block content%}
            <div class="container-fluid">
              <a class="nav-a navbar-brand" href="#" style="font-size: 15px">Nosotros</a>
              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -294,7 +250,7 @@
                 integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" 
                 crossorigin="anonymous"></script>
         </form> 
-       <div class="contenedor text-center">
+       {% comment %} <div class="contenedor text-center">
                 <h4 class="afili">Afiliaciones y Reconocimientos</h4>
               <div class="contenedor2">
                 <img class="conacoop" src="img/img5.jpg" alt="conacoop">
@@ -302,6 +258,6 @@
                 <img class="ccc-ca" src="img/img4.png" alt="ccc-ca">
                 <img class="uaf" src="img/uaf.png" alt="uaf">
               </div>
-       </div>
-</body>
-</html>
+       </div> {% endcomment %}
+
+       {% endblock %}
