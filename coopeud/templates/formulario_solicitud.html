@@ -3,83 +3,262 @@
 
 {% block content%}
 
-<div class="container bg-light col-10 col-xxl-10 col-md-10 col-lg-9 border rounded mt-5" style="max-width: 1150px;">
-    <div class="row py-5 justify-content-center">
-        <div class="col-md-11">
-            <form>
-                <div class="row g-4 pb-5">
-                    <div class="col-md-5">
-                        <label for="firstName" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="firstName">
-                    </div>
-                    <div class="col-md-5">
-                        <label for="lastName" class="form-label">Apellido</label>
-                        <input type="text" class="form-control" id="lastName">
-                    </div>
-                    <div class="col-md-2">
-                        <label for="dateOfBirth" class="form-label">Fecha Nacimiento</label>
-                        <input type="date" class="form-control" id="dateOfBirth">
-                    </div>
+<div class="container col-10 col-xxl-10 col-md-10 col-lg-9" style="max-width: 1150px;">
+    <div class="row justify-content-center">
+        <div class="py-5 text-center col-10">
+            <h2>Solicita tu préstamo aqui!</h2>
+            <p class="lead">Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+          </div>
+    </div>
+    
 
-                    <div class="col-md-5 col-sm-12">
-                        <label for="inputState" class="form-label">Documento de Identidad</label>
-                        <div class="input-group">
-                            <select id="inputState" class="form-select" style="max-width: 150px;">
-                                <option selected>CEDULA</option>
-                                <option>PASAPORTE</option>
+    <div class="bg-light container  border rounded mt-2"">
+        <form id="loanRequestForm">
+            <div class="row py-5 justify-content-center form-first-section" id="personalData">
+                <div class="col-md-11">
+                    <div class="row g-4 pb-4">
+                        <div class="col-md-4">
+                            <label for="firstName" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="firstName">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="lastName" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="lastName">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="dateOfBirth" class="form-label">Fecha Nacimiento</label>
+                            <input type="date" class="form-control" id="dateOfBirth">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="inputState" class="form-label">Documento de Identidad</label>
+                            <div class="input-group">
+                                <select id="inputState" class="form-select" style="max-width: 150px;">
+                                    <option selected>CEDULA</option>
+                                    <option>PASAPORTE</option>
+                                </select>
+
+                                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputState" class="form-label">Nacionalidad</label>
+                            <select id="inputState" class="form-select">
+                                <option selected>Republica Dominicana</option>
+                                <option>Estados Unidos</option>
                             </select>
-
-                            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
                         </div>
                     </div>
-
-                    <div class="col-md-4">
-                        <label for="inputState" class="form-label">Nacionalidad</label>
-                        <select id="inputState" class="form-select">
-                          <option selected>Republica Dominicana</option>
-                          <option selected>Estados Unidos</option>
-                        </select>
+                    <hr />
+                    <div class="row g-4 pb-4 mt-4">
+                        <div class="col-md-4">
+                            <label for="firstName" class="form-label">Teléfono</label>
+                            <input type="text" class="form-control" id="firstName">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="lastName" class="form-label">Celular</label>
+                            <input type="text" class="form-control" id="lastName">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="dateOfBirth" class="form-label">Email</label>
+                            <input type="text" class="form-control" id="dateOfBirth">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="firstName" class="form-label">Facebook</label>
+                            <input type="text" class="form-control" id="firstName">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="lastName" class="form-label">Twitter</label>
+                            <input type="text" class="form-control" id="lastName">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="dateOfBirth" class="form-label">Instagram</label>
+                            <input type="text" class="form-control" id="dateOfBirth">
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row g-4 pb-4 mt-4">
+                        <div class="col-md-8">
+                            <label for="firstName" class="form-label">Calle</label>
+                            <input type="text" class="form-control" id="firstName">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="lastName" class="form-label">Numero</label>
+                            <input type="text" class="form-control" id="lastName">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="dateOfBirth" class="form-label">Edificio</label>
+                            <input type="text" class="form-control" id="dateOfBirth">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="firstName" class="form-label">Apartamento</label>
+                            <input type="text" class="form-control" id="firstName">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="lastName" class="form-label">Sector</label>
+                            <input type="text" class="form-control" id="lastName">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="dateOfBirth" class="form-label">Ciudad</label>
+                            <input type="text" class="form-control" id="dateOfBirth">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="dateOfBirth" class="form-label">Provincia</label>
+                            <input type="text" class="form-control" id="dateOfBirth">
+                        </div>
                     </div>
                 </div>
-        </div>
+            </div>
 
+            <div hidden class="row py-5 justify-content-center form-second-section" id="employmentData">
+                <div class="col-md-11">
+                    <div class="row g-4 pb-4">
+                        <div class="col-md-4">
+                            <label for="employmentType" class="form-label">Estado Laboral</label>
+                            <div class="input-group">
+                                <select id="employmentType" class="form-select" >
+                                    <option selected>Empelado Privado</option>
+                                    <option>Empleado Publico</option>
+                                    <option>Independiente</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="companyName" class="form-label">Nombre de la empresa</label>
+                            <input type="text" class="form-control" id="companyName">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="companyTel" class="form-label">Teléfono</label>
+                            <input type="tel" class="form-control" id="companyTel">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="companyTelExt" class="form-label">Extensión</label>
+                            <input type="text" class="form-control" id="companyTelExt">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="jobRol" class="form-label">Cargo que ocupa</label>
+                            <input type="text" class="form-control" id="jobRol">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="hiringDate" class="form-label">Fecha de ingreso</label>
+                            <input type="date" class="form-control" id="hiringDate">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="monthlyIncome" class="form-label">Ingreso Mensual</label>
+                            <input type="number" class="form-control" id="monthlyIncome">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="otherIncome" class="form-label">Otros ingresos</label>
+                            <input type="number" class="form-control" id="otherIncome">
+                        </div>
+                    </div>
+                 
+                    <hr />
+                    <div class="row g-4 pb-4 mt-4">
+                        <div class="col-md-8">
+                            <label for="firstName" class="form-label">Calle</label>
+                            <input type="text" class="form-control" id="firstName">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="lastName" class="form-label">Numero</label>
+                            <input type="text" class="form-control" id="lastName">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="dateOfBirth" class="form-label">Edificio</label>
+                            <input type="text" class="form-control" id="dateOfBirth">
+                        </div>
+                       
+                        <div class="col-md-3">
+                            <label for="lastName" class="form-label">Sector</label>
+                            <input type="text" class="form-control" id="lastName">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="dateOfBirth" class="form-label">Ciudad</label>
+                            <input type="text" class="form-control" id="dateOfBirth">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="dateOfBirth" class="form-label">Provincia</label>
+                            <input type="text" class="form-control" id="dateOfBirth">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div hidden class="row py-5 justify-content-center form-final-section" id="loanData">
+                <div class="col-md-11">
+                    <div class="row g-4 pb-4">
+                        <div class="col-md-4">
+                            <label for="loanType" class="form-label">Tipo de préstamo</label>
+                            <div class="input-group">
+                                <select id="loanType" class="form-select" >
+                                    <option selected>Personal</option>
+                                    <option>Comercial</option>
+                                    <option>Vivienda</option>
+                                    <option>Vehiculo</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="requestedAmount" class="form-label">Monto a solicitar</label>
+                            <input type="number" class="form-control" id="requestedAmount">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="companyTel" class="form-label">Plazo</label>
+                            <input type="number" max="120" class="form-control" id="companyTel">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="refferer" class="form-label">¿Cómo se entero de nuestra cooperativa?</label>
+                            <textarea class="form-control" id="refferer" rows="3"></textarea>
+                        </div>
+                      
+                    </div>
+                 
+                </div>
+            </div>
+        </form>
+    </div>
 
-
-        <div class="col-12">
-            <label for="inputAddress" class="form-label">Address</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-        </div>
-        <div class="col-12">
-            <label for="inputAddress2" class="form-label">Address 2</label>
-            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-        </div>
-        <div class="col-md-6">
-            <label for="inputCity" class="form-label">City</label>
-            <input type="text" class="form-control" id="inputCity">
-        </div>
-
-        <div class="col-md-2">
-            <label for="inputZip" class="form-label">Zip</label>
-            <input type="text" class="form-control" id="inputZip">
-        </div>
-        <div class="col-12">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck">
-                    Check me out
-                </label>
+    <div class="container g-0 my-5">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-end">
+                <button class="btn btn-success form-first-section" id="toSecondSection">Siguiente</button>
             </div>
         </div>
-        <div class="col-12">
-            <button type="submit" class="btn btn-primary">Sign in</button>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-between">
+              <button class="btn btn-secondary form-second-section" id="backToFirstSection" hidden>Atras</button>
+              <button class="btn btn-success form-second-section" id="toFinalSection" hidden>Siguiente</button>
+          </div>
         </div>
-        </form>
 
+        <div class="row">
+            <div class="col-12 d-flex justify-content-between">
+                <button class="btn btn-secondary form-final-section" id="backToSecondSection" hidden>Atras</button>
+                <button class="btn btn-success form-final-section" id="sendLoanRequest" hidden>Enviar solicitud</button>
+          </div>
+        </div>
+    </div>
+
+    <div class="py-4"></div>
+
+    <div class="container g-0 my-5" >
+        <div class="row featurette">
+            <div class="col-md-6">
+                <h2 class="featurette-heading mt-md-5 mt-sm-2">Entérate de todos los servicios que ofrecemos</h2>
+                <p class="lead">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                <a href="#">
+                    <p>Leer mas</p>
+                </a>
+            </div>
+            <div class="col-md-5 offset-md-1">
+                <img src="{% static 'img/quienes-somos.jpg'%}" class="img-fluid feature-post-img">
+
+            </div>
+        </div>
     </div>
 </div>
-</div>
 
 
-
+<script src="{% static 'js/loan_request.js' %}"></script>
 {% endblock %}
