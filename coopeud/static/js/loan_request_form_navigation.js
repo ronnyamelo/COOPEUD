@@ -6,7 +6,6 @@ const backToFirstSectionBtn = document.getElementById('backToFirstSection');
 const backToSecondSectionBtn = document.getElementById('backToSecondSection');
 const toSecondSectionBtn = document.getElementById('toSecondSection');
 const toFinalSectionBtn = document.getElementById('toFinalSection');
-const sendLoanRequestBtn = document.getElementById('sendLoanRequest');
 
 toSecondSectionBtn.addEventListener('click', function (event) {
     hideElements(firstSectionItems);

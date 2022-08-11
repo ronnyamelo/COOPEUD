@@ -13,7 +13,7 @@
     
 
     <div class="bg-light container  border rounded mt-2"">
-        <form id="loanRequestForm">
+        <form id="loanRequestForm" name="loanRequestForm">
             <div class="row py-5 justify-content-center form-first-section" id="personalData">
                 <div class="col-md-11">
                     <div class="row g-4 pb-4">
@@ -260,5 +260,6 @@
 </div>
 
 
-<script src="{% static 'js/loan_request.js' %}"></script>
+<script src="{% static 'js/loan_request_form_navigation.js' %}"></script>
+<script src="{% static 'js/process_loan_request.js' %}"></script>
 {% endblock %}
