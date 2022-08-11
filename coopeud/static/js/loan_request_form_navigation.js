@@ -7,7 +7,7 @@ const backToSecondSectionBtn = document.getElementById('backToSecondSection');
 const toSecondSectionBtn = document.getElementById('toSecondSection');
 const toFinalSectionBtn = document.getElementById('toFinalSection');
 
-toSecondSectionBtn.addEventListener('click', function (event) {
+toSecondSectionBtn.addEventListener('submit', function (event) {
     hideElements(firstSectionItems);
     showElements(secondSectionItems);
     scrollTo(position.top)
@@ -51,3 +51,23 @@ let scrollTo = function (position) {
 }
 
 let position = { top: { x: 0, y: 0 } }
+
+(function () {
+    'use strict'
+  
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+  
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+  
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()
