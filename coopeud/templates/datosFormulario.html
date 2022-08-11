@@ -1,307 +1,329 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" 
-    rel="stylesheet" 
-    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" 
-    crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/form_style.css' %}">
-</head>
-<body>
-     <!--Encabezado-->
-     <header>
-        <a class="logo" href="#"> 
-         <img src="img/logocoopeud.jpg" alt="logo" class="img1">
-         <h4 class="nom">COOPEUD</h4>
-        </a>
-         <nav class="encabezado navbar navbar-expand-lg navbar-expand-sm navbar-expand-md navbar-expand-xl  navbar-light">
-              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav ms-auto col-sm-12 col-md-12">
-                    <a class="name nav-link" href="#">
-                       <img src="img/info3.png" alt="info" class="info3">
-                    </a>
-                    <a class="name nav-link" href="#">
-                       <img src="img/whatsapp1.jpg" alt="info" class="whatsapp1">
-                    </a>
-                    <a class="name nav-link" href="#">
-                       <img src="img/facebook.png" alt="info" class="facebook">
-                    </a>
-                    <a class="name nav-link" href="#">
-                       <img src="img/instagram.png" alt="info" class="Instagram">
-                    </a>
-                    <a class="name nav-link" href="#">
-                       <img src="img/twitter.jpg" alt="info" class="Twitter">
-                    </a>
-                  
-                </div>
-              </div>
-            </div>
-          </nav>
-    </header>
-    <!--Navbar-->
-    
-        <nav class="navbar1 navbar navbar-expand-md bg-success">
-           <div class="container-fluid">
-             <a class="nav-a navbar-brand" href="#" style="font-size: 15px">Nosotros</a>
-             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-             </button>
-             
-             <div class="collapse navbar-collapse" id="navbarNavDropdown">
-               <ul class="navbar-nav">
-                 <li class="nav-item">
-                   <a class="nav-a nav-link active" style="color: white;" aria-current="page" href="#">Servicios</a>
-                 </li>
-                 <li class="nav-item">
-                   <a class="nav-a nav-link" href="#">Documentos</a>
-                 </li>
-                 <li class="nav-item">
-                   <a class="nav-a nav-link" href="#">Noticias</a>
-                 </li>
-                 <li class=" nav-item dropdown">
-                   <a class="nav-a nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                     Productos
-                   </a>
-                   <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                     <li><a class=" dropdown-item" href="#">Action</a></li>
-                     <li><a class=" dropdown-item" href="#">Another action</a></li>
-                     <li><a class=" dropdown-item" href="#">Something else here</a></li>
-                   </ul>
-                 </li>
-               </ul>
-             </div>
-           </div>
-          </div>    
-         </nav>
+{% extends 'base.html' %}
+{%load static %}
+{% block content%}
    
-    <h2 class="tituloAcordeon">Solicita tu préstamo aqui!</h2>
-    <h3 class="subtituloAcordeon">Favor de llenar el siguiente formulario para validar su solicitud.</h3>
-    <!--Acordeon de datos formulario-->
-    <div class="container accordion" id="accordionExample">
+<h2 class="text-center" style="margin-top: 50px;">
+    <small class="h2 text-muted " style=" font-family: fangsong; margin-right: -15px;">Solicita tu préstamo aquí!</small>
+  </h2>
+  <p class="text-muted" style=" font-family: fangsong, Helvetica, sans-serif; font-size: 20px; text-align: center;">Favor de llenar el siguiente formulario para poder validar su solicitud</p>
+    <div class="accordion" id="accordionExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Datos Personales
+            <button class="accordion-button" style="font-family: cursive;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <img src="{% static 'img/usuario1.png'%}" class="me-2"  height="30px" width="30px" alt="">
+                Datos Personales
             </button>
           </h2>
-          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div id="collapseOne" class="accordion-collapse collapse show"  aria-labelledby="headingOne" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-        <form class="row g-3">
-                            <div class="col-md-6">
-                            <label for="inputEmail4" class="form-label">No. Socio</label>
-                            <input type="email" class="form-control" id="inputEmail4">
-                            </div>
-                            <div class="col-md-6">
-                            <label for="inputPassword4" class="form-label">Nombre(s)</label>
-                            <input type="password" class="form-control" id="inputPassword4">
-                            </div>
-                            <div class="col-6">
-                            <label for="inputAddress" class="form-label">Apellido(s)</label>
-                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="inputPassword4" class="form-label">Cédula o Pasaporte</label>
-                                <input type="password" class="form-control" id="inputPassword4">
-                            </div>
-                            <div class="col-4">
-                            <label for="inputAddress2" class="form-label">Edad</label>
-                            <input type="text" class="form-control" id="inputAddress2" >
-                            </div>
-                            <div class="col-md-6">
-                            <label for="inputCity" class="form-label">Nacionalidad</label>
-                            <input type="text" class="form-control" id="inputCity">
-                            </div>
-                            
-                            <div class="col-md-2">
-                            <label for="inputZip" class="form-label" >Fecha de Nacimiento</label>
-                            <input type="text" class="form-control" id="inputZip" placeholder="DD/MM/AA">
-                            </div>
-                            <div class="col-6">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck">
-                                <label class="form-check-label" for="gridCheck">
-                                Dominicano
-                                </label>
-                            </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck">
-                                <label class="form-check-label" for="gridCheck">
-                                    Extranjero
-                                </label>
-                                </div>
-                            </div>
-                            
-                            <label class="label3" for="gridCheck">
-                                <b>Información de Contacto</b>
-                            </label>
-                            <div class="col-md-4">
-                                <label for="inputEmail4" class="form-label">Teléfono Residencial</label>
-                                <input type="email" class="form-control" id="inputEmail4">
-                            </div>
-                            <div class="col-md-4">
-                                <label for="inputPassword4" class="form-label">Teléfono de Oficina</label>
-                                <input type="password" class="form-control" id="inputPassword4">
-                            </div>
-                            <div class="col-4">
-                                <label for="inputAddress" class="form-label">Celular</label>
-                                <input type="text" class="form-control" id="inputAddress">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="inputPassword4" class="form-label">Facebook</label>
-                                <input type="password" class="form-control" id="inputPassword4">
-                                </div>
-                            <div class="col-6">
-                                <label for="inputAddress2" class="form-label">Twitter</label>
-                                <input type="text" class="form-control" id="inputAddress2" >
-                            </div>
-                            <div class="col-md-6">
-                                <label for="inputCity" class="form-label">Instagram</label>
-                                <input type="text" class="form-control" id="inputCity">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="inputCity" class="form-label">Email</label>
-                                <input type="text" class="form-control" id="inputCity">
-                            </div>
-                            <label class="label3" for="gridCheck">
-                                <b>Dirección</b>
-                            </label>
-                            <div class="col-md-6">
-                                <label for="inputEmail4" class="form-label">Calle</label>
-                                <input type="email" class="form-control" id="inputEmail4">
-                            </div>
-                            <div class="col-md-3">
-                                <label for="inputPassword4" class="form-label">Casa No.</label>
-                                <input type="password" class="form-control" id="inputPassword4">
-                            </div>
-                            <div class="col-3">
-                                <label for="inputAddress" class="form-label">Apartamento</label>
-                                <input type="text" class="form-control" id="inputAddress">
-                            </div>
-                            <div class="col-md-4">
-                                <label for="inputPassword4" class="form-label">Barrio o Sector</label>
-                                <input type="password" class="form-control" id="inputPassword4">
-                                </div>
-                            <div class="col-4">
-                                <label for="inputAddress2" class="form-label">Provincia</label>
-                                <input type="text" class="form-control" id="inputAddress2" >
-                            </div>
-                            <div class="col-md-4">
-                                <label for="inputCity" class="form-label">Municipio o Ciudad</label>
-                                <input type="text" class="form-control" id="inputCity">
-                            </div>               
+
+                   <div class="container text-center">
+                    <div class="row">
+                      <div class="col-sm-4 col-md-3 col-lg-4 col-xl-4 ms-2" style="text-align: left;">Escoje una Opción</div>
+                      <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0 ">
+                        <select class="form-select" aria-label="Default select example">
+                            <option value="1">Dominicano</option>
+                            <option value="2">Extranjero</option>
+                          </select>
+                      </div>
                     </div>
-                </div>
-                </div>
-                <div class="accordion-item">
-                <h2 class="accordion-header" id="headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Información Laboral
-                    </button>
-                </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                    
-                            <div class="col-6">
-                            <label for="inputEmail4" class="form-label">Tipo de Empleo</label>
-                            <input type="email" class="form-control" id="inputEmail4">
-                            </div>
-                            <div class="col-6">
-                            <label for="inputPassword4" class="form-label">Nombre de la empresa</label>
-                            <input type="password" class="form-control" id="inputPassword4">
-                            </div>
-                            <div class="col-3">
-                            <label for="inputAddress" class="form-label">Teléfono</label>
-                            <input type="text" class="form-control" id="inputAddress">
-                            </div>
-                            <div class="col-3">
-                            <label for="inputAddress2" class="form-label">Extensión</label>
-                            <input type="text" class="form-control col-4" id="inputAddress2">
-                            </div>
-                            <div class="col-4">
-                            <label for="inputCity" class="form-label">Cargo de Ocupa</label>
-                            <input type="text" class="form-control" id="inputCity">
-                            </div>
-                            <div class="col-3">
-                            <label for="inputZip" class="form-label">Fecha de Ingreso</label>
-                            <input type="text" class="form-control" id="inputZip" placeholder="DD/MM/AA">
-                            </div>
-                            <div class="col-3">
-                                <label for="inputCity" class="form-label">Ingreso Mensual</label>
-                                <input type="text" class="form-control" id="inputCity">
-                            </div>
-                            <div class="col-3">
-                                <label for="inputZip" class="form-label">Otros Ingresos</label>
-                                <input type="text" class="form-control" id="inputZip">
-                            </div>
-                            <div class="col-6">
-                                <label for="inputEmail4" class="form-label">Dirección de la Empresa</label>
-                                <input type="email" class="form-control" id="inputEmail4">
-                            </div>
-                            <div class="col-3">
-                                <label for="inputPassword4" class="form-label">Municipio o Ciudad</label>
-                                <input type="password" class="form-control" id="inputPassword4">
-                            </div>
-                            <div class="col-3">
-                                <label for="inputAddress" class="form-label">Provincia</label>
-                                <input type="text" class="form-control" id="inputAddress">
-                            </div>
+                   <div class="container text-center">
+                    <div class="row">
+                      <div class="col-sm-3 col-md-3 col-lg-4 col-xl-4 my-3" style="text-align: left; ">No. Socio</div>
+                      <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                        <input class="form-control my-3" type="text" placeholder="número de socio" aria-label="readonly input example">
+                      </div>
                     </div>
+                    <div class="row">
+                      <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4" style="text-align: left;">Nombre(s)</div>
+                      <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                        <input class="form-control" type="text" placeholder="nombres" aria-label="readonly input example" >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container text-center">
+                    <div class="row">
+                      <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4 my-3" style="text-align: left;">Apellido(s)</div>
+                      <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                        <input class="form-control my-3" type="text" placeholder="Apellidos" aria-label="readonly input example" >
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4" style="text-align: left;">Nacionalidad</div>
+                      <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                        <input class="form-control" type="text" placeholder="nacionalidad" aria-label="readonly input example" >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container text-center">
+                    <div class="row">
+                      <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4 my-3" style="text-align: left;">Edad</div>
+                      <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                        <input class="form-control my-3" type="text" placeholder="edad" aria-label="readonly input example" >
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4" style="text-align: left;">Fecha de Nacimiento</div>
+                      <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                        <input class="form-control" type="text" placeholder="DD/MM/AA" aria-label="readonly input example" >
+                      </div>
+                    </div>
+                  </div>
+                    <div class="input-group mb-3" style="margin-top: 15px; justify-content: start;">
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4" style="text-align: left;">Documento de Identidad</div>
+                    <select class="col-sm-6 col-md-6 col-lg-2 col-xl-2  btn dropdown-toggle btn-secondary " style="border-radius: 8px; margin-left: 12px;">
+                        <option class="col-4" selected ><a class="dropdown-item " href="#" >Pasaporte</a></option>
+                        <option class="col-4" selected ><a class="dropdown-item " href="#" >Cédula</a></option>
+                    </select>
+                    <input type="text" class=" col-sm-4 col-md-4 col-lg-4 col-xl-4" aria-label="Text input with dropdown button" placeholder="001-0014562-1" style="border-radius: 8px; padding-left: 25px; margin-left: -20px;">
+                    </div>   
                 </div>
-                </div>
-                <div class="accordion-item">
-                <h2 class="accordion-header" id="headingThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Datos del Préstamo
-                    </button>
-                </h2>
-                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <form class="row g-3">
-                            <div class="col-md-6">
-                            <label for="inputEmail4" class="form-label">Tipo de Préstamo</label>
-                            <input type="email" class="form-control" id="inputEmail4">
-                            </div>
-                            <div class="col-md-6">
-                            <label for="inputPassword4" class="form-label">Monto a Solicitar</label>
-                            <input type="password" class="form-control" id="inputPassword4">
-                            </div>
-                            <div class="col-md-4">
-                            <label for="inputState" class="form-label">Plazo</label>
-                            <select id="inputState" class="form-select">
-                                <option selected>48 Meses</option>
-                                <option>36 Meses</option>
-                                <option>24 Meses</option>
-                                <option>12 Meses</option>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" style="font-family: cursive;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+               <img class="me-2" src="{% static 'img/laboral3.png'%}" height="35px" width="35px" alt="">
+                Información Laboral
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+             
+                <div class="container text-center">
+                    <div class="row">
+                      <div class="col-sm-3 col-md-3 col-lg-4 col-xl-4 my-3" style="text-align: left; ">Tipo de Empleo</div>
+                      <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                        <select class="form-select" aria-label="Default select example">
+                            <option value="1">Empleado Privado</option>
+                            <option value="2">Empleado Público</option>
                             </select>
-                            </div>
-                            <div class="col-6">
-                                <label for="exampleFormControlTextarea1" class="form-label">Como se entero de nuestra cooperativa</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
-                            </div>
+                      </div>
                     </div>
+                    <div class="row">
+                      <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4" style="text-align: left;">Nombre de la Empresa</div>
+                      <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                        <input class="form-control" type="text" placeholder="nombre empresa" aria-label="readonly input example" >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container text-center">
+                    <div class="row">
+                      <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4 my-3" style="text-align: left;">Teléfono</div>
+                      <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                        <input class="form-control my-3" type="text" placeholder="teléfono" aria-label="readonly input example" >
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4" style="text-align: left;">Extensión</div>
+                      <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                        <input class="form-control" type="text" placeholder="extensión" aria-label="readonly input example" >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container text-center">
+                    <div class="row">
+                      <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4 my-3" style="text-align: left;">Cargo que Ocupa</div>
+                      <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                        <input class="form-control my-3" type="text" placeholder="cargo " aria-label="readonly input example" >
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4" style="text-align: left;">Fecha de Ingreso</div>
+                      <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                        <input class="form-control" type="text" placeholder="fecha ingreso" aria-label="readonly input example" >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container text-center">
+                    <div class="row">
+                      <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4 my-3" style="text-align: left;">Ingreso Mensual</div>
+                      <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                        <input class="form-control my-3" type="text" placeholder="ingreso al mes" aria-label="readonly input example" >
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4" style="text-align: left;">Otros Ingresos</div>
+                        <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                          <input class="form-control" type="text" placeholder="otros ingresos" aria-label="readonly input example" >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="container text-center">
+                        <div class="row">
+                          <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4 my-3" style="text-align: left;">Dirección de la Empresa</div>
+                          <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                            <input class="form-control my-3" type="text" placeholder="dirección empresa" aria-label="readonly input example" >
+                          </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4" style="text-align: left;">Municipio O Ciudad</div>
+                            <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                              <input class="form-control" type="text" placeholder="municipio" aria-label="readonly input example" >
+                            </div>
+                          </div>
+                        </div>
+                        <div class="container text-center">
+                            <div class="row">
+                              <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4 my-3" style="text-align: left;">Provincia</div>
+                              <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                                <input class="form-control my-3" type="text" placeholder="provincia" aria-label="readonly input example" >
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+           <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" style="font-family: cursive;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <img class="me-2" src="{% static 'img/infoContacto.jpg'%}" height="40px" width="40px" alt="">
+                Información de Contacto y Dirección
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <div class="container text-center">
+                    <div class="row">
+                      <div class="col-sm-3 col-md-3 col-lg-4 col-xl-4 my-3" style="text-align: left; ">Teléfono Residencial</div>
+                      <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                        <input class="form-control my-3" type="text" placeholder="teléfono residencial" aria-label="readonly input example">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4" style="text-align: left;">Teléfono de Oficina</div>
+                      <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                        <input class="form-control" type="text" placeholder="teléfono de oficina" aria-label="readonly input example" >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container text-center">
+                    <div class="row">
+                      <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4 my-3" style="text-align: left;">Celular</div>
+                      <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                        <input class="form-control my-3" type="text" placeholder="celular" aria-label="readonly input example" >
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4" style="text-align: left;">Facebook</div>
+                      <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                        <input class="form-control" type="text" placeholder="facebook" aria-label="readonly input example" >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container text-center">
+                    <div class="row">
+                      <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4 my-3" style="text-align: left;">Twitter</div>
+                      <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                        <input class="form-control my-3" type="text" placeholder="twitter" aria-label="readonly input example" >
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4" style="text-align: left;">Instagram</div>
+                      <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                        <input class="form-control" type="text" placeholder="instagram" aria-label="readonly input example" >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container text-center">
+                    <div class="row">
+                      <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4 my-3" style="text-align: left;">Email</div>
+                      <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                        <input class="form-control my-3" type="text" placeholder="email" aria-label="readonly input example" >
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4" style="text-align: left;">Calle</div>
+                        <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                          <input class="form-control" type="text" placeholder="calle" aria-label="readonly input example" >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="container text-center">
+                        <div class="row">
+                          <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4 my-3" style="text-align: left;">Casa No.</div>
+                          <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                            <input class="form-control my-3" type="text" placeholder="casa no." aria-label="readonly input example" >
+                          </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4" style="text-align: left;">Apartamento</div>
+                            <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                              <input class="form-control" type="text" placeholder="apartamento" aria-label="readonly input example" >
+                            </div>
+                          </div>
+                        </div>
+                        <div class="container text-center">
+                            <div class="row">
+                              <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4 my-3" style="text-align: left;">Barrio o Sector</div>
+                              <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                                <input class="form-control my-3" type="text" placeholder="sector" aria-label="readonly input example" >
+                              </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4" style="text-align: left;">Provincia</div>
+                                <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                                  <input class="form-control" type="text" placeholder="provincia" aria-label="readonly input example" >
+                                </div>
+                              </div>
+                            </div>
+                            <div class="container text-center">
+                                <div class="row">
+                                  <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4 my-3" style="text-align: left;">Municipio o Ciudad</div>
+                                  <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                                    <input class="form-control my-3" type="text" placeholder="municipio" aria-label="readonly input example" >
+                                  </div>
+                                </div>
+                            </div>
+                       </div>
+                  </div>
+            <div class="accordion-item">
+            <h2 class="accordion-header" id="headingfour">
+              <button class="accordion-button collapsed" style="font-family: cursive;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                <img class="me-2" src="{% static 'img/editar.png'%}" height="30px" width="30px" alt="">  
+                Datos del Préstamo
+              </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <div class="container text-center">
+                  <div class="row">
+                    <div class="col-sm-3 col-md-3 col-lg-4 col-xl-4 my-3" style="text-align: left; ">Tipo de Préstamo</div>
+                    <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                      <input class="form-control my-3" type="text" placeholder="tipo préstamo" aria-label="readonly input example">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4" style="text-align: left;">Monto a Solicitar</div>
+                    <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                      <input class="form-control" type="text" placeholder="monto solicitar" aria-label="readonly input example" >
+                    </div>
+                  </div>
                 </div>
+                <div class="container text-center">
+                  <div class="row">
+                    <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4 my-3" style="text-align: left;">Plazo</div>
+                    <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                      <select class="form-select my-3 aria-label="Default select example">
+                        <option value="1">12 Meses</option>
+                        <option value="2">24 Meses</option>
+                        <option value="1">36 Meses</option>
+                        <option value="2">48 Meses</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-2 col-md-3 col-lg-4 col-xl-4" style="text-align: left;">¿Como se enteró de nuestra cooperativa?</div>
+                    <div class="col-sm-6 offset-sm-0 col-md-8 offset-md-0 col-lg-6 offset-lg-0 col-xl-6 offset-xl-0">
+                      <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="comentario" rows="3"></textarea>
+                    </div>
+                  </div>
+                </div> 
+                <div class="d-flex justify-content-center">
+                  <button type="button" class="btn btn-success my-3" data-bs-toggle="button" >Enviar Solicitud</button>
                 </div>
-            </div>
-    
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" 
-                integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" 
-                crossorigin="anonymous"></script>
-        </form> 
-       <div class="contenedor text-center">
-                <h4 class="afili">Afiliaciones y Reconocimientos</h4>
-              <div class="contenedor2">
-                <img class="conacoop" src="img/img5.jpg" alt="conacoop">
-                <img class="coopAmericana" src="img/cooperativa-americas.png" alt="coopAmericana">
-                <img class="ccc-ca" src="img/img4.png" alt="ccc-ca">
-                <img class="uaf" src="img/uaf.png" alt="uaf">
               </div>
-       </div>
-</body>
-</html>
+            </div>
+        </div>
+    </div>
+            {% endblock %}
+       
