@@ -5,7 +5,14 @@
 
 
 
+
 <div class="container col-10 col-xxl-10 col-md-10 col-lg-9" style="max-width: 1150px;">
+    
+    <div class="alert alert-warning alert-dismissible fade show mt-5 text-center" role="alert" id="errorAlert" hidden>
+        <strong>Ha ocurrido un error!</strong> Favor revisar los datos he intentar nuevamente.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+
     <div class="row justify-content-center">
         <div class="py-5 text-center col-10">
             <h2>Solicita tu préstamo aqui!</h2>
@@ -61,15 +68,15 @@
                     <div class="row g-4 pb-4 mt-4">
                         <div class="col-md-4">
                             <label for="telephone" class="form-label">Teléfono</label>
-                            <input type="tel" class="form-control" id="telephone" name="telephone">
+                            <input type="tel" class="form-control" pattern="\+?\d?[0-9]{3}-?[0-9]{3}-?[0-9]{4}" placeholder="809-000-0000" id="telephone" name="telephone">
                         </div>
                         <div class="col-md-4">
                             <label for="celphone" class="form-label">Celular</label>
-                            <input type="tel" class="form-control" id="celphone" name="celphone" required>
+                            <input type="tel" class="form-control" pattern="\+?\d?[0-9]{3}-?[0-9]{3}-?[0-9]{4}" placeholder="809-000-0000" id="celphone" name="celphone" required>
                         </div>
                         <div class="col-md-4">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <input type="text" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" class="form-control" id="email" name="email" required>
                         </div>
                         <div class="col-md-4">
                             <label for="facebook" class="form-label">Facebook</label>

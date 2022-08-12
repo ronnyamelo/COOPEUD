@@ -39,7 +39,6 @@ sendLoanRequestBtn.addEventListener('click', function (event) {
     if (!isValidForm(personalDataForm) || 
         !isValidForm(employmentDataForm) || 
         !isValidForm(loanDataForm)) {
-            alert('Invalid Data');
             return;
     }
 
@@ -56,8 +55,8 @@ sendLoanRequestBtn.addEventListener('click', function (event) {
             "id_type": personalDataForm['idType'].value,
             "nationality": personalDataForm['nationality'].value,
             "birth_date": personalDataForm['dateOfBirth'].value,
-            "tel": personalDataForm['telephone'].value || null,
-            "celphone": personalDataForm['celphone'].value,
+            "tel": personalDataForm['telephone'].value.replace(/-/g,'') || null,
+            "celphone": personalDataForm['celphone'].value.replace(/-/g,''),
             "facebook": personalDataForm['facebook'].value || null,
             "twitter": personalDataForm['twitter'].value || null,
             "instagram": personalDataForm['instagram'].value || null,
@@ -74,14 +73,14 @@ sendLoanRequestBtn.addEventListener('click', function (event) {
             "employment_data": {
                 "employment_type": employmentDataForm['employmentType'].value,
                 "company_name": employmentDataForm['companyName'].value,
-                "tel": employmentDataForm['companyTel'].value,
+                "tel": employmentDataForm['companyTel'].value.replace(/-/g,''),
                 "tel_ext": employmentDataForm['companyTelExt'].value || null,
                 "current_role": employmentDataForm['jobRol'].value,
                 "start_date": employmentDataForm['hiringDate'].value,
                 "monthly_salary": employmentDataForm['monthlyIncome'].value,
                 "street": employmentDataForm['jobStreet'].value,
                 "number": employmentDataForm['jobStreetNumber'].value,
-                "building": employmentDataForm['jobBuildingName'].value,
+                "building": employmentDataForm['jobBuildingName'].value || null,
                 "town": employmentDataForm['jobCitySector'].value,
                 "city": employmentDataForm['jobCity'].value,
                 "state": employmentDataForm['jobTown'].value
@@ -95,17 +94,18 @@ sendLoanRequestBtn.addEventListener('click', function (event) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(request)
-    }).then(resp => {
-            return resp.json()
-    }).then(data => {
-        console.log(data);
-        personalDataForm.reset();
-        employmentDataForm.reset();
-        loanDataForm.reset();
-
-    }).catch(error => console.log("Error"));
-
-
+    }).then((accepted) => {
+        console.log(request);
+        if (!accepted.ok) {
+            document.getElementById('errorAlert').hidden = false;
+        }
+        else{
+            personalDataForm.reset();
+            employmentDataForm.reset();
+            loanDataForm.reset();
+            document.getElementById('errorAlert').hidden = true;
+        }
+    })
 });
 
 backToFirstSectionBtn.addEventListener('click', function (event) {
@@ -146,5 +146,6 @@ let isValidForm = function (form) {
         return false;
     }
     
+    form.classList.remove("was-validated");
     return true;
 }
