@@ -20,6 +20,8 @@ class HtmlTemplateResultsSetPagination(PageNumberPagination):
 
     def get_paginated_response(self, data):
         return Response({'loan_requests': {
+            'page_size': self.page.paginator.per_page,
+            'count': self.page.paginator.count,
             'current': self.page.number,
             'pages': self.page.paginator.get_elided_page_range(number=self.page.number, on_each_side=2, on_ends=3),
             'results': data
