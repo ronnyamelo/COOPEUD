@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html class="h-100" lang="en">
 
 <head>
@@ -6,7 +7,8 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
     <style>
         @media (min-width: 768px) {
@@ -45,6 +47,12 @@
         .browser-line-separator {
             padding: 5px;
         }
+        .empty-icon::before {
+            content: "";
+        }
+        .empty-icon {
+            /* padding-left: 1.3rem; */
+        }
     </style>
 
 </head>
@@ -78,94 +86,121 @@
         <!-- menu start -->
         <header class="p-3 bg-light" ">
             <div class="container">
-                <div class="d-flex flex-wrap justify-content-end ">
-                    <div class="btn-group">
-                        <div class="btn btn-secondary dropdown-toggle border border-1 border-secondary rounded-pill bg-light text-dark px-4"
-                            type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown"
-                            data-bs-auto-close="outside" aria-expanded="false">
-                            Filtros utilizados: 0
+                <div class="row g-2">
+                <div class="d-flex bd-highlight">
+                    <div class="d-flex flex-wrap justify-content-start">
+                        <div class="me-3 pt-2">
+                            Ordenar por: &nbsp;
                         </div>
-                        <form class="dropdown-menu p-5 col-6 mt-4 bg-light" style="width: 600px;">
-                            <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Estado:</label>
-                                <div class="col-sm-5">
-                                    <select class="form-select rounded-pill" aria-label="Default select example">
-                                        <option selected>Validando</option>
-                                        <option value="1">Completado</option>
-                                        <option value="2">Rechazado</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="inputPassword3" class="col-sm-2 col-form-label">Nombre:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control rounded-pill" id="inputPassword3">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="inputPassword3" class="col-sm-2 col-form-label">Apellido:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control rounded-pill" id="inputPassword3">
-                                </div>
-                            </div>
+                        <!-- <div class="btn btn-secondary border border-1 border-secondary rounded-pill bg-light text-dark px-4 me-3" id="orderByFirstName">
+                            Nombre &nbsp;
+                            <i class="bi bi-sort-alpha-down" style="font-size: 1.3rem;"></i>
+                        </div> -->
 
-                            <div class="row mb-3">
-                                <label for="inputPassword3" class="col-sm-3 col-form-label">Identificacion:</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control rounded-pill" id="inputPassword3">
-                                </div>
-                            </div>
-                            <fieldset>
-                                <label class="col-form-label col-sm-2 pt-0 mt-2">Fecha:</label>
-                                <div class="col-sm-12">
-                                    <div class="row">
-                                        <label class="col-form-label col-sm-2 pt-0 mt-2">Desde</label>
-                                        <div class="col-4">
-                                            <input type="date" class="form-control rounded-pill"
-                                                placeholder="First name" aria-label="First name">
-                                        </div>
-                                        <label class="col-form-label col-sm-2 pt-0 mt-2">Hasta</label>
-                                        <div class="col-4">
-                                            <input type="date" class="form-control rounded-pill" placeholder="Last name"
-                                                aria-label="Last name">
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset>
+                        <!-- <div class="btn btn-secondary border border-1 border-secondary rounded-pill bg-light text-dark px-4 me-3" id="orderByLastName">
+                            Apellido &nbsp;<i class="bi bi-sort-alpha-down" style="font-size: 1.3rem;"></i>
+                        </div> -->
 
-                            <div class="mt-4"></div>
-                            <fieldset>
-                                <label class="col-form-label col-sm-2 pt-0 mt-2">Monto:</label>
-                                <div class="col-sm-12">
-                                    <div class="row">
-                                        <label class="col-form-label col-sm-2 pt-0 mt-2">Desde</label>
-                                        <div class="col-4">
-                                            <input type="number" class="form-control rounded-pill"
-                                                aria-label="Monto desde" placeholder="0.00">
-                                        </div>
-                                        <label class="col-form-label col-sm-2 pt-0 mt-2">Hasta</label>
-                                        <div class="col-4">
-                                            <input type="number" class="form-control rounded-pill"
-                                                aria-label="Monto Hasta" placeholder="0.00">
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset>
-                            <div class="row mt-5 g-2">
-                                <button type="submit" class="col-sm-4 text-dark btn btn-secondary rounded-pill" style="background-color: #F7F7F7;">Limpiar Filtros</button>
-                                <button type="submit" class="col-sm-3 btn offset-1 btn-success rounded-pill">Filtrar</button>
-                            </div>
-                        </form>
+                        <div class="btn btn-secondary border border-1 border-secondary rounded-pill bg-light text-dark px-4 me-3" id="orderByDate">
+                            Fecha &nbsp;<i class="bi empty-icon" id="orderDateIcon" style="font-size: 1.3rem;"></i>
+                        </div>
+
+                        <div class="btn btn-secondary border border-1 border-secondary rounded-pill bg-light text-dark px-4 me-3" id="orderByAmount">
+                            Monto &nbsp;<i class="bi" id="orderAmountIcon" style="font-size: 1.3rem;"></i>
+                        </div>
                     </div>
+                    <div class="ms-auto bd-highlight">
+                        <div class="d-flex flex-wrap justify-content-end ">
+                            <div class="btn-group">
+                                <div class="btn btn-secondary border border-1 border-secondary rounded-pill bg-light text-dark px-4"
+                                    type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown"
+                                    data-bs-auto-close="outside" aria-expanded="false">
+                                    <i class="bi bi-filter-left" style="font-size: 1.28rem;"></i> Filtros utilizados: 0
+                                </div>
+                                <form class="dropdown-menu p-5 col-6 mt-4 bg-light" style="width: 600px;">
+                                    <div class="row mb-3">
+                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Estado:</label>
+                                        <div class="col-sm-5">
+                                            <select class="form-select rounded-pill" aria-label="Default select example">
+                                                <option selected>Validando</option>
+                                                <option value="1">Completado</option>
+                                                <option value="2">Rechazado</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="inputPassword3" class="col-sm-2 col-form-label">Nombre:</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control rounded-pill" id="inputPassword3">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="inputPassword3" class="col-sm-2 col-form-label">Apellido:</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control rounded-pill" id="inputPassword3">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="inputPassword3" class="col-sm-3 col-form-label">Identificacion:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control rounded-pill" id="inputPassword3">
+                                        </div>
+                                    </div>
+                                    <fieldset>
+                                        <label class="col-form-label col-sm-2 pt-0 mt-2">Fecha:</label>
+                                        <div class="col-sm-12">
+                                            <div class="row">
+                                                <label class="col-form-label col-sm-2 pt-0 mt-2">Desde</label>
+                                                <div class="col-4">
+                                                    <input type="date" class="form-control rounded-pill"
+                                                        placeholder="First name" aria-label="First name">
+                                                </div>
+                                                <label class="col-form-label col-sm-2 pt-0 mt-2">Hasta</label>
+                                                <div class="col-4">
+                                                    <input type="date" class="form-control rounded-pill" placeholder="Last name"
+                                                        aria-label="Last name">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                    <div class="mt-4"></div>
+                                    <fieldset>
+                                        <label class="col-form-label col-sm-2 pt-0 mt-2">Monto:</label>
+                                        <div class="col-sm-12">
+                                            <div class="row">
+                                                <label class="col-form-label col-sm-2 pt-0 mt-2">Desde</label>
+                                                <div class="col-4">
+                                                    <input type="number" class="form-control rounded-pill"
+                                                        aria-label="Monto desde" placeholder="0.00">
+                                                </div>
+                                                <label class="col-form-label col-sm-2 pt-0 mt-2">Hasta</label>
+                                                <div class="col-4">
+                                                    <input type="number" class="form-control rounded-pill"
+                                                        aria-label="Monto Hasta" placeholder="0.00">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <div class="row mt-5 g-2">
+                                        <button type="submit" class="col-sm-4 text-dark btn btn-secondary rounded-pill" style="background-color: #F7F7F7;">Limpiar Filtros</button>
+                                        <button type="submit" class="col-sm-3 btn offset-1 btn-success rounded-pill">Filtrar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </header>
         <!-- menu end -->
-
+        <!-- <i class="bi bi-dash"></i> -->
         <div class="container">
             <div class="solicitudes mt-5">
                 {% if loan_requests.results %}
-                <table class="table table-hover table-striped">
+                <table class="table table-hover ">
                     <caption hidden>Lista de solicitudes</caption>
                     <thead class="table-secondary">
                         <tr>
@@ -246,6 +281,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
+
+        {% load static %}
+    <script src="{% static 'js/main.js' %}"></script>
 
 </body>
 
