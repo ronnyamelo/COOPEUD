@@ -27,3 +27,17 @@ def parse_date(value):
 @register.simple_tag
 def define(val=None):
   return val
+
+
+@register.filter(is_safe=True)
+def substract(x:int, y:int):
+    return x - y
+
+
+@register.filter(is_safe=True)
+def add(x:int, y:int):
+    return x + y
+
+@register.filter(is_safe=True)
+def multiply(x:int, y:int):
+    return x * y

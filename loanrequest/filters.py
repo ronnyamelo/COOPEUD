@@ -19,6 +19,7 @@ class LoanRequestFilter(filters.FilterSet):
     class Meta: 
         model = LoanRequest
         fields = {
-            'status',
+            'status': ['exact'],
+            'date': ['gte', 'lte']
         }
 

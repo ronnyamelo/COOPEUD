@@ -7,12 +7,6 @@ from loanrequest.serializers import LoanRequestSerializer
 from loanrequest.filters import LoanRequestFilter
 
 
-class LoanRequestViewSet(viewsets.ModelViewSet):
-    queryset = LoanRequest.objects.all()
-    serializer_class = LoanRequestSerializer
-    permission_classes = [permissions.AllowAny]
-
-
 class HtmlTemplateResultsSetPagination(PageNumberPagination):
     page_size = 10
     page_size_query_param = 'page_size'
@@ -20,6 +14,8 @@ class HtmlTemplateResultsSetPagination(PageNumberPagination):
 
     def get_paginated_response(self, data):
         return Response({'loan_requests': {
+            'page_size': self.page.paginator.per_page,
+            'count': self.page.paginator.count,
             'current': self.page.number,
             'pages': self.page.paginator.get_elided_page_range(number=self.page.number, on_each_side=2, on_ends=3),
             'results': data
