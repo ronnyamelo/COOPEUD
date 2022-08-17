@@ -75,8 +75,10 @@ class LoanRequest(models.Model):
     class RequestStatus(models.TextChoices):
         VALIDATING = 'VALIDANDO', _('validando')
         COMPLETED = 'COMPLETADO', _('completado')
-        DENIED = 'CANCELADO', _('cancelado')
-        APPROVED = 'APROVADO', _('aprovado')
+        DENIED = 'RECHAZADO', _('rechazado')
+        CANCELED = 'CANCELADO', _('cancelado')
+        APPROVED = 'APROBADO', _('aprobado')
+        
 
     applicant = models.OneToOneField(Applicant, on_delete=models.CASCADE, related_name='loan_request' , db_column='solicitante_id')
     loan_type = models.CharField(max_length=2, choices=LoanType.choices, default=LoanType.PERSONAL, db_column='tipo_prestamo')

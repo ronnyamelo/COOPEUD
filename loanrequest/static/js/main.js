@@ -1,70 +1,140 @@
-const orderingParams = {};
-const filterParams = {};
-
-const States = {
+const state = {
     None: 0,
     Ascending: 1,
     Descending: 2,
-    
+}
+
+const transitions = {
+    [`${state.None}`]: { from: state.Descending, to: state.Ascending },
+    [`${state.Ascending}`]: { from: state.None, to: state.Descending },
+    [`${state.Descending}`]: { from: state.Ascending, to: state.None }
 }
 
 class OrderingParam {
     constructor(name) {
-        this.name = name || '';
-        this.state = States.None;
+        this.name = name;
+        this.state = state.None;
     }
 
     transition() {
-        this.state = ++this.state % 3
+        this.state = transitions[this.state].to
     };
 
     getParam() {
-        if (this.state == States.Ascending) {
-            return `+${this.name}`
+        if (this.state == state.Ascending) {
+            return `${this.name}`
         }
-        else if (this.state == States.Descending) {
+        else if (this.state == state.Descending) {
             return `-${this.name}`
         }
-
         return '';
     }
 }
-
 const orderByDate = new OrderingParam('date');
 const orderByAmount = new OrderingParam('amount_requested');
 
-document.getElementById('orderByDate').addEventListener('click', function (event) {
-    addOrderingParam(orderByDate);
-    changeIcon(orderByDate.state, document.getElementById('orderDateIcon'), {
-        [`${States.None}`]: "empty-icon",
-        [`${States.Ascending}`]: "bi-sort-up",
-        [`${States.Descending}`]: "bi-sort-down"
-    })
+const ordering = {
+    'date': "",
+    'amount': ""
+};
 
+document.getElementById('orderByDate').addEventListener('click', function (event) {
+    orderByDate.transition();
+    let url = getUrl();
+    url.searchParams.set('ordering', orderByDate.getParam());
+    event.target.href = url.href
 });
 
 document.getElementById('orderByAmount').addEventListener('click', function (event) {
-    addOrderingParam(orderByAmount);
-    changeIcon(orderByAmount.state, document.getElementById('orderAmountIcon'), {
-        [`${States.None}`]: "empty-icon",
-        [`${States.Ascending}`]: "bi-sort-numeric-up",
-        [`${States.Descending}`]: "bi-sort-numeric-down-alt"
-    })
+    orderByAmount.transition();
+    let url = getUrl();
+    url.searchParams.set('ordering', orderByAmount.getParam());
+    event.target.href = url.href
 });
 
-const addOrderingParam = function (orderingParam) {
-    orderingParam.transition();
-    orderingParams[orderingParam.name] = orderingParam.getParam();
+function changeIcon(currentState, element, classes) {
+    let oldClass = classes[transitions[currentState].from];
+    let newClass = classes[currentState]
+    element.classList.remove(oldClass)
+    element.classList.add(newClass);
 }
 
+function getUrl() {
+    return new URL(window.location.href);
+}
 
-const changeIcon = function (state, element, classes) {
-    const transitions = {
-        [`${States.None}`]: { from: States.Descending, to: States.Ascending },
-        [`${States.Ascending}`]: { from: States.None, to: States.Descending },
-        [`${States.Descending}`]: {from: States.Ascending, to: States.None }
+function setInitialValues() {
+    let url = getUrl();
+
+    // ordering
+    if (url.searchParams.has('ordering')) {
+        let order = url.searchParams.get('ordering');
+
+        // date
+        if (order.includes('date')) {
+            orderByDate.state = state.Ascending;
+        }
+
+        if (order.includes('-date')) {
+            orderByDate.state = state.Descending;
+        }
+
+        changeIcon(orderByDate.state, document.getElementById('orderDateIcon'), {
+            [`${state.None}`]: "empty-icon",
+            [`${state.Ascending}`]: "bi-sort-up",
+            [`${state.Descending}`]: "bi-sort-down"
+        });
+
+        // amount
+        if (order.includes('amount_requested')) {
+            orderByAmount.state = state.Ascending;
+        }
+
+        if (order.includes('-amount_requested')) {
+            orderByAmount.state = state.Descending;
+        }
+
+        changeIcon(orderByAmount.state, document.getElementById('orderAmountIcon'), {
+            [`${state.None}`]: "empty-icon",
+            [`${state.Ascending}`]: "bi-sort-numeric-up",
+            [`${state.Descending}`]: "bi-sort-numeric-down-alt"
+        });
     }
-   
-    element.classList.remove(classes[transitions[state].from])
-    element.classList.add(classes[state]);
+
+    // amount ordering
+
+    // filters
+    let counter = 0;
+    let filters = [
+        'status',
+        'applicant__first_name__icontains',
+        'applicant__last_name__icontains',
+        'applicant__id_number__icontains',
+        'date__gte',
+        'date__lte',
+        'amount_requested__gte',
+        'amount_requested__lte',
+    ]
+    const form = document.forms['filters']
+
+    filters.forEach(x => {
+        form[x].value = searchParam(x) || "";
+        form[x].value && counter++;
+    });
+
+    // date and amount should acount for only one filter
+    form['date__gte'].value && form['date__lte'].value && --counter;
+    form['amount_requested__gte'].value && form['amount_requested__lte'].value && --counter;
+
+    document.getElementById('filterCount').innerText = counter;
 }
+
+function searchParam(name) {
+    params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParam, prop) => searchParam.get(prop)
+    })
+
+    return params[name]
+}
+
+setInitialValues();

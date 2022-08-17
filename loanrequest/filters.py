@@ -9,7 +9,7 @@ class ApplicantFilter(filters.FilterSet):
         fields = {
             'first_name': ['icontains', ],
             'last_name': ['icontains'],
-            'id_number': ['exact'],
+            'id_number': ['icontains'],
         }
 
 
@@ -20,6 +20,7 @@ class LoanRequestFilter(filters.FilterSet):
         model = LoanRequest
         fields = {
             'status': ['exact'],
-            'date': ['gte', 'lte']
+            'date': ['gte', 'lte'],
+            'amount_requested': ['gte', 'lte']
         }
 

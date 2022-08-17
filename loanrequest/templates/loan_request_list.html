@@ -58,7 +58,8 @@
 </head>
 
 <body class="d-flex flex-column h-100">
-
+    
+    <!--  -->
     <!-- Begin page content -->
     <main class="flex-shrink-0">
         <div class="bg-success browser-line-separator"></div>
@@ -101,13 +102,13 @@
                             Apellido &nbsp;<i class="bi bi-sort-alpha-down" style="font-size: 1.3rem;"></i>
                         </div> -->
 
-                        <div class="btn btn-secondary border border-1 border-secondary rounded-pill bg-light text-dark px-4 me-3" id="orderByDate">
-                            Fecha &nbsp;<i class="bi empty-icon" id="orderDateIcon" style="font-size: 1.3rem;"></i>
-                        </div>
+                        <a href='#' class="btn btn-secondary border border-1 border-secondary rounded-pill bg-light text-dark px-4 me-3" id="orderByDate">
+                            Fecha &nbsp;<i class="bi" id="orderDateIcon" style="font-size: 1.3rem;"></i>
+                        </a>
 
-                        <div class="btn btn-secondary border border-1 border-secondary rounded-pill bg-light text-dark px-4 me-3" id="orderByAmount">
+                        <a class="btn btn-secondary border border-1 border-secondary rounded-pill bg-light text-dark px-4 me-3" id="orderByAmount">
                             Monto &nbsp;<i class="bi" id="orderAmountIcon" style="font-size: 1.3rem;"></i>
-                        </div>
+                        </a>
                     </div>
                     <div class="ms-auto bd-highlight">
                         <div class="d-flex flex-wrap justify-content-end ">
@@ -115,51 +116,51 @@
                                 <div class="btn btn-secondary border border-1 border-secondary rounded-pill bg-light text-dark px-4"
                                     type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown"
                                     data-bs-auto-close="outside" aria-expanded="false">
-                                    <i class="bi bi-filter-left" style="font-size: 1.28rem;"></i> Filtros utilizados: 0
+                                    <i class="bi bi-filter-left" style="font-size: 1.28rem;"></i> Filtros utilizados: <span id="filterCount">0</span>
                                 </div>
-                                <form class="dropdown-menu p-5 col-6 mt-4 bg-light" style="width: 600px;">
+                                <form method="get" action="" class="dropdown-menu p-5 col-6 mt-4 bg-light" style="width: 600px;" name="filters" id="filters">
                                     <div class="row mb-3">
-                                        <label for="inputEmail3" class="col-sm-2 col-form-label">Estado:</label>
+                                        <label for="status" class="col-sm-2 col-form-label">Estado:</label>
                                         <div class="col-sm-5">
-                                            <select class="form-select rounded-pill" aria-label="Default select example">
-                                                <option selected>Validando</option>
-                                                <option value="1">Completado</option>
-                                                <option value="2">Rechazado</option>
+                                            <select class="form-select rounded-pill" aria-label="Filtrar por estatus de solicitud" name="status" id="status">
+                                                <option selected value="">---</option>
+                                                <option value="VALIDANDO">Validando</option>
+                                                <option value="APROBADO">Aprovado</option>
+                                                <option value="COMPLETADO">Completado</option>
+                                                <option value="CANCELADO">Rechazado</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label for="inputPassword3" class="col-sm-2 col-form-label">Nombre:</label>
+                                        <label for="firstName" class="col-sm-2 col-form-label">Nombre:</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control rounded-pill" id="inputPassword3">
+                                            <input type="text" class="form-control rounded-pill" id="firstName" name="applicant__first_name__icontains">
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label for="inputPassword3" class="col-sm-2 col-form-label">Apellido:</label>
+                                        <label for="lastName" class="col-sm-2 col-form-label">Apellido:</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control rounded-pill" id="inputPassword3">
+                                            <input type="text" class="form-control rounded-pill" id="lastName" name="applicant__last_name__icontains">
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
-                                        <label for="inputPassword3" class="col-sm-3 col-form-label">Identificacion:</label>
+                                        <label for="identification" class="col-sm-3 col-form-label">Identificacion:</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control rounded-pill" id="inputPassword3">
+                                            <input type="text" class="form-control rounded-pill" id="identification" name="applicant__id_number__icontains">
                                         </div>
                                     </div>
                                     <fieldset>
                                         <label class="col-form-label col-sm-2 pt-0 mt-2">Fecha:</label>
                                         <div class="col-sm-12">
                                             <div class="row">
-                                                <label class="col-form-label col-sm-2 pt-0 mt-2">Desde</label>
+                                                <label class="col-form-label col-sm-2 pt-0 mt-2" for="fromDate">Desde</label>
                                                 <div class="col-4">
-                                                    <input type="date" class="form-control rounded-pill"
-                                                        placeholder="First name" aria-label="First name">
+                                                    <input type="date" class="form-control rounded-pill" aria-label="Filtrar por Fecha inicial de solicitud" name="date__gte" id="fromDate">
                                                 </div>
-                                                <label class="col-form-label col-sm-2 pt-0 mt-2">Hasta</label>
+                                                <label class="col-form-label col-sm-2 pt-0 mt-2" for="toDate">Hasta</label>
                                                 <div class="col-4">
-                                                    <input type="date" class="form-control rounded-pill" placeholder="Last name"
-                                                        aria-label="Last name">
+                                                    <input type="date" class="form-control rounded-pill" placeholder="Last name" aria-label="Filtrar por Fecha final de solicitud" id="toDate" name="date__lte">
                                                 </div>
                                             </div>
                                         </div>
@@ -170,22 +171,22 @@
                                         <label class="col-form-label col-sm-2 pt-0 mt-2">Monto:</label>
                                         <div class="col-sm-12">
                                             <div class="row">
-                                                <label class="col-form-label col-sm-2 pt-0 mt-2">Desde</label>
+                                                <label class="col-form-label col-sm-2 pt-0 mt-2" for="fromAmount">Desde</label>
                                                 <div class="col-4">
-                                                    <input type="number" class="form-control rounded-pill"
-                                                        aria-label="Monto desde" placeholder="0.00">
+                                                    <input type="number" class="form-control rounded-pill" 
+                                                        aria-label="Monto desde" placeholder="0.00" name="amount_requested__gte" id="amount_requested__gte">
                                                 </div>
-                                                <label class="col-form-label col-sm-2 pt-0 mt-2">Hasta</label>
+                                                <label class="col-form-label col-sm-2 pt-0 mt-2" for="toAmount">Hasta</label>
                                                 <div class="col-4">
-                                                    <input type="number" class="form-control rounded-pill"
+                                                    <input type="number" class="form-control rounded-pill" name="amount_requested__lte" id="toAmount"
                                                         aria-label="Monto Hasta" placeholder="0.00">
                                                 </div>
                                             </div>
                                         </div>
                                     </fieldset>
                                     <div class="row mt-5 g-2">
-                                        <button type="submit" class="col-sm-4 text-dark btn btn-secondary rounded-pill" style="background-color: #F7F7F7;">Limpiar Filtros</button>
-                                        <button type="submit" class="col-sm-3 btn offset-1 btn-success rounded-pill">Filtrar</button>
+                                        <button type="reset" class="col-sm-4 text-dark btn btn-secondary rounded-pill" style="background-color: #F7F7F7;">Limpiar Filtros</button>
+                                        <button type="submit" class="col-sm-3 btn offset-1 btn-success rounded-pill" id="filter">Filtrar</button>
                                     </div>
                                 </form>
                             </div>

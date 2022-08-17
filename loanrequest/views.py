@@ -29,7 +29,7 @@ class TestViewSet(viewsets.ModelViewSet):
     template_name = 'loan_request_list.html'
     pagination_class = HtmlTemplateResultsSetPagination
     filterset_class = LoanRequestFilter
-    ordering_fields = ['status', 'date', 'amount_requested', 'amount_approved', 'term', 'loan_type']
+    ordering_fields = ['status', 'date', 'amount_requested']
 
     """
     here the ordering for status works as I want it (validating requests first) only because
