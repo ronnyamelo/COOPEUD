@@ -121,9 +121,9 @@
                                 <form method="get" action="" class="dropdown-menu p-5 col-6 mt-4 bg-light" style="width: 600px;" name="filters" id="filters">
                                     <div class="row mb-3">
                                         <label for="status" class="col-sm-2 col-form-label">Estado:</label>
-                                        <div class="col-sm-5">
+                                        <div class="col-sm-6">
                                             <select class="form-select rounded-pill" aria-label="Filtrar por estatus de solicitud" name="status" id="status">
-                                                <option selected value="">---</option>
+                                                <option selected value=""></option>
                                                 <option value="VALIDANDO">Validando</option>
                                                 <option value="APROBADO">Aprovado</option>
                                                 <option value="COMPLETADO">Completado</option>
@@ -246,7 +246,13 @@
                     <div class="col">
                         Lista de solicitudes
                     </div>
-                    <div class="col text-end">{{ loan_requests.count }} resultados</div>
+                    <div class="col text-end">{{ loan_requests.count }}
+                        {% if loan_requests.count > 1 %}
+                            resultados
+                        {% else %}
+                            rersultado
+                        {% endif %}
+                    </div>
                 </div>
                 
             </div>

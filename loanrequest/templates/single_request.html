@@ -1,1 +1,460 @@
-{{ loan_request.url }}
+<!DOCTYPE html>
+<html lang="en">
+    {% load template_helpers %}
+    {% load humanize %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <style>
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .text-footer-small {
+            color: gray;
+        }
+
+        .browser-line-separator {
+            padding: 5px;
+        }
+
+        .empty-icon::before {
+            content: "";
+        }
+    </style>
+</head>
+
+<body class="d-flex flex-column h-100">
+{% if loan_request.status == 'CANCELADO' or loan_request.status == 'RECHAZADO' %}
+    {% define "disabled" as disabled %}
+{% else %}
+    {% define "" as disabled %}
+{% endif %}
+    <main class="flex-shrink-0">
+        <div class="bg-success browser-line-separator"></div>
+
+        <!-- header start -->
+        <!-- <div class="bg-dark"> -->
+        <div class="container">
+            <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32">
+                        <use xlink:href="#bootstrap"></use>
+                    </svg>
+                    <span class="fs-4">COOPEUD</span>
+                </a>
+
+                <ul class="nav nav-pills">
+                    <li class="nav-item"><a href="#" class="nav-link">Logout</a></li>
+                </ul>
+            </header>
+            <!-- </div> -->
+        </div>
+        <!-- header end -->
+
+        <!-- menu start -->
+        <header class="p-3 bg-light mb-5">
+            <div class=" container">
+                <div class="row g-2">
+                    <div class="d-flex bd-highlight">
+                        <div class="d-flex flex-wrap justify-content-start">
+                            <a href="http://localhost:8000/admin/solicitudes"
+                                class="btn btn-secondary rounded-pill px-4">Volver Atras</a>
+                        </div>
+                        <div class="ms-auto bd-highlight">
+                            <div class="d-flex flex-wrap justify-content-end ">
+                                <button type="button" class="btn btn-success rounded-pill px-4 me-3 " {{ disabled }}>Aprobar</button>
+                                <button type="button" class="btn btn-primary rounded-pill px-4 me-3 " {{ disabled }}>Completar</button>
+                                <button type="button" class="btn btn-info rounded-pill px-4 me-3 " {{ disabled }} hidden>Guardar</button>
+                                <button type="button" class="btn btn-danger rounded-pill px-4 me-3 " {{ disabled }}>Rechazar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- menu end -->
+        <div class="container">
+           
+            <form>
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" 
+                            type="button" role="tab" aria-controls="nav-home" aria-selected="true">Prestamo</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" 
+                            type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Datos personales</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" 
+                            type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Datos laborales</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="myTabContent">
+
+                    <!-- Datos de prestamo -->
+                    <div class="tab-pane fade show active mt-5" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <fieldset {{ disabled }}>
+
+                            <div class="mb-3 row">
+                                <label for="requestedAmount" class="col-sm-2 col-form-label">Monto Solicitado</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="requested_amount" id="requestedAmount"
+                                        value="{{ loan_request.amount_requested|intcomma }}" disabled>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="approvedAmount" class="col-sm-2 col-form-label">
+                                    {% if loan_request.status != 'APROBADO' %}
+                                        Monto a Aprobar
+                                    {% else %}
+                                        Monto Aprobado
+                                    {% endif %}
+                                </label>
+                                <div class="col-sm-10">
+                                    <input type="text" oninput="this.value=this.value.replace(/[^0-9,.]/g,'');"
+                                        class="form-control" id="approvedAmount"
+                                        value="{{ loan_request.amount_requested|intcomma }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="requestStatus" class="col-sm-2 col-form-label">Estatus de solicitud</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="requestStatus"
+                                        value="{{ loan_request.status }}" disabled>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="loanType" class="col-sm-2 col-form-label">Tipo de prestamo</label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" disabled aria-label="Default select example" id="loanType"
+                                        value="{{ loan_request.loan_type }}">
+                                        <option value="B">COMERCIAL</option>
+                                        <option value="P">PERSONAL</option>
+                                        <option value="A">VEHICULO</option>
+                                        <option value="V">VIVIENDA</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="loanTerm" class="col-sm-2 col-form-label">Plazo (meses)</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" id="loanTerm"
+                                        value="{{ loan_request.term }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="loanRequestDate" class="col-sm-2 col-form-label">Fecha de solicitud</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="loanRequestDate" disabled
+                                        value="{{ loan_request.date|parse_date|date:" d-M-Y" }}">
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    
+                    <!-- Datos Personales -->
+                    <div class="tab-pane fade mt-5" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <fieldset {{ disabled }}>
+                            <div class="mb-3 row">
+                                <label for="firstName" class="col-sm-2 col-form-label">Nombre</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="firstName"
+                                        value="{{ loan_request.applicant.first_name }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="lastName" class="col-sm-2 col-form-label">Apellido</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="lastName"
+                                        value="{{ loan_request.applicant.last_name }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="idNumber" class="col-sm-2 col-form-label">Identificación</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="idNumber"
+                                        value="{{ loan_request.applicant.id_number }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="idType" class="col-sm-2 col-form-label">Tipo de Identificación</label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" aria-label="Default select example" id="idType"
+                                        value="{{ loan_request.applicant.id_type }}">
+                                        <option value="C">CEDULA</option>
+                                        <option value="E">PASAPORTE</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="nationality" class="col-sm-2 col-form-label">Nacionalidad</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="nationality"
+                                        value="{{ loan_request.applicant.nationality }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="birthDate" class="col-sm-2 col-form-label">Fecha de nacimiento</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="birthDate"
+                                        value="{{ loan_request.applicant.birth_date }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="age" class="col-sm-2 col-form-label">Edad</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="age"
+                                        value="{{ loan_request.applicant.birth_date|calculate_age }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="tel" class="col-sm-2 col-form-label">Telefono</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="tel"
+                                        value="{{ loan_request.applicant.tel }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="cel" class="col-sm-2 col-form-label">Celular</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="cel"
+                                        value="{{ loan_request.applicant.celphone }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="fasebook" class="col-sm-2 col-form-label">Facebook</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="fasebook"
+                                        value="{{ loan_request.applicant.facebook|replace_none }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="instagram" class="col-sm-2 col-form-label">Instagram</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="instagram"
+                                        value="{{ loan_request.applicant.instagram|replace_none }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="twitter" class="col-sm-2 col-form-label">Twitter</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="twitter"
+                                        value="{{ loan_request.applicant.twitter|replace_none }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="email" class="col-sm-2 col-form-label">Correo Electronico</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="email"
+                                        value="{{ loan_request.applicant.email }}">
+                                </div>
+                            </div>
+                            <label for="homeStreet" class="col-sm-2 col-form-label">Direccion</label>
+
+                            <div class="mb-3 row">
+                                <label for="homeStreet" class="col-sm-2 col-form-label">Calle</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="homeStreet"
+                                        value="{{ loan_request.applicant.address.street }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="houseNumber" class="col-sm-2 col-form-label">Numero</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="houseNumber"
+                                        value="{{ loan_request.applicant.address.number }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="homeBuildingName" class="col-sm-2 col-form-label">Edificio</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="homeBuildingName"
+                                        value="{{ loan_request.applicant.address.building|replace_none }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="homeAppartmentNumber" class="col-sm-2 col-form-label">Apartamento</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="homeAppartmentNumber"
+                                        value="{{ loan_request.applicant.address.apartment|replace_none }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="homeTown" class="col-sm-2 col-form-label">Sector</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="homeTown"
+                                        value="{{ loan_request.applicant.address.town }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="homeCity" class="col-sm-2 col-form-label">Ciudad</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="homeCity"
+                                        value="{{ loan_request.applicant.address.city }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="homeState" class="col-sm-2 col-form-label">Provincia</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="homeState"
+                                        value="{{ loan_request.applicant.address.state }}">
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <!-- Datos laborales -->
+                    <div class="tab-pane fade mt-5" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                        <fieldset {{ disabled }}>
+                            <div class="mb-3 row">
+                                <label for="employmentType" class="col-sm-2 col-form-label">Tipo de Empleo</label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" aria-label="Default select example" id="employmentType"
+                                        value="{{ loan_request.applicant.employment_data.employment_type }}">
+                                        <option value="PR">PRIVADO</option>
+                                        <option value="PU">PUBLICO</option>
+                                        <option value="SE">AUTO EMPLEADO</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="companyName" class="col-sm-2 col-form-label">Empresa</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="companyName"
+                                        value="{{ loan_request.applicant.employment_data.company_name }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="companyTel" class="col-sm-2 col-form-label">Telefono</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="companyTel"
+                                        value="{{ loan_request.applicant.employment_data.tel }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="companyTelExt" class="col-sm-2 col-form-label">Extension</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="companyTelExt"
+                                        value="{{ loan_request.applicant.employment_data.tel_ext|replace_none }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="jobRole" class="col-sm-2 col-form-label">Puesto que ocupa</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="jobRole"
+                                        value="{{ loan_request.applicant.employment_data.current_role }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="hiringDate" class="col-sm-2 col-form-label">Fecha de ingreso</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="hiringDate"
+                                        value="{{ loan_request.applicant.employment_data.start_date }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="monthlySalary" class="col-sm-2 col-form-label">Salario Mensual</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="monthlySalary"
+                                        value="{{ loan_request.applicant.employment_data.monthly_salary|intcomma }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="otherIncome" class="col-sm-2 col-form-label">Otros ingresos</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="otherIncome"
+                                        value="{{ loan_request.applicant.employment_data.other_income|intcomma|replace_none:0.00 }}">
+                                </div>
+                            </div>
+                            <label for="jobStreet" class="col-sm-2 col-form-label">Dirección</label>
+                            <div class="mb-3 row">
+                                <label for="jobStreet" class="col-sm-2 col-form-label">Calle</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="jobStreet"
+                                        value="{{ loan_request.applicant.employment_data.street }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="jobBuildingNumber" class="col-sm-2 col-form-label">Numero</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="jobBuildingNumber"
+                                        value="{{ loan_request.applicant.employment_data.number }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="jobBuildingName" class="col-sm-2 col-form-label">Edificio</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="jobBuildingName"
+                                        value="{{ loan_request.applicant.employment_data.building }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="jobTown" class="col-sm-2 col-form-label">Sector</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="jobTown"
+                                        value="{{ loan_request.applicant.employment_data.town }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="jobCity" class="col-sm-2 col-form-label">Ciudad</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="jobCity"
+                                        value="{{ loan_request.applicant.employment_data.city }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="jobState" class="col-sm-2 col-form-label">Provincia</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="jobState"
+                                        value="{{ loan_request.applicant.employment_data.state }}">
+                                </div>
+                            </div>
+                        </fieldset>
+
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

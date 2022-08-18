@@ -1,6 +1,7 @@
 from django.template import Library
 from django.template.defaultfilters import stringfilter
 from dateutil import parser
+from datetime import datetime
 
 
 register = Library()
@@ -41,3 +42,17 @@ def add(x:int, y:int):
 @register.filter(is_safe=True)
 def multiply(x:int, y:int):
     return x * y
+
+@register.filter(is_safe=True)
+def calculate_age(value):
+    born = parser.parse(value)
+    today = datetime.today()
+    age = today.year - born.year - ((today.month, today.day) < (born.month, born.day))
+    return age
+
+
+@register.filter(is_safe=True)
+def replace_none(value, replacement = ""):
+    if (value is None):
+        return replacement
+    return value

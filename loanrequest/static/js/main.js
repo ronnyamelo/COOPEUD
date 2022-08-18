@@ -33,11 +33,6 @@ class OrderingParam {
 const orderByDate = new OrderingParam('date');
 const orderByAmount = new OrderingParam('amount_requested');
 
-const ordering = {
-    'date': "",
-    'amount': ""
-};
-
 document.getElementById('orderByDate').addEventListener('click', function (event) {
     orderByDate.transition();
     let url = getUrl();

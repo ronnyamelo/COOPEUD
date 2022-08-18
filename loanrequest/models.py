@@ -54,6 +54,7 @@ class EmploymentData(models.Model):
     current_role = models.CharField(max_length=260, db_column='cargo_puesto')
     start_date = models.DateField(db_column='fecha_ingreso')
     monthly_salary = models.DecimalField(decimal_places=2, max_digits=14, db_column='ingresos_mensuales')
+    other_income = models.DecimalField(decimal_places=2, null=True, max_digits=14, db_column='otros_ingresos')
     street = models.CharField(max_length=260, db_column='calle')
     number = models.CharField(max_length=10, db_column='numero')
     building = models.CharField(null=True, max_length=100, db_column='edificio')
@@ -71,6 +72,7 @@ class LoanRequest(models.Model):
         BUSINESS = 'B', _('comercial')
         VEHICLE = 'V', _('vehiculos')
         PERSONAL = 'P', _('personal')
+        HOUSING = 'H', _('vivienda')
 
     class RequestStatus(models.TextChoices):
         VALIDATING = 'VALIDANDO', _('validando')
@@ -88,6 +90,9 @@ class LoanRequest(models.Model):
     referer = models.CharField(null=True, max_length=260)
     status = models.CharField(max_length=10, choices=RequestStatus.choices, default=RequestStatus.VALIDATING, db_column='estatus_solicitud')
     date = models.DateField(auto_now_add=True, null=False, db_column='fecha_solicitud')
+    denied_motive = models.CharField(max_length=600, null=True, blank=False, db_column='motivo_rechazo')
+    canceled_motive = models.CharField(max_length=600, null=True, db_column='motivo_cancelacion')
+    notes = models.CharField(max_length=1200, null=True, db_column='notas_generales')
 
     class Meta:
         db_table = 'solicitud_prestamo'
