@@ -95,3 +95,23 @@ class LoanRequestSerializer(serializers.HyperlinkedModelSerializer):
         request = LoanRequest.objects.create(applicant=applicant, **validated_data)
 
         return request
+
+    def update(self, instance, validated_data):
+        applicant_serializer = self.fields['applicant']
+        address_serializer = applicant_serializer.fields['address']
+        employment_data_serializer = applicant_serializer.fields['employment_data']
+
+        if 'applicant' in validated_data: 
+            applicant = validated_data.pop('applicant')
+
+            if 'employment_data' in applicant:
+                employment_data = applicant.pop('employment_data')
+                employment_data_serializer.update(instance.applicant.employment_data, employment_data)
+
+            if 'address' in applicant:
+                address = applicant.pop('address')
+                address_serializer.update(instance.applicant.address, address)
+
+            applicant_serializer.update(instance.applicant, applicant)
+
+        return super().update(instance, validated_data)
