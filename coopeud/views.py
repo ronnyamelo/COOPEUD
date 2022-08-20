@@ -10,7 +10,7 @@ def contact(request):
     return  render(request, 'contacto.html', {'title': 'Contacto'})
 
 def location(request):
-    return  render(request, 'ubicacion.html', {'title': 'Contacto'})
+    return  render(request, 'ubicacion.html', {'title': 'Ubicacion'})
 
 def formulario(request):
     return render(request, 'formulario_solicitud.html')
