@@ -14,7 +14,7 @@ class Applicant(models.Model):
     id_type = models.CharField(max_length=1, choices=IdentificationType.choices, default=IdentificationType.ID, db_column='tipo_identificacion')
     nationality = models.CharField(max_length=60, default='Republica Dominicana', db_column='nacionalidad')
     birth_date = models.DateField(db_column='fecha_nacimiento')
-    tel = models.CharField(max_length=12, db_column='telefono')
+    tel = models.CharField(null=True, max_length=12, db_column='telefono')
     celphone = models.CharField(max_length=12, db_column='celular')
     facebook = models.CharField(max_length=50, null=True)
     twitter = models.CharField(max_length=50, null=True)

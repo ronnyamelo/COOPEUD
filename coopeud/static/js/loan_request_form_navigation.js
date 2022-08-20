@@ -12,7 +12,9 @@ const personalDataForm = document.forms['personalDataForm'];
 const employmentDataForm = document.forms['employmentDataForm'];
 const loanDataForm = document.forms['loanDataForm'];
 
-const apiUrl = 'http://localhost:8000/api/solicitudes/';
+const successMsg = document.getElementById('success');
+const requestContainer = document.getElementById('requestContainer');
+// requestContainer.hidden = true;
 
 toSecondSectionBtn.addEventListener('click', function (event) {
     if (!isValidForm(personalDataForm)) {
@@ -88,14 +90,14 @@ sendLoanRequestBtn.addEventListener('click', function (event) {
         }
     }
 
-    fetch(apiUrl, {
+    fetch('http://localhost:8000/admin/solicitudes/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(request)
     }).then((accepted) => {
-        console.log(request);
+        // console.log(request);
         if (!accepted.ok) {
             document.getElementById('errorAlert').hidden = false;
         }
@@ -104,6 +106,8 @@ sendLoanRequestBtn.addEventListener('click', function (event) {
             employmentDataForm.reset();
             loanDataForm.reset();
             document.getElementById('errorAlert').hidden = true;
+            requestContainer.hidden = true;
+            successMsg.hidden = false;
         }
     })
 });
@@ -149,3 +153,16 @@ let isValidForm = function (form) {
     form.classList.remove("was-validated");
     return true;
 }
+
+// length validation should depend on id type
+const idTypeSelector = document.getElementById('idType');
+const idNumberField = document.getElementById('idNumber');
+
+idTypeSelector.addEventListener('change', function(event) {
+    if (event.target.value == 'E') {
+        idNumberField.minLength = 9;
+    }
+    else {
+        idNumberField.minLength = 11;
+    }
+}, false)
