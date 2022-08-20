@@ -32,7 +32,7 @@ if (approveRequestBtn) {
             amount_approved: form['amount_approved'].value.replace(',', ''),
             term: form['loan_term'].value,
             status: requestStatus.approved,
-            approved_date: (new Date(Date.now())).toISOString().split('T')[0]
+            approved_date: getDate()
         };
         sendRequest(requestUrl.value, payload, "PATCH").then(res => {
             handleResponse(res);
@@ -44,7 +44,7 @@ if (denyRequestBtn) {
     denyRequestBtn.addEventListener('click', function (event) {
         let payload = {
             status: requestStatus.denied,
-            denied_date: (new Date(Date.now())).toISOString().split('T')[0]
+            denied_date: getDate()
         };
 
         sendRequest(requestUrl.value, payload, "PATCH").then(res => {
@@ -57,7 +57,7 @@ if (cancelRequestBtn) {
     cancelRequestBtn.addEventListener('click', function (event) {
         let payload = {
             status: requestStatus.canceled,
-            cancelation_date: (new Date(Date.now())).toISOString().split('T')[0]
+            cancelation_date: getDate()
         };
 
         sendRequest(requestUrl.value, payload, "PATCH").then(res => {
@@ -70,13 +70,17 @@ if (completeRequestBtn) {
     completeRequestBtn.addEventListener('click', function (event) {
         let payload = {
             status: requestStatus.completed,
-            completed_date: (new Date(Date.now())).toISOString().split('T')[0]
+            completed_date: getDate()
         };
 
         sendRequest(requestUrl.value, payload, "PATCH").then(res => {
             handleResponse(res);
         });
     }, false)
+}
+
+function getDate() {
+    return (new Date(Date.now())).toISOString().split('T')[0]; // YYYY-MM-DD
 }
 
 function showErrorMsg() {

@@ -55,13 +55,11 @@
 
 <body class="d-flex flex-column h-100">
     
-    <!--  -->
     <!-- Begin page content -->
     <main class="flex-shrink-0">
         <div class="bg-success browser-line-separator"></div>
 
         <!-- header start -->
-        <!-- <div class="bg-dark"> -->
         <div class="container">
             <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
                 <a href="/admin/solicitudes/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
@@ -72,11 +70,9 @@
                 </a>
 
                 <ul class="nav nav-pills">
-                    {% comment %} <li class="nav-item"><a href="#" class="nav-link">SetUp</a></li> {% endcomment %}
                     <li class="nav-item"><a href="#" class="nav-link">Logout</a></li>
                 </ul>
             </header>
-        <!-- </div> -->
         </div>
         <!-- header end -->
 
@@ -182,7 +178,6 @@
             </div>
         </header>
         <!-- menu end -->
-        <!-- <i class="bi bi-dash"></i> -->
         <div class="container">
             <div class="solicitudes mt-5">
                 {% if loan_requests.results %}
@@ -258,7 +253,7 @@
             </nav>
 
             {% else %}
-            <p class="text-center">No existen solicitudes en este momento</p>
+            <p class="text-center">No se encontraron solicitudes</p>
             {% endif %}
 
         </div>

@@ -96,8 +96,6 @@ function setInitialValues() {
         });
     }
 
-    // amount ordering
-
     // filters
     let counter = 0;
     let filters = [
@@ -132,4 +130,6 @@ function searchParam(name) {
     return params[name]
 }
 
+// to set filters and icons for ordering in case url used to load the page
+// already has filters applied, so that they're not lost on every reload
 setInitialValues();
