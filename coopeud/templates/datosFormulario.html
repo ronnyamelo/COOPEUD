@@ -1,227 +1,255 @@
 {% extends 'base.html' %}
 {%load static %}
-
-{% block content %}
-
-<h2 class="tituloAcordeon">Solicita tu préstamo aqui!</h2>
-<h3 class="subtituloAcordeon">Favor de llenar el siguiente formulario para validar su solicitud.</h3>
-<!--Acordeon de datos formulario-->
-<div class="container accordion col-10 col-md-7" id="accordionExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-        aria-expanded="true" aria-controls="collapseOne">
-        Datos Personales
-      </button>
+{% block content%}
+   
+<div class="container mt-3">
+    <h2 class="text-center">
+      <small class="h2 text-muted " style=" font-family: fangsong; margin-right: -15px;">Solicita tu préstamo aquí!</small>
     </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <form class="row g-3">
-          <div class="col-md-6">
-            <label for="inputEmail4" class="form-label">No. Socio</label>
-            <input type="email" class="form-control" id="inputEmail4">
+    <p class="text-muted" style=" font-family: fangsong, Helvetica, sans-serif; font-size: 20px; text-align: center;">Favor de llenar el siguiente formulario para poder validar su solicitud</p>
+<div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            <img src="{% static 'img/usuario1.png'%}" class="me-2"  height="30px" width="30px" alt="">
+            Datos Personales
+        </button>
+      </h2>
+      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body bg-light">
+            <div class="container">
+                <form class="row">
+                    <div class="col-4 form-check form-check-inline ">
+                      <input class="form-check-input " type="checkbox">
+                      <label class="form-check-label " for="inlineCheckbox1">Dominicano</label>
+                    </div>
+                    <div class="col-6 form-check form-check-inline ">
+                      <input class="form-check-input" type="checkbox">
+                      <label class="form-check-label" for="inlineCheckbox2">Extranjero</label>
+                    </div>
+                    <!-- Datos Input  --> 
+                    <div class="col-6 mt-3">
+                        <label for="nameInput" class="form-label">Nombre(s)</label>
+                        <input type="text" class="form-control" id="nameInput" placeholder="Escribe tu nombre">
+                    </div>
+                    <div class="col-6 mt-3">
+                      <label for="lastNameInput" class="form-label">Apellido(s)</label>
+                      <input type="text" class="form-control" id="lastNameInput" placeholder="Escribe tu apellido">
+                    </div>
+                    
+                    <div class="col-sm-6 col-md-3 col-lg-4 col-xl-2 mt-3" >
+                      <label for="documentInput" class="form-label">Documento ID</label>
+                      <select type="text" class="form-select" id="documentInput" >
+                         <option selected>Cédula</option>
+                         <option >Pasaporte</option>
+                      </select>
+                      
+                    </div>
+                    <div class="col-3 mt-5 " >
+                      <input type="text" class="form-control" id="documentInput" placeholder="029-0027894-3">
+                    </div>
+                    <div class="col-4 mt-3">
+                      <label for="lastNameInput" class="form-label">Nacionalidad</label>
+                      <input type="text" class="form-control" id="lastNameInput" placeholder="Dominicana">
+                    </div>
+                    <div class="col-2 mt-3">
+                      <label for="AgeInput" class="form-label">Edad</label>
+                      <input type="number" class="form-control" id="AgeInput" placeholder="Edad">
+                    </div>
+                    <div class="col-6 mt-3">
+                      <label for="NacimientoInput" class="form-label">Fecha de Nacimiento</label>
+                      <input type="date" class="form-control" id="NacimientoInput" placeholder="">
+                    </div>
+                 </form>
           </div>
-          <div class="col-md-6">
-            <label for="inputPassword4" class="form-label">Nombre(s)</label>
-            <input type="password" class="form-control" id="inputPassword4">
-          </div>
-          <div class="col-6">
-            <label for="inputAddress" class="form-label">Apellido(s)</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-          </div>
-          <div class="col-md-6">
-            <label for="inputPassword4" class="form-label">Cédula o Pasaporte</label>
-            <input type="password" class="form-control" id="inputPassword4">
-          </div>
-          <div class="col-4">
-            <label for="inputAddress2" class="form-label">Edad</label>
-            <input type="text" class="form-control" id="inputAddress2">
-          </div>
-          <div class="col-md-6">
-            <label for="inputCity" class="form-label">Nacionalidad</label>
-            <input type="text" class="form-control" id="inputCity">
-          </div>
-
-          <div class="col-md-2">
-            <label for="inputZip" class="form-label">Fecha de Nacimiento</label>
-            <input type="text" class="form-control" id="inputZip" placeholder="DD/MM/AA">
-          </div>
-          <div class="col-6">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck">
-              <label class="form-check-label" for="gridCheck">
-                Dominicano
-              </label>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+            <img class="me-2" src="{% static 'img/laboral3.png'%}" height="35px" width="35px" alt="">
+            Información Laboral
+        </button>
+      </h2>
+      <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body bg-light">
+         <form action="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-4 mt-3">
+                        <label for="Empleo" class="form-label" >Tipo de Empleo</label>
+                        <select class="form-select" aria-label="Default select example">
+                              <option value="1">Empleado Privado</option>
+                              <option value="2">Empleado Público</option>
+                        </select>
+                    </div>
+                    <div class="col-4 mt-3">
+                        <label for="NameEmpresaInput" class="form-label">Nombre de la Empresa</label>
+                        <input type="text" class="form-control" id="NameEmpresaInput" placeholder="Nombre Empresa">
+                    </div>
+                    <div class="col-4 mt-3">
+                        <label for="TelEmpresa" class="form-label">Teléfono de la Empresa</label>
+                        <input type="text" class="form-control" id="TelEmpresa" placeholder="Tel. Empresa">
+                    </div>
+                    <div class="col-4 mt-3">
+                        <label for="ExtInput" class="form-label">Extensión</label>
+                        <input type="text" class="form-control" id="ExtInput" placeholder="Extensión">
+                    </div>
+                    <div class="col-4 mt-3">
+                        <label for="cargoInput" class="form-label">Cargo que Ocupa</label>
+                        <input type="text" class="form-control" id="cargoInput" placeholder="Cargo">
+                    </div>
+                    <div class="col-4 mt-3">
+                        <label for="fechaIngreso" class="form-label">Fecha de Ingreso</label>
+                        <input type="date" class="form-control" id="fechaIngreso" >
+                    </div>
+                    <div class="col-4 mt-3">
+                        <label for="IngresoInput" class="form-label">Ingreso Mensual</label>
+                        <input type="text" class="form-control" id="IngresoInput" placeholder="Ingresos">
+                    </div>
+                    <div class="col-3 mt-3" >
+                        <label for="OtrosIngresos" class="form-label">Otros Ingresos</label>
+                        <input type="text" id="OtrosIngresos" class="form-control" placeholder="Otros ingresos">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mt-3">
+                        <label for="dirInput" class="form-label">Dirección de la Empresa</label>
+                        <input type="text" id="dirInput" class="form-control" placeholder="Dirección Empresa">
+                    </div>
+                    <div class="col-4 mt-3">
+                        <label for="CiudadInput" class="form-label">Municipio o Ciudad</label>
+                        <input type="text" id="CiudadInput" class="form-control" placeholder="Municipio">
+                    </div>
+                    <div class="col-4 mt-3">
+                        <label class="form-label" for="provincia">Provincia</label>
+                        <input type="text"  id="provincia" class="form-control" placeholder="Provincia">
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-6">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck">
-              <label class="form-check-label" for="gridCheck">
-                Extranjero
-              </label>
-            </div>
-          </div>
+         </form>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+            <img class="me-2" src="{% static 'img/infoContacto.jpg'%}" height="40px" width="40px" alt="">
+            Información de Contacto y Dirección
+        </button>
+      </h2>
+      <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body bg-light">
+            <form action="">
+                <div class="container">
+                    <div class="row">
+                      <div class="col-4">
+                       <label for="TelInput" class="form-label">Teléfono Residencial</label>
+                       <input type="tel" id="TelInput" class="form-control" placeholder="Teléfono residencial">
+                      </div>
+                      <div class="col-4">
+                        <label for="TelOffice" class="form-label">Teléfono de Oficina</label>
+                        <input type="tel" id="TelOffice" class="form-control" placeholder="Teléfono oficina">
+                      </div>
+                      <div class="col-4">
+                        <label for="Celinput" class="form-label">Celular</label>
+                        <input type="tel" id="Celinput" class="form-control" placeholder="Número celular">
+                      </div>
+                      <div class="col-4 mt-3">
+                        <label for="facebookInput" class="form-label">Facebook</label>
+                        <input type="text" id="facebookInput" class="form-control" placeholder="Facebook">
+                      </div>
+                      <div class="col-4 mt-3">
+                        <label for="twitterInput" class="form-label">Twitter</label>
+                        <input type="text" id="twitterInput" class="form-control" placeholder="Twitter">
+                      </div>
+                      <div class="col-4 mt-3">
+                        <label for="InstagramInput" class="form-label">Twitter</label>
+                        <input type="text" id="InstagramInput" class="form-control" placeholder="Instagram">
+                      </div>
+                      <div class="col-8 mt-3">
+                        <label for="emailInput" class="form-label">Correo Electrónico</label>
+                        <input type="text" id="emailInput" class="form-control" placeholder="Email">
+                      </div>
+                      <div class="col-4 mt-3">
+                        <label for="SectorInput" class="form-label">Barrio o Sector</label>
+                        <input type="text" id="SectorInput" class="form-control" placeholder="Sector">
+                      </div>
+                      <div class="col-6 mt-3">
+                        <label for="CalleInput" class="form-label">Calle</label>
+                        <input type="text" id="CalleInput" class="form-control" placeholder="Sector">
+                      </div>
+                      <div class="col-3 mt-3">
+                        <label for="calleInput" class="form-label">Casa Número</label>
+                        <input type="text" id="calleInput" class="form-control" placeholder="Calle no.">
+                      </div>
+                      <div class="col-3 mt-3">
+                        <label for="ApartInput" class="form-label">Apartamento</label>
+                        <input type="text" id="ApartInput" class="form-control" placeholder="Apartamento">
+                      </div>
+                      <div class="col-6 mt-3">
+                        <label for="ProvinciaInput" class="form-label">Provincia</label>
+                        <input type="text" id="ProvinciaInput" class="form-control" placeholder="Provincia">
+                      </div>
+                      <div class="col-6 mt-3">
+                        <label for="MunicipioInput" class="form-label">Municipio o Ciudad</label>
+                        <input type="text" id="MunicipioInput" class="form-control" placeholder="Municipio">
+                      </div>
+                    </div>
+                </div>
+            </form> 
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingFour">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+            <img class="me-2" src="{% static 'img/editar.png'%}" height="40px" width="40px" alt="">
+              Datos del Préstamo 
+          </button>
+        </h2>
+        <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body bg-light">
+            <form action="">
+                  <div class="container">
+                      <div class="row">
+                        <div class="col-4 mt-3">
+                           <label for="TipoPrestamo" class="form-label">Tipo de Préstamo</label>
+                           <input type="text" id="TipoPrestamo" class="form-control" placeholder="Tipo Préstamo">
+                        </div>
+                        <div class="col-4 mt-3">
+                           <label for="Monto" class="form-label">Monto a Solicitar</label>
+                           <input type="text" id="Monto" class="form-control" placeholder="Monto">
+                        </div>
+                        <div class="col-3 mt-3">
+                           <label for="plazo" class="form-label">Plazo</label>
+                           <select name="plazoPrestamo" id="plazo" class="form-select">
+                              <option selected> 48 Meses</option>
+                              <option value="1">36 Meses</option>
+                              <option value="2">24 Meses</option>
+                              <option value="3">12 Meses</option>
+                           </select>
+                        </div>
+                        <div class="col-8 mt-3">
+                            <label for="entero" class="form-label">¿Cómo se enteró de nuestra cooperativa?</label>
+                            <textarea class="form-control" id="entero" cols="30" rows="3" placeholder="Comente..."></textarea>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <button class="btn btn-success">Enviar Solicitud</button>
 
-          <label class="label3" for="gridCheck">
-            <b>Información de Contacto</b>
-          </label>
-          <div class="col-md-4">
-            <label for="inputEmail4" class="form-label">Teléfono Residencial</label>
-            <input type="email" class="form-control" id="inputEmail4">
+                        </div>
+                      </div>
+                   </div>
+             </form>
           </div>
-          <div class="col-md-4">
-            <label for="inputPassword4" class="form-label">Teléfono de Oficina</label>
-            <input type="password" class="form-control" id="inputPassword4">
-          </div>
-          <div class="col-4">
-            <label for="inputAddress" class="form-label">Celular</label>
-            <input type="text" class="form-control" id="inputAddress">
-          </div>
-          <div class="col-md-6">
-            <label for="inputPassword4" class="form-label">Facebook</label>
-            <input type="password" class="form-control" id="inputPassword4">
-          </div>
-          <div class="col-6">
-            <label for="inputAddress2" class="form-label">Twitter</label>
-            <input type="text" class="form-control" id="inputAddress2">
-          </div>
-          <div class="col-md-6">
-            <label for="inputCity" class="form-label">Instagram</label>
-            <input type="text" class="form-control" id="inputCity">
-          </div>
-          <div class="col-md-6">
-            <label for="inputCity" class="form-label">Email</label>
-            <input type="text" class="form-control" id="inputCity">
-          </div>
-          <label class="label3" for="gridCheck">
-            <b>Dirección</b>
-          </label>
-          <div class="col-md-6">
-            <label for="inputEmail4" class="form-label">Calle</label>
-            <input type="email" class="form-control" id="inputEmail4">
-          </div>
-          <div class="col-md-3">
-            <label for="inputPassword4" class="form-label">Casa No.</label>
-            <input type="password" class="form-control" id="inputPassword4">
-          </div>
-          <div class="col-3">
-            <label for="inputAddress" class="form-label">Apartamento</label>
-            <input type="text" class="form-control" id="inputAddress">
-          </div>
-          <div class="col-md-4">
-            <label for="inputPassword4" class="form-label">Barrio o Sector</label>
-            <input type="password" class="form-control" id="inputPassword4">
-          </div>
-          <div class="col-4">
-            <label for="inputAddress2" class="form-label">Provincia</label>
-            <input type="text" class="form-control" id="inputAddress2">
-          </div>
-          <div class="col-md-4">
-            <label for="inputCity" class="form-label">Municipio o Ciudad</label>
-            <input type="text" class="form-control" id="inputCity">
-          </div>
+        </div>
+    </div>
 
-        </form>
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-        aria-expanded="false" aria-controls="collapseTwo">
-        Información Laboral
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <form>
-          <div class="col-6">
-            <label for="inputEmail4" class="form-label">Tipo de Empleo</label>
-            <input type="email" class="form-control" id="inputEmail4">
-          </div>
-          <div class="col-6">
-            <label for="inputPassword4" class="form-label">Nombre de la empresa</label>
-            <input type="password" class="form-control" id="inputPassword4">
-          </div>
-          <div class="col-3">
-            <label for="inputAddress" class="form-label">Teléfono</label>
-            <input type="text" class="form-control" id="inputAddress">
-          </div>
-          <div class="col-3">
-            <label for="inputAddress2" class="form-label">Extensión</label>
-            <input type="text" class="form-control col-4" id="inputAddress2">
-          </div>
-          <div class="col-4">
-            <label for="inputCity" class="form-label">Cargo de Ocupa</label>
-            <input type="text" class="form-control" id="inputCity">
-          </div>
-          <div class="col-3">
-            <label for="inputZip" class="form-label">Fecha de Ingreso</label>
-            <input type="text" class="form-control" id="inputZip" placeholder="DD/MM/AA">
-          </div>
-          <div class="col-3">
-            <label for="inputCity" class="form-label">Ingreso Mensual</label>
-            <input type="text" class="form-control" id="inputCity">
-          </div>
-          <div class="col-3">
-            <label for="inputZip" class="form-label">Otros Ingresos</label>
-            <input type="text" class="form-control" id="inputZip">
-          </div>
-          <div class="col-6">
-            <label for="inputEmail4" class="form-label">Dirección de la Empresa</label>
-            <input type="email" class="form-control" id="inputEmail4">
-          </div>
-          <div class="col-3">
-            <label for="inputPassword4" class="form-label">Municipio o Ciudad</label>
-            <input type="password" class="form-control" id="inputPassword4">
-          </div>
-          <div class="col-3">
-            <label for="inputAddress" class="form-label">Provincia</label>
-            <input type="text" class="form-control" id="inputAddress">
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
-        aria-expanded="false" aria-controls="collapseThree">
-        Datos del Préstamo
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-      data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <form class="row g-3">
-          <div class="col-md-6">
-            <label for="inputEmail4" class="form-label">Tipo de Préstamo</label>
-            <input type="email" class="form-control" id="inputEmail4">
-          </div>
-          <div class="col-md-6">
-            <label for="inputPassword4" class="form-label">Monto a Solicitar</label>
-            <input type="password" class="form-control" id="inputPassword4">
-          </div>
-          <div class="col-md-4">
-            <label for="inputState" class="form-label">Plazo</label>
-            <select id="inputState" class="form-select">
-              <option selected>48 Meses</option>
-              <option>36 Meses</option>
-              <option>24 Meses</option>
-              <option>12 Meses</option>
-            </select>
-          </div>
-          <div class="col-6">
-            <label for="exampleFormControlTextarea1" class="form-label">Como se entero de nuestra
-              cooperativa</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+</div> 
+</div>  
+
+
+
 {% endblock %}
+       
