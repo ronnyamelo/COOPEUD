@@ -1,0 +1,313 @@
+{% extends 'base.html' %}
+{%load static %}
+
+{% block content %}
+
+<h2 class="tituloAcordeon text-center pt-3">Solicita tu préstamo aqui!</h2>
+<h3 class="subtituloAcordeon text-center pb-5">Favor de llenar el siguiente formulario para validar su solicitud.</h3>
+<!--Acordeon de datos formulario-->
+<div class="container accordion col-10 col-md-7" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+        aria-expanded="true" aria-controls="collapseOne">
+        Datos Personales
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <form class="row g-3">
+          <div class="col-2">
+            <label for="numeroSocio" class="form-label">No. Socio</label>
+            <input type="text" class="form-control" id="numeroSocio" width="1">
+          </div>
+          <div class="col-10"></div>
+          <div class="col-6">
+            <label for="nombre" class="form-label">Nombre(s)</label>
+            <input type="text" class="form-control" id="nombre" width="3">
+          </div>
+          <div class="col-6">
+            <label for="apellido" class="form-label">Apellido(s)</label>
+            <input type="text" class="form-control" id="apellido" width="3">
+          </div>
+          <div class="col col-md-6">
+            <label class="form-label" for="tipoDocumento">Tipo de Documento</label>
+            <select id="tipoDocumento" class="form-select">
+              <option selected>Seleccione una opcion</option>
+              <option value="1">Cedula</option>
+              <option value="2">Pasaporte</option>
+            </select>
+
+          </div>
+          <div class="col col-md-6">
+            <label for="NumeroDocumento" class="form-label">Numero de Documento</label>
+            <input type="text" class="form-control" id="NumeroDocumento">
+          </div>
+          <div class="col-md-6">
+            <label for="inputCity" class="form-label">Nacionalidad</label>
+            <input type="text" class="form-control" id="inputCity">
+          </div>
+
+          <div class="col-md-2">
+            <label for="inputZip" class="form-label">Fecha de Nacimiento</label>
+            <input type="date" class="form-control" id="fechaDeNacimiento" placeholder="DD/MM/AA">
+          </div>
+
+          <label class="label3" for="gridCheck">
+            <b>Información de Contacto</b>
+          </label>
+          <div class="col-md-4">
+            <label for="telefonoResidencial" class="form-label">Teléfono Residencial</label>
+            <input type="text" class="form-control" id="telefonoResidencial">
+          </div>
+          <div class="col-md-4">
+            <label for="telefonoOficina" class="form-label">Teléfono de Oficina</label>
+            <input type="text" class="form-control" id="telefonoOficina">
+          </div>
+          <div class="col-4">
+            <label for="celular" class="form-label">Celular</label>
+            <input type="text" class="form-control" id="celular">
+          </div>
+          <div class="col-md-6">
+            <label for="facebook" class="form-label">Facebook</label>
+            <input type="text" class="form-control" id="facebook">
+          </div>
+          <div class="col-6">
+            <label for="twitter" class="form-label">Twitter</label>
+            <input type="text" class="form-control" id="twitter">
+          </div>
+          <div class="col-md-6">
+            <label for="instagram" class="form-label">Instagram</label>
+            <input type="text" class="form-control" id="instagram">
+          </div>
+          <div class="col-md-6">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" class="form-control" id="email">
+          </div>
+          <label class="label3" for="gridCheck">
+            <b>Dirección</b>
+          </label>
+          <div class="col-md-6">
+            <label for="calle" class="form-label">Calle</label>
+            <input type="text" class="form-control" id="calle">
+          </div>
+          <div class="col-md-3">
+            <label for="numeroCasa" class="form-label">Casa No.</label>
+            <input type="text" class="form-control" id="numeroCasa">
+          </div>
+          <div class="col-3">
+            <label for="ApartamentoText" class="form-label">Apartamento</label>
+            <input type="text" class="form-control" id="ApartamentoText">
+          </div>
+          <div class="col-md-4">
+            <label for="barrioSector" class="form-label">Barrio o Sector</label>
+            <input type="text" class="form-control" id="barrioSector">
+          </div>
+          <div class="col-md-4">
+            <label for="ciudad" class="form-label">Municipio o Ciudad</label>
+            <input type="text" class="form-control" id="ciudad">
+          </div>
+          <div class="col-12 col-md-4">
+            <label for="ProvinciaSelect" class="form-label">Provincia</label>
+            <select id="ProvinciaSelect" class="form-select">
+              <option selected>Seleccione una opcion</option>
+              <option value="1">AZUA</option>
+              <option value="2">BAHORUCO</option>
+              <option value="3">DAJABON</option>
+              <option value="3">DISTRITO NACIONAL</option>
+              <option value="3">DUARTE</option>
+              <option value="3">EL SEYBO</option>
+              <option value="3">ELIAS PIÑA</option>
+              <option value="3">ESPAILLAT</option>
+              <option value="3">HATO MAYOR</option>
+              <option value="3">HERMANAS MIRABAL</option>
+              <option value="3">INDEPENDENCIA</option>
+              <option value="3">LA ALTAGRACIA</option>
+              <option value="3">LA ROMANA</option>
+              <option value="3">LA VEGA</option>
+              <option value="3">MARIA TRINIDAD SANCHEZ</option>
+              <option value="3">MONSEÑOR NOUEL</option>
+              <option value="3">MONTE PLATA</option>
+              <option value="3">MONTECRISTI</option>
+              <option value="3">PEDERNALES</option>
+              <option value="3">PERAVIA</option>
+              <option value="3">PUERTO PLATA</option>
+              <option value="3">SAMANA</option>
+              <option value="3">SAN CRISTOBAL</option>
+              <option value="3">SAN JOSE DE OCOA</option>
+              <option value="3">SAN JUAN</option>
+              <option value="3">SAN PEDRO DE MACORIS</option>
+              <option value="3">SANCHEZ RAMIREZ</option>
+              <option value="3">SANTIAGO</option>
+              <option value="3">SANTIAGO RODRIGUEZ</option>
+              <option value="3">SANTO DOMINGO</option>
+              <option value="3">VALVERDE</option>
+            </select>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+        aria-expanded="false" aria-controls="collapseTwo">
+        Información Laboral
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <form class="row g-3">
+          <div class="col col-md-4 pt-3">
+            <label for="tipoEmpleo" class="form-label">Tipo de Empleo</label>
+            <select id="tipoEmpleo" class="form-select">
+              <option selected>Seleccione una opcion</option>
+              <option value="1">Empleado Privado</option>
+              <option value="2">Empleado Publico </option>
+              <option value="3">Trabajado Independiente</option>
+            </select>
+          </div>
+          <div class="col col-md-7 pt-3">
+            <label for="nombreEmpresa" class="form-label">Nombre de la empresa</label>
+            <input type="text" class="form-control" id="nombreEmpresa">
+          </div>
+          <div class="col-8 col-md-4">
+            <label for="telefono" class="form-label">Teléfono</label>
+            <input type="text" class="form-control" id="telefono" placeholder="8091112323">
+          </div>
+          <div class="col-4 col-md-1">
+            <label for="extension" class="form-label">Extensión</label>
+            <input type="text" class="form-control" id="extension">
+          </div>
+          <div class="col-md-2"></div>
+          <div class="col col-md-4">
+            <label for="cargoOcupacion" class="form-label">Cargo que Ocupa</label>
+            <input type="text" class="form-control" id="cargoOcupacion">
+          </div>
+          <div class="col col-md-2">
+            <label for="fechaIngreso" class="form-label">Fecha de Ingreso</label>
+            <input type="date" class="form-control" id="fechaIngreso" placeholder="DD/MM/AA">
+          </div>
+          <div class="col-md-2"></div>
+          <div class="col-6 col-md-3">
+            <label for="ingresoMensual" class="form-label">Ingreso Mensual</label>
+            <input type="text" class="form-control" id="ingresoMensual">
+          </div>
+          <div class="col-6 col-md-3">
+            <label for="otrosIngresos" class="form-label">Otros Ingresos</label>
+            <input type="text" class="form-control" id="otrosIngresos">
+          </div>
+          <div class="col-12 align-center">
+            <label class="label3" for="gridCheck">
+              <b>Dirección de la Empresa</b>
+            </label>
+          </div>
+          <div class=" col-8 col-md-6">
+            <label for="calle" class="form-label">Calle</label>
+            <input type="text" class="form-control" id="calle">
+          </div>
+          <div class="col-4 col-md-2">
+            <label for="numeroCasa" class="form-label">Numero</label>
+            <input type="text" class="form-control" id="numeroCasa">
+          </div>
+          <div class="col-6 col-md-3">
+            <label for="ApartamentoText" class="form-label">Edificio</label>
+            <input type="text" class="form-control" id="ApartamentoText">
+          </div>
+          <div class="col-4 ">
+            <label for="barrioSector" class="form-label">Sector</label>
+            <input type="text" class="form-control" id="barrioSector">
+          </div>
+          <div class="col-md-2"></div>
+          <div class="col-8 col-md-4">
+            <label for="ProvinciaSelect" class="form-label">Provincia</label>
+            <select id="ProvinciaSelect" class="form-select">
+              <option selected>Seleccione una opcion</option>
+              <option value="1">AZUA</option>
+              <option value="2">BAHORUCO</option>
+              <option value="3">DAJABON</option>
+              <option value="3">DISTRITO NACIONAL</option>
+              <option value="3">DUARTE</option>
+              <option value="3">EL SEYBO</option>
+              <option value="3">ELIAS PIÑA</option>
+              <option value="3">ESPAILLAT</option>
+              <option value="3">HATO MAYOR</option>
+              <option value="3">HERMANAS MIRABAL</option>
+              <option value="3">INDEPENDENCIA</option>
+              <option value="3">LA ALTAGRACIA</option>
+              <option value="3">LA ROMANA</option>
+              <option value="3">LA VEGA</option>
+              <option value="3">MARIA TRINIDAD SANCHEZ</option>
+              <option value="3">MONSEÑOR NOUEL</option>
+              <option value="3">MONTE PLATA</option>
+              <option value="3">MONTECRISTI</option>
+              <option value="3">PEDERNALES</option>
+              <option value="3">PERAVIA</option>
+              <option value="3">PUERTO PLATA</option>
+              <option value="3">SAMANA</option>
+              <option value="3">SAN CRISTOBAL</option>
+              <option value="3">SAN JOSE DE OCOA</option>
+              <option value="3">SAN JUAN</option>
+              <option value="3">SAN PEDRO DE MACORIS</option>
+              <option value="3">SANCHEZ RAMIREZ</option>
+              <option value="3">SANTIAGO</option>
+              <option value="3">SANTIAGO RODRIGUEZ</option>
+              <option value="3">SANTO DOMINGO</option>
+              <option value="3">VALVERDE</option>
+            </select>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
+        aria-expanded="false" aria-controls="collapseThree">
+        Datos del Préstamo
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <form class="row g-3">
+          <div class="col-md-6">
+            <label for="tipoDePrestamo" class="form-label">Tipo de Préstamo</label>
+            <select id="tipoDePrestamo" class="form-select">
+              <option selected>Selecione una opcion</option>
+              <option>Personal</option>
+              <option>Prestamo con Garantia</option>
+              <option>Hipotecario</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="montoASolicitar" class="form-label">Monto a Solicitar</label>
+            <input type="text" class="form-control" id="montoASolicitar">
+          </div>
+          <div class="col-md-6 pt-4">
+            <label for="plazo" class="form-label">Plazo</label>
+            <select id="plazo" class="form-select">
+              <option selected>48 Meses</option>
+              <option>36 Meses</option>
+              <option>24 Meses</option>
+              <option>12 Meses</option>
+            </select>
+
+          </div>
+          <div class="col-12 col-md-6 pt-4">
+            <label for="exampleFormControlTextarea1" class="form-label">Como se entero de nuestra
+              cooperativa</label>
+            <textarea class="form-control" id="comoSeEntero" rows="4"></textarea>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="pt-4">
+    <button type="submit" class="btn btn-primary ">Enviar Formulario</button>
+  </div>
+
+</div>
+{% endblock %}

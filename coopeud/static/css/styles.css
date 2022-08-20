@@ -1,0 +1,30 @@
+.carousel-item {
+    height: 400px;
+}
+
+.carousel-inner>.item>img {
+    min-height: 400px;
+    max-height: 400px;
+    width: 100%;
+    object-fit: important;
+    object-position: 50% 50%
+}
+
+.carousel-indicators button {
+    opacity: 0.5;
+    align-content: center;
+    padding: 20px 0
+}
+
+.carousel-indicators button.active {
+    background-color: green;
+    opacity: 1;
+
+}
+
+.afiliados-img {
+    height: auto;
+    width: auto;
+    max-width: 35px;
+    max-height: 35px
+}

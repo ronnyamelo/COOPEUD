@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html class="h-100" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+    <style>
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .text-footer-small {
+            color: gray;
+        }
+
+        .browser-line-separator {
+            padding: 5px;
+        }
+       
+       
+    </style>
+
+</head>
+
+<body class="d-flex flex-column h-100">
+    
+    <!-- Begin page content -->
+    <main class="flex-shrink-0">
+        <div class="bg-success browser-line-separator"></div>
+
+        <!-- header start -->
+        <div class="container">
+            <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
+                <a href="/admin/solicitudes/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32">
+                        <use xlink:href="#bootstrap"></use>
+                    </svg>
+                    <span class="fs-4">COOPEUD</span>
+                </a>
+
+                <ul class="nav nav-pills">
+                    <li class="nav-item"><a href="#" class="nav-link">Logout</a></li>
+                </ul>
+            </header>
+        </div>
+        <!-- header end -->
+
+        <!-- menu start -->
+        <header class="p-3 bg-light" ">
+            <div class="container">
+                <div class="row g-2">
+                <div class="d-flex bd-highlight">
+                    <div class="d-flex flex-wrap justify-content-start">
+                        <div class="me-3 pt-2">Ordenar por: &nbsp;</div>
+                        <a href='#' class="btn btn-secondary border border-1 border-secondary rounded-pill bg-light text-dark px-4 me-3" id="orderByDate">
+                            Fecha<i class="bi" id="orderDateIcon" style="font-size: 1.3rem;"></i>
+                        </a>
+
+                        <a class="btn btn-secondary border border-1 border-secondary rounded-pill bg-light text-dark px-4 me-3" id="orderByAmount">
+                            Monto<i class="bi" id="orderAmountIcon" style="font-size: 1.3rem;"></i>
+                        </a>
+                    </div>
+                    <div class="ms-auto bd-highlight">
+                        <div class="d-flex flex-wrap justify-content-end ">
+                            <div class="btn-group">
+                                <div class="btn btn-secondary border border-1 border-secondary rounded-pill bg-light text-dark px-4"
+                                    type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown"
+                                    data-bs-auto-close="outside" aria-expanded="false">
+                                    <i class="bi bi-filter-left" style="font-size: 1.28rem;"></i> Filtros utilizados: <span id="filterCount">0</span>
+                                </div>
+                                <form method="get" action="" class="dropdown-menu p-5 col-6 mt-4 bg-light" style="width: 600px;" name="filters" id="filters">
+                                    <div class="row mb-3">
+                                        <label for="status" class="col-sm-2 col-form-label">Estado:</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-select rounded-pill" aria-label="Filtrar por estatus de solicitud" name="status" id="status">
+                                                <option selected value=""></option>
+                                                <option value="VALIDANDO">Validando</option>
+                                                <option value="APROBADO">Aprovado</option>
+                                                <option value="COMPLETADO">Completado</option>
+                                                <option value="RECHAZADO">Rechazado</option>
+                                                <option value="CANCELADO">Cancelado</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="firstName" class="col-sm-2 col-form-label">Nombre:</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control rounded-pill" id="firstName" name="applicant__first_name__icontains">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="lastName" class="col-sm-2 col-form-label">Apellido:</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control rounded-pill" id="lastName" name="applicant__last_name__icontains">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="identification" class="col-sm-3 col-form-label">Identificacion:</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control rounded-pill" id="identification" name="applicant__id_number__icontains">
+                                        </div>
+                                    </div>
+                                    <fieldset>
+                                        <label class="col-form-label col-sm-2 pt-0 mt-2">Fecha:</label>
+                                        <div class="col-sm-12">
+                                            <div class="row">
+                                                <label class="col-form-label col-sm-2 pt-0 mt-2" for="fromDate">Desde</label>
+                                                <div class="col-4">
+                                                    <input type="date" class="form-control rounded-pill" aria-label="Filtrar por Fecha inicial de solicitud" name="request_date__gte" id="fromDate">
+                                                </div>
+                                                <label class="col-form-label col-sm-2 pt-0 mt-2" for="toDate">Hasta</label>
+                                                <div class="col-4">
+                                                    <input type="date" class="form-control rounded-pill" placeholder="Last name" aria-label="Filtrar por Fecha final de solicitud" id="toDate" name="request_date__lte">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                    <div class="mt-4"></div>
+                                    <fieldset>
+                                        <label class="col-form-label col-sm-2 pt-0 mt-2">Monto:</label>
+                                        <div class="col-sm-12">
+                                            <div class="row">
+                                                <label class="col-form-label col-sm-2 pt-0 mt-2" for="fromAmount">Desde</label>
+                                                <div class="col-4">
+                                                    <input type="number" class="form-control rounded-pill" 
+                                                        aria-label="Monto desde" placeholder="0.00" name="amount_requested__gte" id="amount_requested__gte">
+                                                </div>
+                                                <label class="col-form-label col-sm-2 pt-0 mt-2" for="toAmount">Hasta</label>
+                                                <div class="col-4">
+                                                    <input type="number" class="form-control rounded-pill" name="amount_requested__lte" id="toAmount"
+                                                        aria-label="Monto Hasta" placeholder="0.00">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <div class="row mt-5 g-2">
+                                        <button type="reset" class="col-sm-4 text-dark btn btn-secondary rounded-pill" style="background-color: #F7F7F7;">Limpiar Filtros</button>
+                                        <button type="submit" class="col-sm-3 btn offset-1 btn-success rounded-pill" id="filter">Filtrar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </header>
+        <!-- menu end -->
+        <div class="container">
+            <div class="solicitudes mt-5">
+                {% if loan_requests.results %}
+                <table class="table table-hover ">
+                    <caption hidden>Lista de solicitudes</caption>
+                    <thead class="table-secondary">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Identificacion</th>
+                            <th scope="col">Fecha Solicitud</th>
+                            <th scope="col">Monto Solicitado</th>
+                            <th scope="col">Estatus</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% load template_helpers %}
+                        {% for loan_request in loan_requests.results %}
+                        <tr>
+                            <th scope="row">{{ loan_requests.current|substract:1|multiply:loan_requests.page_size|add:forloop.counter }}</th>
+                            <td>{{ loan_request.applicant.first_name }}</td>
+                            <td>{{ loan_request.applicant.last_name }}</td>
+                            <td>{{ loan_request.applicant.id_number|format_id:loan_request.applicant.id_type }}</td>
+
+                            {% load i18n %}
+                            {% language 'es' %}
+                            <td>{{ loan_request.request_date|parse_date|date:"d-M-Y" }} </td>
+                            {% endlanguage %}
+
+                            {% load humanize %}
+                            <td>{{ loan_request.amount_requested|intcomma }}</td>
+                            <td>{{ loan_request.status }}</td>
+                            <td><a href="{{ loan_request.url }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                              </svg></a></td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+                <div class="row text-muted fw-light">
+                    <div class="col">
+                        Lista de solicitudes
+                    </div>
+                    <div class="col text-end">{{ loan_requests.count }}
+                        {% if loan_requests.count > 1 %}
+                            resultados
+                        {% else %}
+                            rersultado
+                        {% endif %}
+                    </div>
+                </div>
+                
+            </div>
+
+            <nav aria-label="Page navigation example" class="mt-4">
+                <ul class="pagination">
+                    {% for page in loan_requests.pages %}
+                    {% define "" as disabled %}
+
+                    {% if page == loan_requests.current or page == '…' %}
+                    {% define "disabled" as disabled %}
+                    {% endif %}
+
+                    <li class="page-item"><a class="page-link {{ disabled }}"
+                            href="{{ request.path }}?page={{ page }}">{{page}}</a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+
+            {% else %}
+            <p class="text-center">No se encontraron solicitudes</p>
+            {% endif %}
+
+        </div>
+    </main>
+
+    <footer class="footer mt-auto py-3 bg-dark">
+        <div class="container">
+            <span class="text-footer-small fs-6 fw-light text-center">Todos los derechos reservados @ COOPEUD.</span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+
+        {% load static %}
+    <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>
