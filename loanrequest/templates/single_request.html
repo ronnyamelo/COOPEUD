@@ -56,10 +56,10 @@
 </head>
 
 <body class="d-flex flex-column h-100">
-{% if loan_request.status == 'CANCELADO' or loan_request.status == 'RECHAZADO' or loan_request.status == 'COMPLETADO' %}
-    {% define "disabled" as disabled %}
-{% else %}
+{% if loan_request.status == 'VALIDANDO' %}
     {% define "" as disabled %}
+{% else %}
+    {% define "disabled" as disabled %}
 {% endif %}
     <main class="flex-shrink-0">
         <div class="bg-success browser-line-separator"></div>
@@ -68,7 +68,7 @@
         <!-- <div class="bg-dark"> -->
         <div class="container">
             <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
-                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <a href="/admin/solicitudes/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
                     <svg class="bi me-2" width="40" height="32">
                         <use xlink:href="#bootstrap"></use>
                     </svg>
@@ -92,16 +92,19 @@
                             <div class="d-flex flex-wrap justify-content-end ">
                                 <a href="http://localhost:8000/admin/solicitudes" class="btn btn-secondary rounded-pill px-4 me-3">Volver Atras</a>
                                 {% if loan_request.status == 'VALIDANDO' %}
-                                    <button id="approve-request" type="button" class="btn btn-success rounded-pill px-4 me-3 " {{ disabled }}>Aprobar</button>
-                                    <button id="deny-request" type="button" class="btn btn-danger rounded-pill px-4 me-3 " {{ disabled }}>Rechazar</button>
+                                    <button id="approve-request" type="button" class="btn btn-success rounded-pill px-4 me-3 ">Aprobar</button>
+                                    <button id="deny-request" type="button" class="btn btn-danger rounded-pill px-4 me-3 ">Rechazar</button>
                                 {% endif %}
 
                                 <!-- TODO: Validar si este boton es util para las tareas que se estaran realizando en el app -->
                                 <button id="update-data" type="button" class="btn btn-info rounded-pill px-4 me-3 " {{ disabled }} hidden>Guardar</button>
                                 
                                 {% if loan_request.status == 'APROBADO' %}
-                                    <button id="complete-request" type="button" class="btn btn-primary rounded-pill px-4 me-3 " {{ disabled }}>Completar</button>
-                                    <button id="cancel-request" type="button" class="btn btn-danger rounded-pill px-4 me-3 " {{ disabled }}>Cancelar</button>
+                                    <button id="complete-request" type="button" class="btn btn-primary rounded-pill px-4 me-3">Completar</button>
+                                    <button id="cancel-request" type="button" class="btn btn-danger rounded-pill px-4 me-3">Cancelar</button>
+                                {% else %}
+                                    {% comment %} <button id="complete-request" type="button" class="btn btn-primary rounded-pill px-4 me-3 " {{ disabled }}>Completar</button> {% endcomment %}
+                                    {% comment %} <button id="cancel-request" type="button" class="btn btn-danger rounded-pill px-4 me-3 " {{ disabled }}>Cancelar</button> {% endcomment %}
                                 {% endif %}
                             </div>
                         </div>
@@ -113,7 +116,8 @@
         <!-- menu end -->
         <div class="container">
            
-            <form>
+            <form name="loan-request">
+                <input type="text" id="request-url" hidden value="{{ loan_request.url }}"></input>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" 
@@ -143,24 +147,25 @@
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="approvedAmount" class="col-sm-2 col-form-label">
-                                    {% if loan_request.status != 'APROBADO' %}
-                                        Monto a Aprobar
-                                    {% else %}
-                                        Monto Aprobado
-                                    {% endif %}
-                                </label>
-                                <div class="col-sm-10">
-                                    <input type="text" oninput="this.value=this.value.replace(/[^0-9,.]/g,'');"
-                                        class="form-control" id="approvedAmount"
-                                        value="{{ loan_request.amount_requested|intcomma }}">
-                                </div>
+                                {% if loan_request.amount_approved %}
+                                    <label for="approvedAmount" class="col-sm-2 col-form-label">Monto Aprobado</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" oninput="this.value=this.value.replace(/[^0-9,.]/g,'');"
+                                            class="form-control" id="approvedAmount" value="{{ loan_request.amount_approved|intcomma|replace_none }}" name='amount_approved'>
+                                    </div>
+                                {% else %}
+                                    <label for="approvedAmount" class="col-sm-2 col-form-label">Aprobacion Pendiente</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" oninput="this.value=this.value.replace(/[^0-9,.]/g,'');"
+                                            class="form-control" id="approvedAmount" value="{{ loan_request.amount_requested|intcomma|replace_none }}" name='amount_approved'>
+                                    </div>
+                                {% endif %}
                             </div>
                             <div class="mb-3 row">
                                 <label for="requestStatus" class="col-sm-2 col-form-label">Estatus de solicitud</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="requestStatus"
-                                        value="{{ loan_request.status }}" disabled>
+                                        value="{{ loan_request.status }}" disabled name="request_status">
                                 </div>
                             </div>
                             <div class="mb-3 row">
@@ -179,16 +184,57 @@
                                 <label for="loanTerm" class="col-sm-2 col-form-label">Plazo (meses)</label>
                                 <div class="col-sm-10">
                                     <input type="number" class="form-control" id="loanTerm"
-                                        value="{{ loan_request.term }}">
+                                        value="{{ loan_request.term }}" name="loan_term">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="loanRequestDate" class="col-sm-2 col-form-label">Fecha de solicitud</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="loanRequestDate" disabled
-                                        value="{{ loan_request.date|parse_date|date:" d-M-Y" }}">
+                                        value="{{ loan_request.request_date|parse_date|date:" d-M-Y" }}">
                                 </div>
                             </div>
+
+                            {% if loan_request.approved_date %}
+                                <div class="mb-3 row">
+                                    <label for="loanRequestApprovedDate" class="col-sm-2 col-form-label">Fecha de aprovación</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="loanRequestApprovedDate" disabled
+                                            value="{{ loan_request.approved_date|parse_date|date:" d-M-Y" }}">
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            {% if loan_request.cancelation_date %}
+                                <div class="mb-3 row">
+                                    <label for="loanRequestCancelationDate" class="col-sm-2 col-form-label">Fecha de cancelacion</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="loanRequestCancelationDate" disabled
+                                            value="{{ loan_request.cancelation_date|parse_date|date:" d-M-Y" }}">
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                            {% if loan_request.denied_date %}
+                                <div class="mb-3 row">
+                                    <label for="loanRequestDeniedDate" class="col-sm-2 col-form-label">Rechazada en fecha</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="loanRequestDeniedDate" disabled
+                                            value="{{ loan_request.denied_date|parse_date|date:" d-M-Y" }}">
+                                    </div>
+                                </div>
+                            {% endif %} 
+                            
+                            {% if loan_request.completed_date %}
+                            <div class="mb-3 row">
+                                <label for="loanRequestCampletedDate" class="col-sm-2 col-form-label">Completado en fecha</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="loanRequestCampletedDate" disabled
+                                        value="{{ loan_request.completed_date|parse_date|date:" d-M-Y" }}">
+                                </div>
+                            </div>
+                        {% endif %}
+
                         </fieldset>
                     </div>
                     

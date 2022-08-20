@@ -20,13 +20,13 @@ from loanrequest import views
 from coopeud import views as web_views
 
 router = routers.DefaultRouter()
-router.register(r'api/solicitudes', views.LoanRequestViewSet)
-router.register(r'admin/solicitudes', views.TestViewSet)
+# router.register(r'api/solicitudes', views.LoanRequestViewSet)
+router.register(r'', views.TestViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
     path('', web_views.index, name='index'),
     path('contacto/', web_views.contact, name='contact'),
     path('ubicacion/', web_views.location, name = 'location'),
-    path(r'solicitud_prestamo/', web_views.formulario, name='form')
+    path(r'solicitud_prestamo/', web_views.formulario, name='form'),
+    path('admin/solicitudes/', include(router.urls)),
 ]

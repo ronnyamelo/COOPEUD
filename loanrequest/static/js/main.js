@@ -30,7 +30,7 @@ class OrderingParam {
         return '';
     }
 }
-const orderByDate = new OrderingParam('date');
+const orderByDate = new OrderingParam('request_date');
 const orderByAmount = new OrderingParam('amount_requested');
 
 document.getElementById('orderByDate').addEventListener('click', function (event) {
@@ -66,11 +66,11 @@ function setInitialValues() {
         let order = url.searchParams.get('ordering');
 
         // date
-        if (order.includes('date')) {
+        if (order.includes('request_date')) {
             orderByDate.state = state.Ascending;
         }
 
-        if (order.includes('-date')) {
+        if (order.includes('-request_date')) {
             orderByDate.state = state.Descending;
         }
 
@@ -105,8 +105,8 @@ function setInitialValues() {
         'applicant__first_name__icontains',
         'applicant__last_name__icontains',
         'applicant__id_number__icontains',
-        'date__gte',
-        'date__lte',
+        'request_date__gte',
+        'request_date__lte',
         'amount_requested__gte',
         'amount_requested__lte',
     ]
@@ -118,7 +118,7 @@ function setInitialValues() {
     });
 
     // date and amount should acount for only one filter
-    form['date__gte'].value && form['date__lte'].value && --counter;
+    form['request_date__gte'].value && form['request_date__lte'].value && --counter;
     form['amount_requested__gte'].value && form['amount_requested__lte'].value && --counter;
 
     document.getElementById('filterCount').innerText = counter;

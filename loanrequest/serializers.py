@@ -74,8 +74,15 @@ class LoanRequestSerializer(serializers.HyperlinkedModelSerializer):
             'term',
             'referer',
             'status',
-            'date',
-            'applicant'
+            'request_date',
+            'cancelation_date',
+            'approved_date',
+            'denied_date',
+            'completed_date',
+            'denied_motive',
+            'canceled_motive',
+            'notes',
+            'applicant',
         ]
 
     def validate_status(self, value):

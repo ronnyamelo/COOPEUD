@@ -25,18 +25,18 @@ class HtmlTemplateResultsSetPagination(PageNumberPagination):
 class TestViewSet(viewsets.ModelViewSet):
     queryset = LoanRequest.objects.all()
     serializer_class = LoanRequestSerializer
-    renderer_classes = [TemplateHTMLRenderer, JSONRenderer]
+    renderer_classes = [JSONRenderer, TemplateHTMLRenderer]
     template_name = 'loan_request_list.html'
     pagination_class = HtmlTemplateResultsSetPagination
     filterset_class = LoanRequestFilter
-    ordering_fields = ['status', 'date', 'amount_requested']
+    ordering_fields = ['status', 'request_date', 'amount_requested']
 
     """
     here the ordering for status works as I want it (validating requests first) only because
     grammatically, words begining with the letter 'V' on a rerverse ordering would be the first to appear
     but had I wanted the ordering to be different then this solution will not work
     """
-    ordering = ['-status', '-date']
+    ordering = ['-status', 'request_date']
     
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
@@ -50,5 +50,5 @@ class LoanRequestViewSet(viewsets.ModelViewSet):
     serializer_class = LoanRequestSerializer
     permission_classes = [permissions.AllowAny]
     filterset_class = LoanRequestFilter
-    ordering_fields = ['status', 'date', 'amount_requested', 'amount_approved', 'term', 'loan_type']
+    ordering_fields = ['status', 'request_date', 'amount_requested', 'amount_approved', 'term', 'loan_type']
 

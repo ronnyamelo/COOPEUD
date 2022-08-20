@@ -47,12 +47,8 @@
         .browser-line-separator {
             padding: 5px;
         }
-        .empty-icon::before {
-            content: "";
-        }
-        .empty-icon {
-            /* padding-left: 1.3rem; */
-        }
+       
+       
     </style>
 
 </head>
@@ -68,7 +64,7 @@
         <!-- <div class="bg-dark"> -->
         <div class="container">
             <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
-                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <a href="/admin/solicitudes/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
                     <svg class="bi me-2" width="40" height="32">
                         <use xlink:href="#bootstrap"></use>
                     </svg>
@@ -90,24 +86,13 @@
                 <div class="row g-2">
                 <div class="d-flex bd-highlight">
                     <div class="d-flex flex-wrap justify-content-start">
-                        <div class="me-3 pt-2">
-                            Ordenar por: &nbsp;
-                        </div>
-                        <!-- <div class="btn btn-secondary border border-1 border-secondary rounded-pill bg-light text-dark px-4 me-3" id="orderByFirstName">
-                            Nombre &nbsp;
-                            <i class="bi bi-sort-alpha-down" style="font-size: 1.3rem;"></i>
-                        </div> -->
-
-                        <!-- <div class="btn btn-secondary border border-1 border-secondary rounded-pill bg-light text-dark px-4 me-3" id="orderByLastName">
-                            Apellido &nbsp;<i class="bi bi-sort-alpha-down" style="font-size: 1.3rem;"></i>
-                        </div> -->
-
+                        <div class="me-3 pt-2">Ordenar por: &nbsp;</div>
                         <a href='#' class="btn btn-secondary border border-1 border-secondary rounded-pill bg-light text-dark px-4 me-3" id="orderByDate">
-                            Fecha &nbsp;<i class="bi" id="orderDateIcon" style="font-size: 1.3rem;"></i>
+                            Fecha<i class="bi" id="orderDateIcon" style="font-size: 1.3rem;"></i>
                         </a>
 
                         <a class="btn btn-secondary border border-1 border-secondary rounded-pill bg-light text-dark px-4 me-3" id="orderByAmount">
-                            Monto &nbsp;<i class="bi" id="orderAmountIcon" style="font-size: 1.3rem;"></i>
+                            Monto<i class="bi" id="orderAmountIcon" style="font-size: 1.3rem;"></i>
                         </a>
                     </div>
                     <div class="ms-auto bd-highlight">
@@ -156,11 +141,11 @@
                                             <div class="row">
                                                 <label class="col-form-label col-sm-2 pt-0 mt-2" for="fromDate">Desde</label>
                                                 <div class="col-4">
-                                                    <input type="date" class="form-control rounded-pill" aria-label="Filtrar por Fecha inicial de solicitud" name="date__gte" id="fromDate">
+                                                    <input type="date" class="form-control rounded-pill" aria-label="Filtrar por Fecha inicial de solicitud" name="request_date__gte" id="fromDate">
                                                 </div>
                                                 <label class="col-form-label col-sm-2 pt-0 mt-2" for="toDate">Hasta</label>
                                                 <div class="col-4">
-                                                    <input type="date" class="form-control rounded-pill" placeholder="Last name" aria-label="Filtrar por Fecha final de solicitud" id="toDate" name="date__lte">
+                                                    <input type="date" class="form-control rounded-pill" placeholder="Last name" aria-label="Filtrar por Fecha final de solicitud" id="toDate" name="request_date__lte">
                                                 </div>
                                             </div>
                                         </div>
@@ -226,7 +211,7 @@
 
                             {% load i18n %}
                             {% language 'es' %}
-                            <td>{{ loan_request.date|parse_date|date:"d-M-Y" }} </td>
+                            <td>{{ loan_request.request_date|parse_date|date:"d-M-Y" }} </td>
                             {% endlanguage %}
 
                             {% load humanize %}
