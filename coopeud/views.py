@@ -15,3 +15,6 @@ def location(request):
 def formulario(request):
     return render(request, 'formulario_solicitud.html')
 
+def formulario2(request):
+    return render(request, 'datosFormulario.html')
+

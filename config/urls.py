@@ -29,4 +29,6 @@ urlpatterns = [
     path('ubicacion/', web_views.location, name = 'location'),
     path(r'solicitud_prestamo/', web_views.formulario, name='form'),
     path('admin/solicitudes/', include(router.urls)),
+    path(r'solicitud_prestamo/2/', web_views.formulario2, name='form2'),
+
 ]
