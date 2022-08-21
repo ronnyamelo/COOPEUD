@@ -21,7 +21,7 @@ from coopeud import views as web_views
 
 router = routers.DefaultRouter()
 # router.register(r'api/solicitudes', views.LoanRequestViewSet)
-router.register(r'', views.TestViewSet)
+router.register(r'', views.LoanRequestViewSet)
 
 urlpatterns = [
     path('', web_views.index, name='index'),
@@ -30,5 +30,9 @@ urlpatterns = [
     path(r'solicitud_prestamo/', web_views.formulario, name='form'),
     path('admin/solicitudes/', include(router.urls)),
     path(r'solicitud_prestamo/2/', web_views.formulario2, name='form2'),
+    path('login/', views.loginView, name='login'),
+    path('logout/', views.logoutView, name='login'),
+    # path("admin/", admin.site.urls),
+    # path("accounts/", include("django.contrib.auth.urls"))
 
 ]

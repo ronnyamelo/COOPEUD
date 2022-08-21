@@ -5,6 +5,8 @@ from rest_framework.response import Response
 from loanrequest.models import LoanRequest
 from loanrequest.serializers import LoanRequestSerializer
 from loanrequest.filters import LoanRequestFilter
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
 
 
 class HtmlTemplateResultsSetPagination(PageNumberPagination):
@@ -22,9 +24,10 @@ class HtmlTemplateResultsSetPagination(PageNumberPagination):
         }})
 
 
-class TestViewSet(viewsets.ModelViewSet):
+class LoanRequestViewSet(viewsets.ModelViewSet):
     queryset = LoanRequest.objects.all()
     serializer_class = LoanRequestSerializer
+    permission_classes = [permissions.AllowAny]
     renderer_classes = [JSONRenderer, TemplateHTMLRenderer]
     template_name = 'loan_request_list.html'
     pagination_class = HtmlTemplateResultsSetPagination
@@ -44,11 +47,19 @@ class TestViewSet(viewsets.ModelViewSet):
         return Response(data={'loan_request': serializer.data}, 
                         template_name='single_request.html')
 
+def loginView(request):
 
-class LoanRequestViewSet(viewsets.ModelViewSet):
-    queryset = LoanRequest.objects.all()
-    serializer_class = LoanRequestSerializer
-    permission_classes = [permissions.AllowAny]
-    filterset_class = LoanRequestFilter
-    ordering_fields = ['status', 'request_date', 'amount_requested', 'amount_approved', 'term', 'loan_type']
+    if (request.method == "GET"):
+        return render(request, 'login.html')
 
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return redirect('/admin/solicitudes/')
+    return redirect('/admin/solicitudes/')
+
+def logoutView(request):
+    logout(request)
+    return redirect('/login/')

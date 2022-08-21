@@ -4,13 +4,16 @@ const cancelRequestBtn = document.getElementById('cancel-request');
 const completeRequestBtn = document.getElementById('complete-request');
 const requestUrl = document.getElementById('request-url')
 
-
+function getCsrfToken() {
+    return document.cookie.split(';').find(x => x.startsWith('csrftoken='))?.split('=')[1];
+}
 async function sendRequest(url, payload, method) {
     const response = await fetch(url, {
         method: method,
         body: JSON.stringify(payload),
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCsrfToken()
         },
         redirect: 'follow'
     })

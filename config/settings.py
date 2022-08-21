@@ -36,11 +36,12 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 
-
+# LOGIN_REDIRECT_URL = "/"
+# LOGIN_REDIRECT_URL = "/"
 # Application definition
 
 INSTALLED_APPS = [
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

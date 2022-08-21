@@ -1,0 +1,25 @@
+{% include 'extended/login_header.html' %}
+
+{% block loginForm %}
+{% if user.is_authenticated is False %}
+<div class="container col-xl-10 col-xxl-8 px-4">
+    <div class="row align-items-center g-lg-5 py-5">
+      <div class="col-md-10 mx-auto col-lg-5">
+        <form class="p-4 p-md-5 border rounded-3 bg-light" method="post" action="/login/">
+            {% csrf_token %}
+            <div class="form-group mb-3">
+                <label for="username" class="col-form-label">Nombre de Usuario</label>
+                <input type="text" class="form-control" name="username" id="username" placeholder="username">
+            </div>
+            <div class="form-group mb-3">
+                <label for="password" class="col-form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+            </div>
+            <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Sign in</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  {% endblock loginForm %}
+  {% include 'base/footer.html' %}
