@@ -18,15 +18,15 @@
       <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
         <div class="accordion-body bg-light">
             <div class="container">
-                <form class="row">
-                    <div class="col-4 form-check form-check-inline ">
+                <form class="row mb-5 mt-4">
+                    {% comment %} <div class="col-4 form-check form-check-inline ">
                       <input class="form-check-input " type="checkbox">
                       <label class="form-check-label " for="inlineCheckbox1">Dominicano</label>
                     </div>
                     <div class="col-6 form-check form-check-inline ">
                       <input class="form-check-input" type="checkbox">
                       <label class="form-check-label" for="inlineCheckbox2">Extranjero</label>
-                    </div>
+                    </div> {% endcomment %}
                     <!-- Datos Input  --> 
                     <div class="col-6 mt-3">
                         <label for="nameInput" class="form-label">Nombre(s)</label>
@@ -45,18 +45,18 @@
                       </select>
                       
                     </div>
-                    <div class="col-3 mt-5 " >
+                    <div class="col-4 mt-5 " >
                       <input type="text" class="form-control" id="documentInput" placeholder="029-0027894-3">
                     </div>
                     <div class="col-4 mt-3">
                       <label for="lastNameInput" class="form-label">Nacionalidad</label>
                       <input type="text" class="form-control" id="lastNameInput" placeholder="Dominicana">
                     </div>
-                    <div class="col-2 mt-3">
+                    {% comment %} <div class="col-2 mt-3">
                       <label for="AgeInput" class="form-label">Edad</label>
                       <input type="number" class="form-control" id="AgeInput" placeholder="Edad">
-                    </div>
-                    <div class="col-6 mt-3">
+                    </div> {% endcomment %}
+                    <div class="col-2 mt-3">
                       <label for="NacimientoInput" class="form-label">Fecha de Nacimiento</label>
                       <input type="date" class="form-control" id="NacimientoInput" placeholder="">
                     </div>
@@ -74,7 +74,7 @@
       </h2>
       <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
         <div class="accordion-body bg-light">
-         <form action="">
+         <form class="mb-5 mt-4">
             <div class="container">
                 <div class="row">
                     <div class="col-4 mt-3">
@@ -141,7 +141,7 @@
       </h2>
       <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
         <div class="accordion-body bg-light">
-            <form action="">
+            <form class="mb-5 mt-4">
                 <div class="container">
                     <div class="row">
                       <div class="col-4">
@@ -211,7 +211,7 @@
         </h2>
         <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
           <div class="accordion-body bg-light">
-            <form action="">
+            <form class="mb-5 mt-4">
                   <div class="container">
                       <div class="row">
                         <div class="col-4 mt-3">
@@ -235,16 +235,17 @@
                             <label for="entero" class="form-label">¿Cómo se enteró de nuestra cooperativa?</label>
                             <textarea class="form-control" id="entero" cols="30" rows="3" placeholder="Comente..."></textarea>
                         </div>
-                        <div class="col-12 mt-3">
-                            <button class="btn btn-success">Enviar Solicitud</button>
-
-                        </div>
+                        
                       </div>
                    </div>
              </form>
           </div>
         </div>
     </div>
+
+    <div class="col-12 pt-5">
+      <button class="btn btn-success">Enviar Solicitud</button>
+  </div>
 
 </div> 
 </div>  
