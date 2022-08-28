@@ -29,6 +29,7 @@ urlpatterns = [
     path('', web_views.index, name='index'),
     path('contacto/', web_views.contact, name='contact'),
     path('ubicacion/', web_views.location, name = 'location'),
+    path('nosotros/', web_views.history, name = 'history'),
     path('admin/', views.TestViewSet.as_view({'get': 'list'}), name='test'),
     path('solicitud_prestamos/', web_views.formulario, name='form')
 ]

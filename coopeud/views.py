@@ -14,3 +14,6 @@ def location(request):
 
 def formulario(request):
     return render(request, 'datosFormulario.html')
+
+def history(request):
+    return render(request, 'nosotros.html')
