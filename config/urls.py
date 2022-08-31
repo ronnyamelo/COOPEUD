@@ -28,11 +28,15 @@ urlpatterns = [
     path('contacto/', web_views.contact, name='contact'),
     path('ubicacion/', web_views.location, name = 'location'),
     path(r'solicitud_prestamo/', web_views.formulario, name='form'),
+    path(r'api/solicitudes/', views.LoanRequestCreateViewSet.as_view(), name='test'),
     path('admin/solicitudes/', include(router.urls)),
     path(r'solicitud_prestamo/2/', web_views.formulario2, name='form2'),
     path('login/', views.loginView, name='login'),
     path('logout/', views.logoutView, name='login'),
+    path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+    # path("accounts/", include("django.contrib.auth.urls")),
     # path("admin/", admin.site.urls),
-    # path("accounts/", include("django.contrib.auth.urls"))
+    # path('admin/', views.TestViewSet.as_view({'get': 'list'}), name='test'),
+
 
 ]

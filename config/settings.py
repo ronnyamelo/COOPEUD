@@ -33,7 +33,15 @@ REST_FRAMEWORK = {
         'rest_framework.filters.OrderingFilter'
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 10,
+    # 'DEFAULT_AUTHENTICATION_CLASSES': (
+    #     'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+    # )
+}
+
+OAUTH2_PROVIDER = {
+    # this is the list of available scopes
+    'SCOPES': {'read': 'Read scope', 'write': 'Write scope', 'groups': 'Access to your groups'}
 }
 
 # LOGIN_REDIRECT_URL = "/"
@@ -48,10 +56,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'oauth2_provider',
     'rest_framework',
     'rest_framework_filters',
     'coopeud',
-    'loanrequest'
+    'loanrequest',
 ]
 
 MIDDLEWARE = [

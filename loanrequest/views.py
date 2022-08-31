@@ -1,4 +1,4 @@
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, generics
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.renderers import TemplateHTMLRenderer, JSONRenderer
 from rest_framework.response import Response
@@ -7,6 +7,7 @@ from loanrequest.serializers import LoanRequestSerializer
 from loanrequest.filters import LoanRequestFilter
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from oauth2_provider.contrib.rest_framework import TokenHasScope, OAuth2Authentication
 
 
 class HtmlTemplateResultsSetPagination(PageNumberPagination):
@@ -23,11 +24,20 @@ class HtmlTemplateResultsSetPagination(PageNumberPagination):
             'results': data
         }})
 
+class LoanRequestCreateViewSet(generics.CreateAPIView):
+    authentication_classes = [OAuth2Authentication]
+    serializer_class = LoanRequestSerializer
+    permission_classes = [permissions.IsAuthenticated, TokenHasScope]
+    required_scopes = ['write']
 
-class LoanRequestViewSet(viewsets.ModelViewSet):
+
+class LoanRequestViewSet(viewsets.mixins.ListModelMixin, 
+                         viewsets.mixins.RetrieveModelMixin,
+                         viewsets.mixins.UpdateModelMixin,
+                         viewsets.GenericViewSet):
     queryset = LoanRequest.objects.all()
     serializer_class = LoanRequestSerializer
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
     renderer_classes = [JSONRenderer, TemplateHTMLRenderer]
     template_name = 'loan_request_list.html'
     pagination_class = HtmlTemplateResultsSetPagination
@@ -46,6 +56,7 @@ class LoanRequestViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(instance)
         return Response(data={'loan_request': serializer.data}, 
                         template_name='single_request.html')
+
 
 def loginView(request):
 

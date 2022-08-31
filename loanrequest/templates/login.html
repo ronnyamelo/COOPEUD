@@ -1,7 +1,7 @@
 {% include 'extended/login_header.html' %}
 
 {% block loginForm %}
-{% if user.is_authenticated is False %}
+{% comment %} {% if user.is_authenticated is False %} {% endcomment %}
 <div class="container col-xl-10 col-xxl-8 px-4">
     <div class="row align-items-center g-lg-5 py-5">
       <div class="col-md-10 mx-auto col-lg-5">
@@ -20,6 +20,6 @@
       </div>
     </div>
   </div>
-  {% endif %}
+  {% comment %} {% endif %} {% endcomment %}
   {% endblock loginForm %}
   {% include 'base/footer.html' %}
