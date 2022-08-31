@@ -8,7 +8,9 @@ from loanrequest.filters import LoanRequestFilter
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from oauth2_provider.contrib.rest_framework import TokenHasScope, OAuth2Authentication
-
+from django.views.decorators.csrf import csrf_exempt
+# from django.views.decorators import 
+# from rest_framework.decorators import 
 
 class HtmlTemplateResultsSetPagination(PageNumberPagination):
     page_size = 10
@@ -24,11 +26,12 @@ class HtmlTemplateResultsSetPagination(PageNumberPagination):
             'results': data
         }})
 
+# @csrf_exempt
 class LoanRequestCreateViewSet(generics.CreateAPIView):
-    authentication_classes = [OAuth2Authentication]
+    # authentication_classes = [OAuth2Authentication]
     serializer_class = LoanRequestSerializer
-    permission_classes = [permissions.IsAuthenticated, TokenHasScope]
-    required_scopes = ['write']
+    # permission_classes = [TokenHasScope]
+    # required_scopes = ['write']
 
 
 class LoanRequestViewSet(viewsets.mixins.ListModelMixin, 
@@ -74,3 +77,20 @@ def loginView(request):
 def logoutView(request):
     logout(request)
     return redirect('/login/')
+
+import requests
+
+
+def test(request):
+    url = "http://localhost:8000/o/token/"
+
+    payload='grant_type=client_credentials'
+    headers = {
+    'Authorization': 'Basic Y2xpZW50OmNsaWVudF8x',
+    'Content-Type': 'application/x-www-form-urlencoded',
+    #   'Cookie': 'csrftoken=1ZTc9QX1wnPal93pwJ31wfZpFtG5okbkOwb7TSzkETqkdAITd9Eif3zupUXwMiXi'
+    }
+
+    response = requests.request("POST", url, headers=headers, data=payload)
+
+    print(response.text)

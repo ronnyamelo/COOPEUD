@@ -90,7 +90,7 @@ sendLoanRequestBtn.addEventListener('click', function (event) {
         }
     }
 
-    fetch('http://localhost:8000/admin/solicitudes/', {
+    fetch('http://localhost:8000/api/solicitudes/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

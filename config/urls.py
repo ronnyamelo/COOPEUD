@@ -37,6 +37,7 @@ urlpatterns = [
     # path("accounts/", include("django.contrib.auth.urls")),
     # path("admin/", admin.site.urls),
     # path('admin/', views.TestViewSet.as_view({'get': 'list'}), name='test'),
+    # path('test/', views.test, name='token')
 
 
 ]
