@@ -25,13 +25,65 @@
     </div>
     
     <div id="requestContainer">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mb-4">
             <div class="py-5 text-center col-10">
                 <h2>Solicita tu préstamo aqui!</h2>
-                <p class="lead">Each required form group has a validation state that can be triggered by attempting to
-                    submit the form without completing it.</p>
+                <p class="lead">Favor de llenar el siguiente formulario para poder validar su solicitud</p>
             </div>
+
+            <div class="col-11 d-flex col-11 justify-content-center" id="progressBar">
+                <div class="col-11">
+                    <div class="position-relative">
+                        
+                        <div class="progress" hidden>
+                            <div class="progress-bar progress-bar-striped progress-bar-animated " role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 75%" hidden></div>
+                        </div>
+                          
+        
+                        <div class="position-absolute top-0 start-0 translate-middle mt-4" >
+                            <div class="p-2 bd-highlight text-center mt-1">
+                                <div class="row">
+                                    <i class="bi bi-check-circle-fill fs-3 text-black-50" ></i>
+                                </div>
+                                <div class="row">
+                                    <div class="p-2 bd-highlight">Datos Personales</div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="position-absolute top-0 start-50 translate-middle mt-4" >
+                            <div class="p-2 bd-highlight text-center mt-1">
+                                <div class="row">
+                                    <i class="bi bi-check-circle-fill fs-3 text-black-50" ></i>
+                                </div>
+                                <div class="row">
+                                    <div class="p-2 bd-highlight">Datos Laborales</div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="position-absolute top-0 start-100 translate-middle mt-4" style="width: 150px;">
+                            <div class="p-2 bd-highlight text-center mt-2">
+                                <div class="row">
+                                    <i class="bi bi-check-circle-fill fs-3 text-black-50" ></i>
+                                </div>
+                                <div class="row">
+                                    <div class="p-2 bd-highlight">Datos de Prestamo</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5"></div>
+
+        <br>
+        <br>
+            </div>
+
         </div>
+
+        
+        <div class="mt-5"></div>
 
         <div class="bg-light container  border rounded mt-2">
             <form id="personalDataForm" name="personalDataForm" class="needs-validation">
