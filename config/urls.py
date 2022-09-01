@@ -34,6 +34,7 @@ urlpatterns = [
     path('login/', views.loginView, name='login'),
     path('logout/', views.logoutView, name='login'),
     path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+    path('nosotros/', web_views.history, name = 'history'),
     # path("accounts/", include("django.contrib.auth.urls")),
     # path("admin/", admin.site.urls),
     # path('admin/', views.TestViewSet.as_view({'get': 'list'}), name='test'),

@@ -18,3 +18,5 @@ def formulario(request):
 def formulario2(request):
     return render(request, 'datosFormulario.html')
 
+def history(request):
+    return render(request, 'nosotros.html')
