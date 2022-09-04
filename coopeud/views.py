@@ -1,6 +1,12 @@
+import json
 from django.shortcuts import render
+from rest_framework.response import Response
+from rest_framework.renderers import JSONRenderer
+from rest_framework.decorators import renderer_classes, api_view
+import requests
+from django.http import HttpResponse, JsonResponse, HttpResponseNotFound, response
+from coopeud.authorization import ClientCredentialsAuthorization
 
-# Create your views here.
 
 
 def index(request):
@@ -20,3 +26,33 @@ def formulario2(request):
 
 def history(request):
     return render(request, 'nosotros.html')
+
+
+authorization = ClientCredentialsAuthorization()
+
+@api_view(['POST', 'GET'])
+@renderer_classes([JSONRenderer])
+def handle_loan_request(request):
+    
+    if request.method == 'GET':
+        return HttpResponseNotFound();
+
+    print(authorization.token)
+    url = "http://localhost:8000/api/solicitudes/"
+    payload = json.dumps(request.data)
+    response = post_loan_request(url, payload, authorization.token)
+
+    if response.status_code == 401 or response.status_code == 403: 
+        response = post_loan_request(url, payload, authorization.get_new_token())
+
+    return Response(data=json.loads(response.content), status=response.status_code)
+
+
+def post_loan_request(url, payload, token):
+    headers = {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer' + ' ' + token
+    }
+
+    return requests.post(url=url, data=payload, headers=headers);

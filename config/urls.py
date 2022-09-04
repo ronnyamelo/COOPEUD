@@ -40,5 +40,7 @@ urlpatterns = [
     # path('admin/', views.TestViewSet.as_view({'get': 'list'}), name='test'),
     # path('test/', views.test, name='token')
 
+    path('solicitudes/', web_views.handle_loan_request, name="handle_loan_request"),
+
 
 ]

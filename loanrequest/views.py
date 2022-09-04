@@ -9,8 +9,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from oauth2_provider.contrib.rest_framework import TokenHasScope, OAuth2Authentication
 from django.views.decorators.csrf import csrf_exempt
-# from django.views.decorators import 
-# from rest_framework.decorators import 
+
 
 class HtmlTemplateResultsSetPagination(PageNumberPagination):
     page_size = 10
@@ -26,12 +25,11 @@ class HtmlTemplateResultsSetPagination(PageNumberPagination):
             'results': data
         }})
 
-# @csrf_exempt
 class LoanRequestCreateViewSet(generics.CreateAPIView):
-    # authentication_classes = [OAuth2Authentication]
+    authentication_classes = [OAuth2Authentication]
     serializer_class = LoanRequestSerializer
-    # permission_classes = [TokenHasScope]
-    # required_scopes = ['write']
+    permission_classes = [TokenHasScope]
+    required_scopes = ['write']
 
 
 class LoanRequestViewSet(viewsets.mixins.ListModelMixin, 
