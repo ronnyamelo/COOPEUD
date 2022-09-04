@@ -20,4 +20,6 @@ urlpatterns = [
     path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     path('nosotros/', web_views.history, name = 'history'),
     path('solicitudes/', web_views.handle_loan_request, name="handle_loan_request"),
+     path("accounts/", include("django.contrib.auth.urls")),
+    path("a/", admin.site.urls),
 ]
