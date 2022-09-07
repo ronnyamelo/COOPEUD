@@ -70,7 +70,7 @@ def loginView(request):
     if user is not None:
         login(request, user)
         return redirect('/admin/solicitudes/')
-    return redirect('/admin/solicitudes/')
+    return render(request=request, template_name='login.html', context={'error': 'true'})
 
 def logoutView(request):
     logout(request)
