@@ -32,7 +32,7 @@ if (approveRequestBtn) {
     approveRequestBtn.addEventListener('click', function (event) {
         const form = document.forms['loan-request'];
         let payload =  {
-            amount_approved: form['amount_approved'].value.replace(',', ''),
+            amount_approved: form['amount_approved'].value.replace(/,/g, ''),
             term: form['loan_term'].value,
             status: requestStatus.approved,
             approved_date: getDate()
