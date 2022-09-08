@@ -8,11 +8,11 @@ from loanrequest.filters import LoanRequestFilter
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from oauth2_provider.contrib.rest_framework import TokenHasScope, OAuth2Authentication
-from django.views.decorators.csrf import csrf_exempt
+from django_auth_adfs.config import provider_config
 
 
 class HtmlTemplateResultsSetPagination(PageNumberPagination):
-    page_size = 10
+    page_size = 15
     page_size_query_param = 'page_size'
     max_page_size = 100
 
@@ -74,7 +74,8 @@ def loginView(request):
 
 def logoutView(request):
     logout(request)
-    return redirect('/login/')
+    provider_config.build_end_session_endpoint()
+    return redirect('/admin/solicitudes/')
 
 import requests
 

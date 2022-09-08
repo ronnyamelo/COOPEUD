@@ -45,8 +45,6 @@ OAUTH2_PROVIDER = {
     'SCOPES': {'read': 'Read scope', 'write': 'Write scope', 'groups': 'Access to your groups'}
 }
 
-# LOGIN_REDIRECT_URL = "/"
-# LOGIN_REDIRECT_URL = "/"
 # Application definition
 
 INSTALLED_APPS = [
@@ -155,7 +153,8 @@ AUTHENTICATION_BACKENDS = (
 )
 
 LOGIN_URL = "django_auth_adfs:login"
-LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/admin/solicitudes/"
+LOGIN_REDIRECT_URL = "/admin/solicitudes/"
 
 
 client_id = 'ae46fe46-842b-43bc-b0d5-61f29b0c2cff'
@@ -183,6 +182,6 @@ AUTH_ADFS = {
         'contacto/$',
         'ubicacion/$',
         'solicitud_prestamo/$',
-        'crear_solicitud/$'
+        'crear_solicitud/$',
     ],
 }
