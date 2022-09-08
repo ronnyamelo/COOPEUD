@@ -2,11 +2,12 @@ import json
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
-from rest_framework.decorators import renderer_classes, api_view
+from rest_framework.decorators import renderer_classes, api_view, permission_classes
 import requests
 from django.http import HttpResponse, JsonResponse, HttpResponseNotFound, response
 from coopeud.authorization import ClientCredentialsAuthorization
-
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.permissions import AllowAny
 
 
 def index(request):
@@ -30,6 +31,8 @@ def history(request):
 
 authorization = ClientCredentialsAuthorization()
 
+@csrf_exempt
+@permission_classes([AllowAny])
 @api_view(['POST', 'GET'])
 @renderer_classes([JSONRenderer])
 def handle_loan_request(request):

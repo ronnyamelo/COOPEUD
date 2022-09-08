@@ -34,6 +34,10 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
+     'DEFAULT_AUTHENTICATION_CLASSES': (
+        'django_auth_adfs.rest_framework.AdfsAccessTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
 }
 
 OAUTH2_PROVIDER = {
@@ -54,6 +58,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'oauth2_provider',
+    'django_auth_adfs',
     'rest_framework',
     'rest_framework_filters',
     'coopeud',
@@ -66,6 +71,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django_auth_adfs.middleware.LoginRequiredMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -142,3 +148,41 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Azure AD
+AUTHENTICATION_BACKENDS = (
+    'django_auth_adfs.backend.AdfsAuthCodeBackend',
+)
+
+LOGIN_URL = "django_auth_adfs:login"
+LOGIN_REDIRECT_URL = "/"
+
+
+client_id = 'ae46fe46-842b-43bc-b0d5-61f29b0c2cff'
+client_secret = 'F~m8Q~HOhCgLWS1H.3uo8ZeQw26~wiuq.gWvRc6T'
+tenant_id = '8a2f8c8d-086c-4dab-81c8-dbe0e0d8bfb4'
+
+
+AUTH_ADFS = {
+    'AUDIENCE': client_id,
+    'CLIENT_ID': client_id,
+    'CLIENT_SECRET': client_secret,
+    'CLAIM_MAPPING': {'first_name': 'given_name',
+                      'last_name': 'family_name',
+                      'email': 'upn'},
+    'GROUPS_CLAIM': 'roles',
+    'MIRROR_GROUPS': True,
+    'USERNAME_CLAIM': 'upn',
+    'TENANT_ID': tenant_id,
+    'RELYING_PARTY_ID': client_id,
+    'LOGIN_EXEMPT_URLS': [
+        '^$',
+        '^api',
+        'o/',
+        'nosotros/$',
+        'contacto/$',
+        'ubicacion/$',
+        'solicitud_prestamo/$',
+        'crear_solicitud/$'
+    ],
+}

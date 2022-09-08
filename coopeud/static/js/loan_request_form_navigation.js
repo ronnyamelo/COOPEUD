@@ -90,10 +90,11 @@ sendLoanRequestBtn.addEventListener('click', function (event) {
         }
     }
 
-    fetch('/solicitudes/', {
+    fetch('/crear_solicitud/', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCsrfToken()
         },
         body: JSON.stringify(request)
     }).then((accepted) => {
@@ -166,3 +167,7 @@ idTypeSelector.addEventListener('change', function(event) {
         idNumberField.minLength = 11;
     }
 }, false)
+
+function getCsrfToken() {
+    return document.cookie.split(';').find(x => x.startsWith('csrftoken')).split('=')[1]
+}
