@@ -14,7 +14,6 @@ urlpatterns = [
     path(r'solicitud_prestamo/', web_views.formulario, name='form'),
     path(r'api/solicitudes/', views.LoanRequestCreateViewSet.as_view(), name='test'),
     path('admin/solicitudes/', include(router.urls)),
-    path(r'solicitud_prestamo/2/', web_views.formulario2, name='form2'),
     # path('login/', views.loginView, name='login'),
     path('logout/', views.logoutView, name='logout'),
     path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),

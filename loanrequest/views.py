@@ -5,10 +5,10 @@ from rest_framework.response import Response
 from loanrequest.models import LoanRequest
 from loanrequest.serializers import LoanRequestSerializer
 from loanrequest.filters import LoanRequestFilter
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
-from oauth2_provider.contrib.rest_framework import TokenHasScope, OAuth2Authentication
+from django.shortcuts import  redirect
+from django.contrib.auth import logout
 from django_auth_adfs.config import provider_config
+from oauth2_provider.contrib.rest_framework import TokenHasScope, OAuth2Authentication
 
 
 class HtmlTemplateResultsSetPagination(PageNumberPagination):
@@ -59,37 +59,7 @@ class LoanRequestViewSet(viewsets.mixins.ListModelMixin,
                         template_name='single_request.html')
 
 
-def loginView(request):
-
-    if (request.method == "GET"):
-        return render(request, 'login.html')
-
-    username = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(request, username=username, password=password)
-    if user is not None:
-        login(request, user)
-        return redirect('/admin/solicitudes/')
-    return render(request=request, template_name='login.html', context={'error': 'true'})
-
 def logoutView(request):
     logout(request)
     provider_config.build_end_session_endpoint()
     return redirect('/admin/solicitudes/')
-
-import requests
-
-
-def test(request):
-    url = "http://localhost:8000/o/token/"
-
-    payload='grant_type=client_credentials'
-    headers = {
-    'Authorization': 'Basic Y2xpZW50OmNsaWVudF8x',
-    'Content-Type': 'application/x-www-form-urlencoded',
-    #   'Cookie': 'csrftoken=1ZTc9QX1wnPal93pwJ31wfZpFtG5okbkOwb7TSzkETqkdAITd9Eif3zupUXwMiXi'
-    }
-
-    response = requests.request("POST", url, headers=headers, data=payload)
-
-    print(response.text)
