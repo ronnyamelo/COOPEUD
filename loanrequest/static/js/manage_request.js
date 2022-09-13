@@ -83,7 +83,7 @@ if (completeRequestBtn) {
 }
 
 function getDate() {
-    return (new Date(Date.now())).toISOString().split('T')[0]; // YYYY-MM-DD
+    return new Date(Date.now()).toISOString();
 }
 
 function showErrorMsg() {
