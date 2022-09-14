@@ -87,7 +87,7 @@ class LoanRequest(models.Model):
     amount_requested = models.DecimalField(max_digits=14, decimal_places=2, db_column='monto_solicitado')
     amount_approved = models.DecimalField(max_digits=14, null=True, decimal_places=2, db_column='monto_aprovado')
     term = models.IntegerField(db_column='plazo')
-    referer = models.CharField(null=True, max_length=260)
+    referer = models.CharField(null=True, max_length=260, db_column='remitente')
     status = models.CharField(max_length=10, choices=RequestStatus.choices, default=RequestStatus.VALIDATING, db_column='estatus_solicitud')
     request_date = models.DateTimeField(auto_now_add=True, db_column='fecha_solicitud')
     cancelation_date = models.DateTimeField(null=True, db_column='fecha_cancelacion')
