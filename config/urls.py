@@ -17,6 +17,7 @@ urlpatterns = [
     path('admin/solicitudes/', include(router.urls)),
     path('crear_solicitud/', web_views.handle_loan_request, name="handle_loan_request"),
     path('logout/', views.logoutView, name='logout'),
+    path('login/', views.loginView, name='login'),
     path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     path('oauth2/', include('django_auth_adfs.urls')),
 ]

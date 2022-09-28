@@ -63,3 +63,6 @@ def logoutView(request):
     logout(request)
     provider_config.build_end_session_endpoint()
     return redirect('/admin/solicitudes/')
+
+def loginView(request):
+    return redirect('/admin/solicitudes/')

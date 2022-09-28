@@ -216,9 +216,9 @@
                 </a>
 
                 <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-                    <a class="me-3 py-2 text-dark text-decoration-none" href="http://facebook.com" target="blank">
+                    {% comment %} <a class="me-3 py-2 text-dark text-decoration-none" href="http://facebook.com" target="blank"> {% endcomment %}
                     </a>
-                    <a class="me-3 py-2 text-dark text-decoration-none " href="http://facebook.com" target="blank">
+                    <a class="me-3 py-2 text-dark text-decoration-none " href="#">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                             class="bi bi-envelope-fill link-icon" viewBox="0 0 16 16">
                             <path
@@ -265,9 +265,6 @@
                         <li class="nav-item">
                             <a href="/nosotros" class="nav-link text-light">Nosotros</a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a href="#" class="nav-link text-light">Historia</a>
-                        </li> -->
                         <li class="nav-item">
                             <a href="/contacto" class="nav-link text-light">Contactos</a>
                         </li>
@@ -332,9 +329,9 @@
                     <h5>Menu</h5>
                     <ul class="list-unstyled text-small">
                         <li><a class="list-group-item link-secondary" href="/">Inicio</a></li>
-                        <li><a class="list-group-item link-secondary" href="#">Nosotros</a></li>
-                        <li><a class="list-group-item link-secondary" href="#">Préstamos</a></li>
-                        <li><a class="list-group-item link-secondary" href="#">Contactos</a></li>
+                        <li><a class="list-group-item link-secondary" href="/nosotros">Nosotros</a></li>
+                        <li><a class="list-group-item link-secondary" href="/ubicacion">Ubicación</a></li>
+                        {% comment %} <li><a class="list-group-item link-secondary" href="#">Contactos</a></li> {% endcomment %}
                     </ul>
                 </div>
                 <div class="col-6 col-md">
