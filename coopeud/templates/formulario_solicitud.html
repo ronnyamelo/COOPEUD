@@ -5,11 +5,13 @@
 
 <div class="container col-10 col-xxl-10 col-md-10 col-lg-9" style="max-width: 1150px;">
 
+    <!-- Error -->
     <div class="alert alert-warning alert-dismissible fade show text-center" role="alert" id="errorAlert" hidden>
         <strong>Ha ocurrido un error!</strong> Favor revisar los datos he intentar nuevamente.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 
+    <!-- Success -->
     <div id="success" hidden>
         <div class="px-4 py-5 mt-5 text-center">
             <h1 class="display-4 fw-bold text-success">Su solicitud ha sido enviada!</h1>
@@ -21,6 +23,7 @@
         </div>
     </div>
 
+    <!-- main content -->
     <div id="requestContainer">
         <div class="row justify-content-center mb-4">
             <div class="py-5 text-center col-10">
@@ -28,6 +31,7 @@
                 <p class="lead">Favor de llenar el siguiente formulario para poder validar su solicitud</p>
             </div>
 
+            <!-- progress bar (stops) -->
             <div class="col-11 form-first-section">
                 <div class="position-relative m-4">
                     <div class="progress" style="height: 1px;">
@@ -84,8 +88,10 @@
 
             <div class="mt-3"></div>
 
+            <!-- Form -->
             <div class="bg-light container  border rounded mt-2">
 
+                <!-- Personal data -->
                 <form id="personalDataForm" name="personalDataForm" class="needs-validation">
                     <div class="row py-5 justify-content-center form-first-section" id="personalData">
                         <div class="col-md-11">
@@ -264,6 +270,7 @@
                     </div>
                 </form>
 
+                <!-- Employment data -->
                 <form id="employmentDataForm" name="employmentDataForm" class="needs-validation">
                     <div hidden class="row py-5 justify-content-center form-second-section" id="employmentData">
                         <div class="col-md-11">
@@ -418,6 +425,7 @@
                     </div>
                 </form>
 
+                <!-- loan data -->
                 <form id="loanDataForm" name="loanRequestForm" class="needs-validation">
                     <div hidden class="row py-5 justify-content-center form-final-section" id="loanData">
                         <div class="col-md-11">
@@ -426,10 +434,10 @@
                                     <label for="loanType" class="form-label">Tipo de préstamo</label>
                                     <div class="input-group">
                                         <select id="loanType" class="form-select" name="loanType">
-                                            <option selected value="B">Personal</option>
-                                            <option>Comercial</option>
-                                            <option>Vivienda</option>
-                                            <option>Vehiculo</option>
+                                            <option selected value="P">Personal</option>
+                                            <option value="B">Comercial</option>
+                                            <option value="H">Vivienda</option>
+                                            <option value="V">Vehiculo</option>
                                         </select>
                                     </div>
                                 </div>
@@ -450,6 +458,10 @@
                                         <option value="24">24 meses</option>
                                         <option value="30">30 meses</option>
                                         <option value="36">36 meses</option>
+                                        <option value="42">42 meses</option>
+                                        <option value="48">48 meses</option>
+                                        <option value="54">54 meses</option>
+                                        <option value="60">60 meses</option>
                                     </select>
                                 </div>
                                 <div class="col-md-12">
@@ -464,6 +476,7 @@
 
             </div>
 
+            <!-- controls -->
             <div class="container g-0 my-5">
                 <div class="row">
                     <div class="col-12 d-flex justify-content-end">
@@ -478,7 +491,7 @@
                             hidden>Siguiente</button>
                     </div>
                 </div>
-
+                
                 <div class="row">
                     <div class="col-12 d-flex justify-content-between">
                         <button class="btn btn-secondary form-final-section" id="backToSecondSection"

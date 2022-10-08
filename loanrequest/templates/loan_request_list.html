@@ -2,11 +2,16 @@
     {% include 'base/header.html' %}
     
     {% block menu %}
+    
     <!-- menu start -->
     <header class="p-3 bg-light" ">
         <div class="container">
             <div class="row g-2">
+
+            <!-- Ordering and Filtering -->
             <div class="d-flex bd-highlight">
+
+                <!-- Ordering -->
                 <div class="d-flex flex-wrap justify-content-start">
                     <div class="me-3 pt-2">Ordenar por: &nbsp;</div>
                     <a href='#' class="btn btn-secondary border border-1 border-secondary rounded-pill bg-light text-dark px-4 me-3" id="orderByDate">
@@ -17,6 +22,8 @@
                         Monto<i class="bi" id="orderAmountIcon" style="font-size: 1.3rem;"></i>
                     </a>
                 </div>
+
+                <!-- Filtering -->
                 <div class="ms-auto bd-highlight">
                     <div class="d-flex flex-wrap justify-content-end ">
                         <div class="btn-group">
@@ -64,11 +71,13 @@
                                         <div class="row">
                                             <label class="col-form-label col-sm-2 pt-0 mt-2" for="fromDate">Desde</label>
                                             <div class="col-4">
-                                                <input type="date" class="form-control rounded-pill" aria-label="Filtrar por Fecha inicial de solicitud" name="request_date__gte" id="fromDate">
+                                                <input type="date" class="form-control rounded-pill" aria-label="Filtrar por Fecha inicial de solicitud" 
+                                                    name="request_date__gte" id="fromDate">
                                             </div>
                                             <label class="col-form-label col-sm-2 pt-0 mt-2" for="toDate">Hasta</label>
                                             <div class="col-4">
-                                                <input type="date" class="form-control rounded-pill" placeholder="Last name" aria-label="Filtrar por Fecha final de solicitud" id="toDate" name="request_date__lte">
+                                                <input type="date" class="form-control rounded-pill" placeholder="Last name" 
+                                                    aria-label="Filtrar por Fecha final de solicitud" id="toDate" name="request_date__lte">
                                             </div>
                                         </div>
                                     </div>
@@ -93,7 +102,9 @@
                                     </div>
                                 </fieldset>
                                 <div class="row mt-5 g-2">
-                                    <button type="reset" class="col-sm-4 text-dark btn btn-secondary rounded-pill" style="background-color: #F7F7F7;">Limpiar Filtros</button>
+                                    <button type="reset" class="col-sm-4 text-dark btn btn-secondary rounded-pill" style="background-color: #F7F7F7;">
+                                        Limpiar Filtros
+                                    </button>
                                     <button type="submit" class="col-sm-3 btn offset-1 btn-success rounded-pill" id="filter">Aplicar</button>
                                 </div>
                             </form>

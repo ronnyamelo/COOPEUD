@@ -97,20 +97,30 @@
                     <div class="mb-3 row">
                         <label for="loanType" class="col-sm-2 col-form-label">Tipo de prestamo</label>
                         <div class="col-sm-10">
-                            <select class="form-select" disabled aria-label="Default select example" id="loanType"
+                            <select class="form-select" disabled id="loanType"
                                 value="{{ loan_request.loan_type }}">
-                                <option value="B">COMERCIAL</option>
-                                <option value="P">PERSONAL</option>
-                                <option value="A">VEHICULO</option>
-                                <option value="V">VIVIENDA</option>
+                                <option {% if loan_request.loan_type == "B" %} selected {% endif %} value="B">COMERCIAL</option>
+                                <option {% if loan_request.loan_type == "P" %} selected {% endif %} value="P">PERSONAL</option>
+                                <option {% if loan_request.loan_type == "V" %} selected {% endif %} value="V">VEHICULO</option>
+                                <option {% if loan_request.loan_type == "H" %} selected {% endif %} value="H">VIVIENDA</option>
                             </select>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="loanTerm" class="col-sm-2 col-form-label">Plazo (meses)</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="loanTerm"
-                                value="{{ loan_request.term }}" name="loan_term">
+                                <select id="loanTerm" name="loan_term" class="form-select">
+                                    <option {% if loan_request.term == 6 %} selected {% endif %} value="6">6 meses</option>
+                                    <option {% if loan_request.term == 12 %} selected {% endif %} value="12">12 meses</option>
+                                    <option {% if loan_request.term == 18 %} selected {% endif %} value="18">18 meses</option>
+                                    <option {% if loan_request.term == 24 %} selected {% endif %} value="24">24 meses</option>
+                                    <option {% if loan_request.term == 30 %} selected {% endif %} value="30">30 meses</option>
+                                    <option {% if loan_request.term == 36 %} selected {% endif %} value="36">36 meses</option>
+                                    <option {% if loan_request.term == 42 %} selected {% endif %} value="42">42 meses</option>
+                                    <option {% if loan_request.term == 48 %} selected {% endif %} value="48">48 meses</option>
+                                    <option {% if loan_request.term == 54 %} selected {% endif %} value="54">54 meses</option>
+                                    <option {% if loan_request.term == 60 %} selected {% endif %} value="60">60 meses</option>
+                                </select>
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -321,11 +331,10 @@
                     <div class="mb-3 row">
                         <label for="employmentType" class="col-sm-2 col-form-label">Tipo de Empleo</label>
                         <div class="col-sm-10">
-                            <select class="form-select" aria-label="Default select example" id="employmentType"
-                                value="{{ loan_request.applicant.employment_data.employment_type }}">
-                                <option value="PR">PRIVADO</option>
-                                <option value="PU">PUBLICO</option>
-                                <option value="SE">AUTO EMPLEADO</option>
+                            <select class="form-select" aria-label="Default select example" id="employmentType" >
+                                <option {% if loan_request.applicant.employment_data.employment_type == "PR" %} selected {% endif %} value="PR">PRIVADO</option>
+                                <option {% if loan_request.applicant.employment_data.employment_type == "PU" %} selected {% endif %} value="PU">PUBLICO</option>
+                                <option {% if loan_request.applicant.employment_data.employment_type == "SE" %} selected {% endif %} value="SE">AUTO EMPLEADO</option>
                             </select>
                         </div>
                     </div>
