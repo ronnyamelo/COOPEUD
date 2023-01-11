@@ -232,7 +232,7 @@
                         <label for="tel" class="col-sm-2 col-form-label">Telefono</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="tel"
-                                value="{{ loan_request.applicant.tel }}">
+                                value="{{ loan_request.applicant.tel|replace_none }}">
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -391,21 +391,21 @@
                         <label for="jobStreet" class="col-sm-2 col-form-label">Calle</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="jobStreet"
-                                value="{{ loan_request.applicant.employment_data.street }}">
+                                value="{{ loan_request.applicant.employment_data.street|replace_none }}">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="jobBuildingNumber" class="col-sm-2 col-form-label">Numero</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="jobBuildingNumber"
-                                value="{{ loan_request.applicant.employment_data.number }}">
+                                value="{{ loan_request.applicant.employment_data.number|replace_none }}">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="jobBuildingName" class="col-sm-2 col-form-label">Edificio</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="jobBuildingName"
-                                value="{{ loan_request.applicant.employment_data.building }}">
+                                value="{{ loan_request.applicant.employment_data.building|replace_none }}">
                         </div>
                     </div>
                     <div class="mb-3 row">

@@ -53,6 +53,6 @@ def calculate_age(value):
 
 @register.filter(is_safe=True)
 def replace_none(value, replacement = ""):
-    if (value is None):
+    if (value is None or value == 'None'):
         return replacement
     return value
