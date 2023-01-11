@@ -80,6 +80,7 @@ sendLoanRequestBtn.addEventListener('click', function (event) {
                 "current_role": employmentDataForm['jobRol'].value,
                 "start_date": employmentDataForm['hiringDate'].value,
                 "monthly_salary": employmentDataForm['monthlyIncome'].value,
+                "other_income": employmentDataForm['otherIncome'].value,
                 "street": employmentDataForm['jobStreet'].value,
                 "number": employmentDataForm['jobStreetNumber'].value,
                 "building": employmentDataForm['jobBuildingName'].value || null,

@@ -201,10 +201,9 @@
                     <div class="mb-3 row">
                         <label for="idType" class="col-sm-2 col-form-label">Tipo de Identificación</label>
                         <div class="col-sm-10">
-                            <select class="form-select" aria-label="Default select example" id="idType"
-                                value="{{ loan_request.applicant.id_type }}">
-                                <option value="C">CEDULA</option>
-                                <option value="E">PASAPORTE</option>
+                            <select class="form-select" aria-label="Default select example" id="idType">
+                                <option {% if loan_request.applicant.id_type == "C" %} selected {% endif %} value="C">CEDULA</option>
+                                <option {% if loan_request.applicant.id_type == "E" %} selected {% endif %} value="E">PASAPORTE</option>
                             </select>
                         </div>
                     </div>
