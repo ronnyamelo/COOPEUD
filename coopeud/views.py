@@ -8,6 +8,7 @@ from django.http import  HttpResponseNotFound
 from coopeud.authorization import ClientCredentialsAuthorization
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.permissions import AllowAny
+import os
 
 
 def index(request):
@@ -37,11 +38,11 @@ def handle_loan_request(request):
     if request.method == 'GET':
         return HttpResponseNotFound();
 
-    url = "http://localhost:8000/api/solicitudes/"
+    url = os.environ.get('API_SOLICITUDES_ENDPOINT')
     payload = json.dumps(request.data)
     response = post_loan_request(url, payload, authorization.token)
 
-    if response.status_code == 401 or response.status_code == 403: 
+    if response.status_code == 401 or response.status_code == 403:
         response = post_loan_request(url, payload, authorization.get_new_token())
 
     return Response(data=json.loads(response.content), status=response.status_code)

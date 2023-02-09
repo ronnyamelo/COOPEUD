@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -156,11 +157,10 @@ LOGIN_URL = "django_auth_adfs:login"
 LOGOUT_REDIRECT_URL = "/admin/solicitudes/"
 LOGIN_REDIRECT_URL = "/admin/solicitudes/"
 
-
-client_id = 'ae46fe46-842b-43bc-b0d5-61f29b0c2cff'
-client_secret = 'F~m8Q~HOhCgLWS1H.3uo8ZeQw26~wiuq.gWvRc6T'
-tenant_id = '8a2f8c8d-086c-4dab-81c8-dbe0e0d8bfb4'
-
+# Azure AD configuration
+client_id = os.environ.get('AAD_CLIENT_ID')
+client_secret = os.environ.get('AAD_CLIENTE_SECRET')
+tenant_id = os.environ.get('AAD_TENANT_ID')
 
 AUTH_ADFS = {
     'AUDIENCE': client_id,

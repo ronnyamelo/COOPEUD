@@ -1,13 +1,14 @@
 import requests
+import os
 
 
 class ClientCredentialsAuthorization():
     token = ''
 
     def __init__(self) -> None:
-        self.client_id = 'client'
-        self.client_secret = 'client_1'
-        self.token_url = "http://localhost:8000/o/token/"
+        self.client_id = os.environ.get('CLIENT_ID')
+        self.client_secret = os.environ.get('CLIENT_SECRET')
+        self.token_url = os.environ.get('TOKEN_ENDPOINT')
         self.headers = {
             'Content-Type': 'application/x-www-form-urlencoded',
         }

@@ -13,7 +13,7 @@ urlpatterns = [
     path('ubicacion/', web_views.location, name = 'location'),
     path('nosotros/', web_views.history, name = 'history'),
     path(r'solicitud_prestamo/', web_views.formulario, name='form'),
-    path(r'api/solicitudes/', views.LoanRequestCreateViewSet.as_view(), name='test'),
+    path(r'api/solicitudes/', views.LoanRequestCreateViewSet.as_view(), name='crear_solicitudes'),
     path('admin/solicitudes/', include(router.urls)),
     path('crear_solicitud/', web_views.handle_loan_request, name="handle_loan_request"),
     path('logout/', views.logoutView, name='logout'),
