@@ -14,7 +14,6 @@ const loanDataForm = document.forms['loanDataForm'];
 
 const successMsg = document.getElementById('success');
 const requestContainer = document.getElementById('requestContainer');
-// requestContainer.hidden = true;
 
 toSecondSectionBtn.addEventListener('click', function (event) {
     if (!isValidForm(personalDataForm)) {
@@ -99,7 +98,6 @@ sendLoanRequestBtn.addEventListener('click', function (event) {
         },
         body: JSON.stringify(request)
     }).then((accepted) => {
-        // console.log(request);
         if (!accepted.ok) {
             document.getElementById('errorAlert').hidden = false;
         }
